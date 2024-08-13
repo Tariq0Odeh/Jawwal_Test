@@ -1,0 +1,824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75BF02F8-6B55-46A2-97C7-D4FD4EDE21FF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>VMAgent.My.MyApplication</StartupObject>
+    <RootNamespace>VMAgent</RootNamespace>
+    <AssemblyName>VMAgent</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>VMAgent.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>VMAgent.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Ico.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CashierAgentDesktopDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CashierAgentDesktopDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Classes\APIs.vb" />
+    <Compile Include="Classes\Brand.vb" />
+    <Compile Include="Classes\Bundle.vb" />
+    <Compile Include="Classes\Camera.vb" />
+    <Compile Include="Classes\CameraCapture.vb" />
+    <Compile Include="Classes\ConfigParams.vb" />
+    <Compile Include="Classes\CardDispenser.vb" />
+    <Compile Include="Classes\cWrapExitWindows.vb" />
+    <Compile Include="Classes\Denomination.vb" />
+    <Compile Include="Classes\DesktopCapture.vb" />
+    <Compile Include="Classes\DocumentScanner.vb" />
+    <Compile Include="Classes\ExceptionLogger.vb" />
+    <Compile Include="Classes\GlobalConfig.vb" />
+    <Compile Include="Classes\Globals.vb" />
+    <Compile Include="Classes\JawwalInvoice.vb" />
+    <Compile Include="Classes\LookupItem.vb" />
+    <Compile Include="Classes\MsisdnEntry.vb" />
+    <Compile Include="Classes\PackageDetails.vb" />
+    <Compile Include="Classes\PaltelInvoice.vb" />
+    <Compile Include="Classes\PleaseWaitUntilFinish.vb" />
+    <Compile Include="Classes\POSLib.vb" />
+    <Compile Include="Classes\RESTServiceInvoker.vb" />
+    <Compile Include="Classes\Sound.vb" />
+    <Compile Include="Classes\Terminal.vb" />
+    <Compile Include="Classes\Transaction.vb" />
+    <Compile Include="Classes\ValidationRules.vb" />
+    <Compile Include="ctlBrand.Designer.vb">
+      <DependentUpon>ctlBrand.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlBrand.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlBundle.Designer.vb">
+      <DependentUpon>ctlBundle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlBundle.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlDenomination.Designer.vb">
+      <DependentUpon>ctlDenomination.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlDenomination.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlJawwalBill.Designer.vb">
+      <DependentUpon>ctlJawwalBill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlJawwalBill.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlKeyboard.designer.vb">
+      <DependentUpon>ctlKeyboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlKeyboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlMsisdn.Designer.vb">
+      <DependentUpon>ctlMsisdn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlMsisdn.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlPaltelBill.Designer.vb">
+      <DependentUpon>ctlPaltelBill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ctlPaltelBill.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FlickerFreeFlowLayoutPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlickerFreePanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles.designer.vb">
+      <DependentUpon>frmBundles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles3.designer.vb">
+      <DependentUpon>frmBundles3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles1.designer.vb">
+      <DependentUpon>frmBundles1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles2.designer.vb">
+      <DependentUpon>frmBundles2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles4.designer.vb">
+      <DependentUpon>frmBundles4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles5.designer.vb">
+      <DependentUpon>frmBundles5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles6.designer.vb">
+      <DependentUpon>frmBundles6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles7.designer.vb">
+      <DependentUpon>frmBundles7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBundles8.designer.vb">
+      <DependentUpon>frmBundles8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBundles8.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods.designer.vb">
+      <DependentUpon>frmDigitalGoods.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods1.designer.vb">
+      <DependentUpon>frmDigitalGoods1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods2.designer.vb">
+      <DependentUpon>frmDigitalGoods2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods3.designer.vb">
+      <DependentUpon>frmDigitalGoods3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods4.designer.vb">
+      <DependentUpon>frmDigitalGoods4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods5.designer.vb">
+      <DependentUpon>frmDigitalGoods5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalGoods6.designer.vb">
+      <DependentUpon>frmDigitalGoods6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDigitalGoods6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocumentScanner.designer.vb">
+      <DependentUpon>frmDocumentScanner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocumentScanner.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuEKYC.Designer.vb">
+      <DependentUpon>frmMenuEKYC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuEKYC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim.designer.vb">
+      <DependentUpon>frmNewSim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim1.designer.vb">
+      <DependentUpon>frmNewSim1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim2.designer.vb">
+      <DependentUpon>frmNewSim2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim3.designer.vb">
+      <DependentUpon>frmNewSim3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim4.designer.vb">
+      <DependentUpon>frmNewSim4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim5.designer.vb">
+      <DependentUpon>frmNewSim5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim6.designer.vb">
+      <DependentUpon>frmNewSim6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim7.designer.vb">
+      <DependentUpon>frmNewSim7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSim8.designer.vb">
+      <DependentUpon>frmNewSim8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSim8.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment1.designer.vb">
+      <DependentUpon>frmPaltelBillPayment1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment.designer.vb">
+      <DependentUpon>frmPaltelBillPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment3.designer.vb">
+      <DependentUpon>frmJawwalBillPayment3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment2.designer.vb">
+      <DependentUpon>frmJawwalBillPayment2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment1.designer.vb">
+      <DependentUpon>frmJawwalBillPayment1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment.designer.vb">
+      <DependentUpon>frmJawwalBillPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment4.designer.vb">
+      <DependentUpon>frmJawwalBillPayment4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment5.designer.vb">
+      <DependentUpon>frmJawwalBillPayment5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment6.designer.vb">
+      <DependentUpon>frmJawwalBillPayment6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmJawwalBillPayment6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.vb">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment2.designer.vb">
+      <DependentUpon>frmPaltelBillPayment2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment3.designer.vb">
+      <DependentUpon>frmPaltelBillPayment3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment4.designer.vb">
+      <DependentUpon>frmPaltelBillPayment4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaltelBillPayment4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPleaseWait.Designer.vb">
+      <DependentUpon>frmPleaseWait.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPleaseWait.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlus.designer.vb">
+      <DependentUpon>frmPlus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap.designer.vb">
+      <DependentUpon>frmSIMSwap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap1.designer.vb">
+      <DependentUpon>frmSIMSwap1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap2.designer.vb">
+      <DependentUpon>frmSIMSwap2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap3.designer.vb">
+      <DependentUpon>frmSIMSwap3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap4.designer.vb">
+      <DependentUpon>frmSIMSwap4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap5.designer.vb">
+      <DependentUpon>frmSIMSwap5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap6.designer.vb">
+      <DependentUpon>frmSIMSwap6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap7.designer.vb">
+      <DependentUpon>frmSIMSwap7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap10.designer.vb">
+      <DependentUpon>frmSIMSwap10.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap10.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap11.designer.vb">
+      <DependentUpon>frmSIMSwap11.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap11.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap12.designer.vb">
+      <DependentUpon>frmSIMSwap12.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap12.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap8.designer.vb">
+      <DependentUpon>frmSIMSwap8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap8.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSIMSwap9.designer.vb">
+      <DependentUpon>frmSIMSwap9.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSIMSwap9.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimeExtension.designer.vb">
+      <DependentUpon>frmTimeExtension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTimeExtension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopUp.designer.vb">
+      <DependentUpon>frmTopUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopUp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopUp2.designer.vb">
+      <DependentUpon>frmTopUp2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopUp2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopUp1.designer.vb">
+      <DependentUpon>frmTopUp1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopUp1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTopUp3.designer.vb">
+      <DependentUpon>frmTopUp3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTopUp3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVideoRecorder.designer.vb">
+      <DependentUpon>frmVideoRecorder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVideoRecorder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ctlBrand.resx">
+      <DependentUpon>ctlBrand.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlBundle.resx">
+      <DependentUpon>ctlBundle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlDenomination.resx">
+      <DependentUpon>ctlDenomination.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlJawwalBill.resx">
+      <DependentUpon>ctlJawwalBill.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlKeyboard.resx">
+      <DependentUpon>ctlKeyboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlMsisdn.resx">
+      <DependentUpon>ctlMsisdn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctlPaltelBill.resx">
+      <DependentUpon>ctlPaltelBill.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles.resx">
+      <DependentUpon>frmBundles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles3.resx">
+      <DependentUpon>frmBundles3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles1.resx">
+      <DependentUpon>frmBundles1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles2.resx">
+      <DependentUpon>frmBundles2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles4.resx">
+      <DependentUpon>frmBundles4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles5.resx">
+      <DependentUpon>frmBundles5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles6.resx">
+      <DependentUpon>frmBundles6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles7.resx">
+      <DependentUpon>frmBundles7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBundles8.resx">
+      <DependentUpon>frmBundles8.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods.resx">
+      <DependentUpon>frmDigitalGoods.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods1.resx">
+      <DependentUpon>frmDigitalGoods1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods2.resx">
+      <DependentUpon>frmDigitalGoods2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods3.resx">
+      <DependentUpon>frmDigitalGoods3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods4.resx">
+      <DependentUpon>frmDigitalGoods4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods5.resx">
+      <DependentUpon>frmDigitalGoods5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDigitalGoods6.resx">
+      <DependentUpon>frmDigitalGoods6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocumentScanner.resx">
+      <DependentUpon>frmDocumentScanner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenuEKYC.resx">
+      <DependentUpon>frmMenuEKYC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim.resx">
+      <DependentUpon>frmNewSim.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim1.resx">
+      <DependentUpon>frmNewSim1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim2.resx">
+      <DependentUpon>frmNewSim2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim3.resx">
+      <DependentUpon>frmNewSim3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim4.resx">
+      <DependentUpon>frmNewSim4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim5.resx">
+      <DependentUpon>frmNewSim5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim6.resx">
+      <DependentUpon>frmNewSim6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim7.resx">
+      <DependentUpon>frmNewSim7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSim8.resx">
+      <DependentUpon>frmNewSim8.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaltelBillPayment1.resx">
+      <DependentUpon>frmPaltelBillPayment1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaltelBillPayment.resx">
+      <DependentUpon>frmPaltelBillPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment3.resx">
+      <DependentUpon>frmJawwalBillPayment3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment2.resx">
+      <DependentUpon>frmJawwalBillPayment2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment1.resx">
+      <DependentUpon>frmJawwalBillPayment1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment.resx">
+      <DependentUpon>frmJawwalBillPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment4.resx">
+      <DependentUpon>frmJawwalBillPayment4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment5.resx">
+      <DependentUpon>frmJawwalBillPayment5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJawwalBillPayment6.resx">
+      <DependentUpon>frmJawwalBillPayment6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaltelBillPayment2.resx">
+      <DependentUpon>frmPaltelBillPayment2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaltelBillPayment3.resx">
+      <DependentUpon>frmPaltelBillPayment3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaltelBillPayment4.resx">
+      <DependentUpon>frmPaltelBillPayment4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPleaseWait.resx">
+      <DependentUpon>frmPleaseWait.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlus.resx">
+      <DependentUpon>frmPlus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap.resx">
+      <DependentUpon>frmSIMSwap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap1.resx">
+      <DependentUpon>frmSIMSwap1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap2.resx">
+      <DependentUpon>frmSIMSwap2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap3.resx">
+      <DependentUpon>frmSIMSwap3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap4.resx">
+      <DependentUpon>frmSIMSwap4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap5.resx">
+      <DependentUpon>frmSIMSwap5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap6.resx">
+      <DependentUpon>frmSIMSwap6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap7.resx">
+      <DependentUpon>frmSIMSwap7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap10.resx">
+      <DependentUpon>frmSIMSwap10.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap11.resx">
+      <DependentUpon>frmSIMSwap11.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap12.resx">
+      <DependentUpon>frmSIMSwap12.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap8.resx">
+      <DependentUpon>frmSIMSwap8.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSIMSwap9.resx">
+      <DependentUpon>frmSIMSwap9.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimeExtension.resx">
+      <DependentUpon>frmTimeExtension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopUp.resx">
+      <DependentUpon>frmTopUp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopUp2.resx">
+      <DependentUpon>frmTopUp2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopUp1.resx">
+      <DependentUpon>frmTopUp1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTopUp3.resx">
+      <DependentUpon>frmTopUp3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVideoRecorder.resx">
+      <DependentUpon>frmVideoRecorder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="avi2mp4.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BnrCtlDotNet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ico.ico" />
+    <None Include="Resources\Home Edit.png" />
+    <Content Include="Resources\HomeEKYC.png" />
+    <Content Include="ScreensFlow.txt" />
+    <Content Include="VinderSDK.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VinderSDK.pdb" />
+    <Content Include="VinderSDK.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashRecycler\VinderSDK\VinderSDK.vbproj">
+      <Project>{bf23db3d-a875-461e-90c8-cffc5ba347e9}</Project>
+      <Name>VinderSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+..\..\..\PostBuildScript\bin\Debug\PostBuildScript.exe
+)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

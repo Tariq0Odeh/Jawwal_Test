@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VinderSDK
+</name>
+</assembly>
+<members>
+<member name="T:VinderSDK.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:VinderSDK.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:VinderSDK.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:VinderSDK.CsBaseCom.recvArray(System.Byte[],System.Int32@)">
+ <summary>
+ Receive data array
+ </summary>
+ <paramname  array="array of bytes" ></paramname>
+ <paramname  len=""></paramname>
+ <returns></returns>
+</member>
+<member name="M:VinderSDK.CsCYCR6.requestCoinInByType">
+ <summary>
+ requestCoinInByType
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>
