@@ -92,7 +92,7 @@ Public Class frmBundles7
 
                     TrxnAmount = Val(objBundle.appPrice)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("Failed")
+                    PrintFailedReceipt("Failed")
 
                     Globals.HidePleaseWait(Me)
                     txtAmount.Text = 0
@@ -106,7 +106,7 @@ Public Class frmBundles7
                     ReturnCoinCash(Val(txtAmount.Text) - Val(objBundle.appPrice))
                     TrxnAmount = Val(objBundle.appPrice)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("UnKnownStatus")
+                    PrintFailedReceipt("UnKnownStatus")
                     Globals.HidePleaseWait(Me)
                     txtAmount.Text = 0
                     isConfirmedClicked = False
@@ -251,12 +251,12 @@ Public Class frmBundles7
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
 
         Try
 
 
-            PrintReceiptDetails = APIs.GetReceiptDetails("BundlesFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("BundlesFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument

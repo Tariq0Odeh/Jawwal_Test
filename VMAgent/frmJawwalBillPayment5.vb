@@ -105,7 +105,7 @@ Public Class frmJawwalBillPayment5
 
                     TrxnAmount = Val(Amount)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("Failed")
+                    PrintFailedReceipt("Failed")
 
                     Globals.HidePleaseWait(Me)
                     btnOK.Enabled = True
@@ -120,7 +120,7 @@ Public Class frmJawwalBillPayment5
                     ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))
                     TrxnAmount = Val(Amount)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("UnkownStatus")
+                    PrintFailedReceipt("UnkownStatus")
 
                     Globals.HidePleaseWait(Me)
                     btnOK.Enabled = True
@@ -272,11 +272,11 @@ Public Class frmJawwalBillPayment5
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
         Try
 
 
-            PrintReceiptDetails = APIs.GetReceiptDetails("JawwalBillPaymentFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("JawwalBillPaymentFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument

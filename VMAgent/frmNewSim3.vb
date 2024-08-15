@@ -201,7 +201,7 @@ Public Class frmNewSim3
             obj.DocType = DocType
             obj.reservationID = reservationID
             obj.resourceID = resourceID
-            obj.PaymentTypeWithPackages = "{""code"": ""0"",""message"": ""Success"",""data"": [{""type"": ""PRE"",""packages"": [{""name"": ""dardesh"",""code"": ""78f""}]},{""type"": ""POST"",""packages"": [{""name"": ""kartak"",""code"": ""532h""}]},{""type"": ""MIX"",""packages"": [{""name"": ""shabab"",""code"": ""15d""}]}]}" 'PaymentTypeWithPackages
+            obj.PaymentTypeWithPackages = PaymentTypeWithPackages
             obj.DocumentFileData = DocumentFileData
             obj.Owner = Me.Owner
             obj.ShowDialog()

@@ -115,7 +115,7 @@ Public Class frmJawwalBillPayment4
                     TrxnAmount = Val(Amount)
                     PaidAmount = Val(Amount)
                     ReturnedAmount = Val(Amount)
-                    PrintFaildReceipt()
+                    PrintFailedReceipt()
 
 
 
@@ -135,7 +135,7 @@ Public Class frmJawwalBillPayment4
 
             Else
 
-                ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed tp DoPaymentUsingCard, card response=" & posCardResponseCode)
+                ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed to DoPaymentUsingCard, card response=" & posCardResponseCode)
 
             End If
             Globals.HidePleaseWait(Me)
@@ -248,9 +248,9 @@ Public Class frmJawwalBillPayment4
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt()
+    Private Sub PrintFailedReceipt()
         Try
-            PrintReceiptDetails = APIs.GetReceiptDetails("JawwalBillPaymentFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("JawwalBillPaymentFailed")
             TrxnStatus = "Failed"
 
             Dim objReceiptDocument As New Printing.PrintDocument

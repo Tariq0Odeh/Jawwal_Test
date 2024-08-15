@@ -90,7 +90,7 @@ Public Class frmTopUp1
                         TrxnAmount = Val(Amount)
                         PaidAmount = Val(Amount)
                         ReturnedAmount = Val(Amount)
-                        PrintFaildReceipt("Failed")
+                        PrintFailedReceipt("Failed")
 
                         Globals.HidePleaseWait(Me)
 
@@ -101,7 +101,7 @@ Public Class frmTopUp1
                         TrxnAmount = Val(Amount)
                         PaidAmount = Val(Amount)
                         ReturnedAmount = 0
-                        PrintFaildReceipt("UnknownStatus")
+                        PrintFailedReceipt("UnknownStatus")
                         Globals.HidePleaseWait(Me)
                         Me.Owner.Close()
                         Me.Owner.Dispose()
@@ -116,7 +116,7 @@ Public Class frmTopUp1
             Else
 
                 Globals.HidePleaseWait(Me)
-                ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed tp DoPaymentUsingCard, card response=" & POSResponse)
+                ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed to DoPaymentUsingCard, card response=" & POSResponse)
             End If
         End SyncLock
     End Sub
@@ -181,10 +181,10 @@ Public Class frmTopUp1
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
 
         Try
-            PrintReceiptDetails = APIs.GetReceiptDetails("TopUpFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("TopUpFailed")
             Me.TrxnStatus = TrxnStatus '"Failed"
 
             Dim objReceiptDocument As New Printing.PrintDocument

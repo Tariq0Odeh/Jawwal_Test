@@ -137,7 +137,7 @@ Public Class frmNewSim6
                         TrxnAmount = Val(Price)
                         PaidAmount = Val(Price)
                         ReturnedAmount = Val(Price)
-                        PrintFaildReceipt("Failed")
+                        PrintFailedReceipt("Failed")
                         Globals.HidePleaseWait(Me)
                         Me.Owner.Close()
                         Me.Owner.Dispose()
@@ -148,7 +148,7 @@ Public Class frmNewSim6
                         TrxnAmount = Val(Price)
                         PaidAmount = Val(Price)
                         ReturnedAmount = 0
-                        PrintFaildReceipt("UnKnownStatus")
+                        PrintFailedReceipt("UnKnownStatus")
                         Globals.HidePleaseWait(Me)
                         Me.Owner.Close()
                         Me.Owner.Dispose()
@@ -225,10 +225,10 @@ Public Class frmNewSim6
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
         Try
 
-            PrintReceiptDetails = APIs.GetReceiptDetails("NewSIMFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("NewSIMFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument

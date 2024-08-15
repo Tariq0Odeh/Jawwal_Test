@@ -44,7 +44,7 @@ Public Class frmBundles6
                     TrxnAmount = Val(objBundle.appPrice)
                     PaidAmount = Val(objBundle.appPrice)
                     ReturnedAmount = Val(objBundle.appPrice)
-                    PrintFaildReceipt("Balance", "Faild")
+                    PrintFailedReceipt("Balance", "Failed")
 
                     Globals.HidePleaseWait(Me)
 
@@ -55,7 +55,7 @@ Public Class frmBundles6
                     TrxnAmount = Val(objBundle.appPrice)
                     PaidAmount = Val(objBundle.appPrice)
                     ReturnedAmount = 0
-                    PrintFaildReceipt("Balance", "UnknownStatus")
+                    PrintFailedReceipt("Balance", "UnknownStatus")
 
                     Globals.HidePleaseWait(Me)
 
@@ -151,7 +151,7 @@ Public Class frmBundles6
                         TrxnAmount = Val(objBundle.appPrice)
                         PaidAmount = Val(objBundle.appPrice)
                         ReturnedAmount = Val(objBundle.appPrice)
-                        PrintFaildReceipt("Visa", "Failed")
+                        PrintFailedReceipt("Visa", "Failed")
 
                         Globals.HidePleaseWait(Me)
 
@@ -164,7 +164,7 @@ Public Class frmBundles6
                         TrxnAmount = Val(objBundle.appPrice)
                         PaidAmount = Val(objBundle.appPrice)
                         ReturnedAmount = 0
-                        PrintFaildReceipt("Visa", "UnKnownStatus")
+                        PrintFailedReceipt("Visa", "UnKnownStatus")
 
                         Globals.HidePleaseWait(Me)
 
@@ -244,9 +244,9 @@ Public Class frmBundles6
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(PaymentMethod As String, TrxnStatus As String)
+    Private Sub PrintFailedReceipt(PaymentMethod As String, TrxnStatus As String)
         Try
-            PrintReceiptDetails = APIs.GetReceiptDetails("BundlesFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("BundlesFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument

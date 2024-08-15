@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.34829.251
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VMAgent", "VMAgent.vbproj", "{75BF02F8-6B55-46A2-97C7-D4FD4EDE21FF}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DeploymentTool", "..\DeploymentTool\DeploymentTool.vbproj", "{03438002-85A8-4559-BF78-834E84EFD296}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PostBuildScript", "..\PostBuildScript\PostBuildScript.vbproj", "{18EC382B-A753-406C-AFC0-48CB432B0D83}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VMAgentMonitorService", "..\VMAgentMonitorService\VMAgentMonitorService.vbproj", "{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,14 +51,6 @@ Global
 		{18EC382B-A753-406C-AFC0-48CB432B0D83}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{18EC382B-A753-406C-AFC0-48CB432B0D83}.Release|x86.ActiveCfg = Release|Any CPU
 		{18EC382B-A753-406C-AFC0-48CB432B0D83}.Release|x86.Build.0 = Release|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Debug|x86.Build.0 = Debug|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Release|x86.ActiveCfg = Release|Any CPU
-		{B5B176C7-CA0E-4BCB-B9DE-A8271AED8BB4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

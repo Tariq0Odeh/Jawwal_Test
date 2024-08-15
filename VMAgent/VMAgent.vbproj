@@ -792,8 +792,14 @@
     <Content Include="BnrCtlDotNet.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="CashierAgentDesktopDLL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Ico.ico" />
     <None Include="Resources\Home Edit.png" />
+    <Content Include="Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\HomeEKYC.png" />
     <Content Include="ScreensFlow.txt" />
     <Content Include="VinderSDK.dll">

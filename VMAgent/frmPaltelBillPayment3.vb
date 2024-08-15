@@ -103,7 +103,7 @@ Public Class frmPaltelBillPayment3
                     ReturnCoinCash(Val(txtAmount.Text))
                     TrxnAmount = Val(Amount)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("Failed")
+                    PrintFailedReceipt("Failed")
                     btnOK.Enabled = True
                     txtAmount.Text = 0
                     isConfirmedClicked = False
@@ -117,7 +117,7 @@ Public Class frmPaltelBillPayment3
                     ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))
                     TrxnAmount = Val(Amount)
                     PaidAmount = Val(txtAmount.Text)
-                    PrintFaildReceipt("UnknownStatus")
+                    PrintFailedReceipt("UnknownStatus")
                     Globals.HidePleaseWait(Me)
                     btnOK.Enabled = True
                     txtAmount.Text = 0
@@ -260,10 +260,10 @@ Public Class frmPaltelBillPayment3
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
         Try
 
-            PrintReceiptDetails = APIs.GetReceiptDetails("PaltelBillPaymentFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("PaltelBillPaymentFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument

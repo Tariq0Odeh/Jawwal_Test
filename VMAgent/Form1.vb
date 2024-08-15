@@ -201,12 +201,12 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub PrintFaildReceipt()
+    Private Sub PrintFailedReceipt()
         Try
 
 
 
-            PrintReceiptDetails = APIs.GetReceiptDetails("TopUpFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("TopUpFailed")
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController

@@ -91,7 +91,7 @@ Public Class frmDigitalGoods4
                         TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                         PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                         ReturnedAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        PrintFaildReceipt("Failed")
+                        PrintFailedReceipt("Failed")
 
                         Globals.HidePleaseWait(Me)
 
@@ -105,7 +105,7 @@ Public Class frmDigitalGoods4
                         TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                         PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                         ReturnedAmount = 0
-                        PrintFaildReceipt("UnKnownStatus")
+                        PrintFailedReceipt("UnKnownStatus")
 
                         Globals.HidePleaseWait(Me)
 
@@ -185,10 +185,10 @@ Public Class frmDigitalGoods4
         End SyncLock
     End Sub
 
-    Private Sub PrintFaildReceipt(TrxnStatus As String)
+    Private Sub PrintFailedReceipt(TrxnStatus As String)
 
         Try
-            PrintReceiptDetails = APIs.GetReceiptDetails("DigitalGoodsFaild")
+            PrintReceiptDetails = APIs.GetReceiptDetails("DigitalGoodsFailed")
             Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
