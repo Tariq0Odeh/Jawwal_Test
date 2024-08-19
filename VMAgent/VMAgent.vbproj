@@ -619,6 +619,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods4.resx">
       <DependentUpon>frmDigitalGoods4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods5.resx">
       <DependentUpon>frmDigitalGoods5.vb</DependentUpon>
@@ -655,6 +656,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim6.resx">
       <DependentUpon>frmNewSim6.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim7.resx">
       <DependentUpon>frmNewSim7.vb</DependentUpon>
@@ -682,6 +684,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment4.resx">
       <DependentUpon>frmJawwalBillPayment4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment5.resx">
       <DependentUpon>frmJawwalBillPayment5.vb</DependentUpon>
@@ -694,6 +697,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment2.resx">
       <DependentUpon>frmPaltelBillPayment2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment3.resx">
       <DependentUpon>frmPaltelBillPayment3.vb</DependentUpon>
@@ -757,6 +761,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp1.resx">
       <DependentUpon>frmTopUp1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp3.resx">
       <DependentUpon>frmTopUp3.vb</DependentUpon>
