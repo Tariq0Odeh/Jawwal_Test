@@ -34,7 +34,7 @@ Public Class CardDispenser
     Dim baudrate = "9600"
 
     Public Function Init(com As String, baudrate As String, address As String) As Boolean
-
+        ExceptionLogger.LogInfo("CardDispenser Init")
         Select_Dev(13)
 
         Me.baudrate = baudrate
@@ -91,6 +91,7 @@ Public Class CardDispenser
                 Threading.Thread.Sleep(500)
             End If
         End While
+        ExceptionLogger.LogInfo("CardDispenser ScanSimCardAndReturnBarCode -> BarCode")
         Return BarCode
     End Function
 
@@ -105,7 +106,7 @@ Public Class CardDispenser
         RxDataLen = 0
 
         Dim iRet As Integer = R_ExeCommandS(comHandle, cmdData, cmdData.Length / 2, rcvData, RxDataLen)
-
+        ExceptionLogger.LogInfo("CardDispenser DispenseCard -> iRet = " & iRet)
         If iRet >= 0 Then
             Return True
         Else
