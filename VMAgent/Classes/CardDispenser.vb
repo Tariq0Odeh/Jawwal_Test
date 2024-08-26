@@ -79,6 +79,7 @@ Public Class CardDispenser
 
                 If iRet = 0 Then
                     Dim TempBarCode As String = Encoding.ASCII.GetString(rcvData)
+                    ExceptionLogger.LogInfo("CardDispenser ScanSimCardAndReturnBarCode -> TempBarCode" & TempBarCode)
                     For I As Integer = 0 To TempBarCode.Length - 1
                         If IsNumeric(TempBarCode.Substring(I, 1)) = True Then
                             BarCode &= TempBarCode.Substring(I, 1)
@@ -91,7 +92,7 @@ Public Class CardDispenser
                 Threading.Thread.Sleep(500)
             End If
         End While
-        ExceptionLogger.LogInfo("CardDispenser ScanSimCardAndReturnBarCode -> BarCode")
+        ExceptionLogger.LogInfo("CardDispenser ScanSimCardAndReturnBarCode -> BarCode" & BarCode)
         Return BarCode
     End Function
 
