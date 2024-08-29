@@ -285,6 +285,12 @@
     <Compile Include="frmNewSim.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmNewSimTermsAndConditions.designer.vb">
+      <DependentUpon>frmNewSimTermsAndConditions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewSimTermsAndConditions.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmNewSim1.designer.vb">
       <DependentUpon>frmNewSim1.vb</DependentUpon>
     </Compile>
@@ -639,6 +645,9 @@
     <EmbeddedResource Include="frmNewSim.resx">
       <DependentUpon>frmNewSim.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNewSimTermsAndConditions.resx">
+      <DependentUpon>frmNewSimTermsAndConditions.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim1.resx">
       <DependentUpon>frmNewSim1.vb</DependentUpon>
     </EmbeddedResource>
@@ -789,6 +798,60 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Resources\Fonts\Neo_Sans_Arabic_Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Black.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Black[1].ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Light[1].ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Medium[1].ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Ultra.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic-Ultra[1].ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabicBlack.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabicBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabicLight.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabicMedium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\NeoSansArabicUltra.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Fonts\Neo_Sans_Medium.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="vs2C5F.tmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="avi2mp4.exe">
@@ -797,10 +860,31 @@
     <Content Include="BnrCtlDotNet.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="BnrCtlW32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BnrFlashUtil.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BnrXmlRpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="CashierAgentDesktopDLL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="crt_driver.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Ico.ico" />
+    <Content Include="Vedio\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XmlParse.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XmlTok.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Home Edit.png" />
     <Content Include="Newtonsoft.Json.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

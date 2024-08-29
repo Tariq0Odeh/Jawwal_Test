@@ -41,6 +41,7 @@ Partial Class frmNewSim2
         Me.btnOK = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ILImages = New System.Windows.Forms.ImageList(Me.components)
+        Me.lblTermsAndConditions = New System.Windows.Forms.Label()
         Me.pnlWA.SuspendLayout()
         Me.pnlPassport.SuspendLayout()
         CType(Me.picPassportUploadedSuccessfully, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,6 +59,7 @@ Partial Class frmNewSim2
         '
         Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlWA.Controls.Add(Me.lblTermsAndConditions)
         Me.pnlWA.Controls.Add(Me.lblErrorDescription)
         Me.pnlWA.Controls.Add(Me.pnlPassport)
         Me.pnlWA.Controls.Add(Me.picVideoUploadedSuccessfully)
@@ -72,9 +74,9 @@ Partial Class frmNewSim2
         Me.pnlWA.Controls.Add(Me.btnOK)
         Me.pnlWA.Controls.Add(Me.Label1)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
-        Me.pnlWA.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.pnlWA.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.pnlWA.Name = "pnlWA"
-        Me.pnlWA.Size = New System.Drawing.Size(1280, 1024)
+        Me.pnlWA.Size = New System.Drawing.Size(1920, 1575)
         Me.pnlWA.TabIndex = 1
         '
         'lblErrorDescription
@@ -82,10 +84,11 @@ Partial Class frmNewSim2
         Me.lblErrorDescription.BackColor = System.Drawing.Color.Transparent
         Me.lblErrorDescription.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblErrorDescription.ForeColor = System.Drawing.Color.Red
-        Me.lblErrorDescription.Location = New System.Drawing.Point(375, 193)
+        Me.lblErrorDescription.Location = New System.Drawing.Point(562, 297)
+        Me.lblErrorDescription.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblErrorDescription.Name = "lblErrorDescription"
         Me.lblErrorDescription.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lblErrorDescription.Size = New System.Drawing.Size(531, 23)
+        Me.lblErrorDescription.Size = New System.Drawing.Size(796, 35)
         Me.lblErrorDescription.TabIndex = 41
         Me.lblErrorDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -95,18 +98,20 @@ Partial Class frmNewSim2
         Me.pnlPassport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlPassport.Controls.Add(Me.picPassportUploadedSuccessfully)
         Me.pnlPassport.Controls.Add(Me.btnUploadPassport)
-        Me.pnlPassport.Location = New System.Drawing.Point(85, 252)
+        Me.pnlPassport.Location = New System.Drawing.Point(128, 388)
+        Me.pnlPassport.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlPassport.Name = "pnlPassport"
-        Me.pnlPassport.Size = New System.Drawing.Size(559, 386)
+        Me.pnlPassport.Size = New System.Drawing.Size(838, 594)
         Me.pnlPassport.TabIndex = 38
         Me.pnlPassport.Visible = False
         '
         'picPassportUploadedSuccessfully
         '
         Me.picPassportUploadedSuccessfully.Image = CType(resources.GetObject("picPassportUploadedSuccessfully.Image"), System.Drawing.Image)
-        Me.picPassportUploadedSuccessfully.Location = New System.Drawing.Point(30, 104)
+        Me.picPassportUploadedSuccessfully.Location = New System.Drawing.Point(45, 160)
+        Me.picPassportUploadedSuccessfully.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.picPassportUploadedSuccessfully.Name = "picPassportUploadedSuccessfully"
-        Me.picPassportUploadedSuccessfully.Size = New System.Drawing.Size(499, 246)
+        Me.picPassportUploadedSuccessfully.Size = New System.Drawing.Size(748, 378)
         Me.picPassportUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPassportUploadedSuccessfully.TabIndex = 40
         Me.picPassportUploadedSuccessfully.TabStop = False
@@ -115,9 +120,10 @@ Partial Class frmNewSim2
         'btnUploadPassport
         '
         Me.btnUploadPassport.Image = CType(resources.GetObject("btnUploadPassport.Image"), System.Drawing.Image)
-        Me.btnUploadPassport.Location = New System.Drawing.Point(88, 220)
+        Me.btnUploadPassport.Location = New System.Drawing.Point(132, 338)
+        Me.btnUploadPassport.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUploadPassport.Name = "btnUploadPassport"
-        Me.btnUploadPassport.Size = New System.Drawing.Size(42, 42)
+        Me.btnUploadPassport.Size = New System.Drawing.Size(63, 65)
         Me.btnUploadPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadPassport.TabIndex = 36
         Me.btnUploadPassport.TabStop = False
@@ -125,9 +131,10 @@ Partial Class frmNewSim2
         'picVideoUploadedSuccessfully
         '
         Me.picVideoUploadedSuccessfully.Image = CType(resources.GetObject("picVideoUploadedSuccessfully.Image"), System.Drawing.Image)
-        Me.picVideoUploadedSuccessfully.Location = New System.Drawing.Point(113, 509)
+        Me.picVideoUploadedSuccessfully.Location = New System.Drawing.Point(170, 783)
+        Me.picVideoUploadedSuccessfully.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.picVideoUploadedSuccessfully.Name = "picVideoUploadedSuccessfully"
-        Me.picVideoUploadedSuccessfully.Size = New System.Drawing.Size(499, 101)
+        Me.picVideoUploadedSuccessfully.Size = New System.Drawing.Size(748, 155)
         Me.picVideoUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picVideoUploadedSuccessfully.TabIndex = 40
         Me.picVideoUploadedSuccessfully.TabStop = False
@@ -136,9 +143,10 @@ Partial Class frmNewSim2
         'picDocumentUploadedSuccessfully
         '
         Me.picDocumentUploadedSuccessfully.Image = CType(resources.GetObject("picDocumentUploadedSuccessfully.Image"), System.Drawing.Image)
-        Me.picDocumentUploadedSuccessfully.Location = New System.Drawing.Point(113, 318)
+        Me.picDocumentUploadedSuccessfully.Location = New System.Drawing.Point(170, 489)
+        Me.picDocumentUploadedSuccessfully.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.picDocumentUploadedSuccessfully.Name = "picDocumentUploadedSuccessfully"
-        Me.picDocumentUploadedSuccessfully.Size = New System.Drawing.Size(499, 101)
+        Me.picDocumentUploadedSuccessfully.Size = New System.Drawing.Size(748, 155)
         Me.picDocumentUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picDocumentUploadedSuccessfully.TabIndex = 39
         Me.picDocumentUploadedSuccessfully.TabStop = False
@@ -147,9 +155,10 @@ Partial Class frmNewSim2
         'btnAgreeStatus
         '
         Me.btnAgreeStatus.Image = CType(resources.GetObject("btnAgreeStatus.Image"), System.Drawing.Image)
-        Me.btnAgreeStatus.Location = New System.Drawing.Point(1122, 676)
+        Me.btnAgreeStatus.Location = New System.Drawing.Point(1683, 1040)
+        Me.btnAgreeStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnAgreeStatus.Name = "btnAgreeStatus"
-        Me.btnAgreeStatus.Size = New System.Drawing.Size(60, 60)
+        Me.btnAgreeStatus.Size = New System.Drawing.Size(90, 92)
         Me.btnAgreeStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnAgreeStatus.TabIndex = 37
         Me.btnAgreeStatus.TabStop = False
@@ -157,9 +166,10 @@ Partial Class frmNewSim2
         'btnUploadVideo
         '
         Me.btnUploadVideo.Image = CType(resources.GetObject("btnUploadVideo.Image"), System.Drawing.Image)
-        Me.btnUploadVideo.Location = New System.Drawing.Point(172, 541)
+        Me.btnUploadVideo.Location = New System.Drawing.Point(258, 832)
+        Me.btnUploadVideo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUploadVideo.Name = "btnUploadVideo"
-        Me.btnUploadVideo.Size = New System.Drawing.Size(42, 42)
+        Me.btnUploadVideo.Size = New System.Drawing.Size(63, 65)
         Me.btnUploadVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadVideo.TabIndex = 36
         Me.btnUploadVideo.TabStop = False
@@ -167,9 +177,10 @@ Partial Class frmNewSim2
         'btnUploadDocument
         '
         Me.btnUploadDocument.Image = CType(resources.GetObject("btnUploadDocument.Image"), System.Drawing.Image)
-        Me.btnUploadDocument.Location = New System.Drawing.Point(172, 350)
+        Me.btnUploadDocument.Location = New System.Drawing.Point(258, 538)
+        Me.btnUploadDocument.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUploadDocument.Name = "btnUploadDocument"
-        Me.btnUploadDocument.Size = New System.Drawing.Size(42, 42)
+        Me.btnUploadDocument.Size = New System.Drawing.Size(63, 65)
         Me.btnUploadDocument.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadDocument.TabIndex = 35
         Me.btnUploadDocument.TabStop = False
@@ -177,9 +188,10 @@ Partial Class frmNewSim2
         'rbPassport
         '
         Me.rbPassport.Image = CType(resources.GetObject("rbPassport.Image"), System.Drawing.Image)
-        Me.rbPassport.Location = New System.Drawing.Point(1082, 489)
+        Me.rbPassport.Location = New System.Drawing.Point(1623, 752)
+        Me.rbPassport.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbPassport.Name = "rbPassport"
-        Me.rbPassport.Size = New System.Drawing.Size(60, 60)
+        Me.rbPassport.Size = New System.Drawing.Size(90, 92)
         Me.rbPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.rbPassport.TabIndex = 34
         Me.rbPassport.TabStop = False
@@ -187,9 +199,10 @@ Partial Class frmNewSim2
         'rbNationalID
         '
         Me.rbNationalID.Image = CType(resources.GetObject("rbNationalID.Image"), System.Drawing.Image)
-        Me.rbNationalID.Location = New System.Drawing.Point(1082, 387)
+        Me.rbNationalID.Location = New System.Drawing.Point(1623, 595)
+        Me.rbNationalID.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbNationalID.Name = "rbNationalID"
-        Me.rbNationalID.Size = New System.Drawing.Size(60, 60)
+        Me.rbNationalID.Size = New System.Drawing.Size(90, 92)
         Me.rbNationalID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.rbNationalID.TabIndex = 33
         Me.rbNationalID.TabStop = False
@@ -197,33 +210,37 @@ Partial Class frmNewSim2
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Location = New System.Drawing.Point(220, 530)
+        Me.Label4.Location = New System.Drawing.Point(330, 815)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(370, 61)
+        Me.Label4.Size = New System.Drawing.Size(555, 94)
         Me.Label4.TabIndex = 32
         '
         'btnBack
         '
         Me.btnBack.BackColor = System.Drawing.Color.Transparent
-        Me.btnBack.Location = New System.Drawing.Point(97, 855)
+        Me.btnBack.Location = New System.Drawing.Point(146, 1315)
+        Me.btnBack.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(534, 78)
+        Me.btnBack.Size = New System.Drawing.Size(801, 120)
         Me.btnBack.TabIndex = 31
         '
         'btnOK
         '
         Me.btnOK.BackColor = System.Drawing.Color.Transparent
-        Me.btnOK.Location = New System.Drawing.Point(649, 855)
+        Me.btnOK.Location = New System.Drawing.Point(974, 1315)
+        Me.btnOK.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.btnOK.Name = "btnOK"
-        Me.btnOK.Size = New System.Drawing.Size(534, 78)
+        Me.btnOK.Size = New System.Drawing.Size(801, 120)
         Me.btnOK.TabIndex = 30
         '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(220, 338)
+        Me.Label1.Location = New System.Drawing.Point(330, 520)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(370, 61)
+        Me.Label1.Size = New System.Drawing.Size(555, 94)
         Me.Label1.TabIndex = 0
         '
         'ILImages
@@ -235,16 +252,24 @@ Partial Class frmNewSim2
         Me.ILImages.Images.SetKeyName(2, "Accept.png")
         Me.ILImages.Images.SetKeyName(3, "Reject.png")
         '
+        'lblTermsAndConditions
+        '
+        Me.lblTermsAndConditions.BackColor = System.Drawing.Color.Transparent
+        Me.lblTermsAndConditions.Location = New System.Drawing.Point(1062, 1057)
+        Me.lblTermsAndConditions.Name = "lblTermsAndConditions"
+        Me.lblTermsAndConditions.Size = New System.Drawing.Size(363, 75)
+        Me.lblTermsAndConditions.TabIndex = 42
+        '
         'frmNewSim2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1280, 1024)
+        Me.ClientSize = New System.Drawing.Size(1920, 1575)
         Me.Controls.Add(Me.pnlWA)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "frmNewSim2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
@@ -280,4 +305,5 @@ Partial Class frmNewSim2
     Friend WithEvents picDocumentUploadedSuccessfully As PictureBox
     Friend WithEvents picPassportUploadedSuccessfully As PictureBox
     Friend WithEvents lblErrorDescription As Label
+    Friend WithEvents lblTermsAndConditions As Label
 End Class
