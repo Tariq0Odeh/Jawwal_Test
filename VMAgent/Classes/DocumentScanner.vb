@@ -86,15 +86,19 @@ Public Class DocumentScanner
 
     Public Function HasReadAccess(filePath As String) As Boolean
         Dim Ret As Boolean = False
-
-        Try
-            Using reader As New StreamReader(filePath)
-                Ret = True
-            End Using
-        Catch ex As Exception
-            ExceptionLogger.LogException(ex)
-        End Try
-
+        Dim counter = 0
+        While Ret = False And counter < 5
+            Try
+                Using reader As New StreamReader(filePath)
+                    Ret = True
+                End Using
+            Catch ex As Exception
+                counter = counter + 1
+                ExceptionLogger.LogInfo("DocumentScanner -> HasReadAccess : Counter = " & counter)
+                ExceptionLogger.LogException(ex)
+                Threading.Thread.Sleep(500 * counter)
+            End Try
+        End While
         Return Ret
     End Function
 
