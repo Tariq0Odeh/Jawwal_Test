@@ -109,7 +109,12 @@ Public Class frmNewSim7
                         PaidAmount = Val(txtAmount.Text)
                         PrintSuccessReceipt()
                         Globals.HidePleaseWait(Me)
-                        Dim obj As New frmNewSim8
+                        Dim obj As frmNewSim8
+                        If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
+                            obj = New frmNewSim8(True)
+                        Else
+                            obj = New frmNewSim8()
+                        End If
                         obj.Owner = Me.Owner
                         obj.ShowDialog()
                         obj.Close()

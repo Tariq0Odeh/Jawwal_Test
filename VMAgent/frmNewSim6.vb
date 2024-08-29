@@ -125,26 +125,32 @@ Public Class frmNewSim6
                         ReturnedAmount = 0
                         PrintSuccessReceipt()
                         Globals.HidePleaseWait(Me)
-                        Dim obj As New frmNewSim8
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-                        obj.Close()
 
-                    ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
+                        Dim obj As frmNewSim8
+                            If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
+                                obj = New frmNewSim8(True)
+                            Else
+                                obj = New frmNewSim8()
+                            End If
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
+                            obj.Close()
 
-                        objCardDispnser.CaptureCard()
-                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(Price)
-                        ReturnedAmount = Val(Price)
-                        PrintFailedReceipt("Failed")
-                        Globals.HidePleaseWait(Me)
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
+                        ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
 
-                    Else
+                            objCardDispnser.CaptureCard()
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                            TrxnAmount = Val(Price)
+                            PaidAmount = Val(Price)
+                            ReturnedAmount = Val(Price)
+                            PrintFailedReceipt("Failed")
+                            Globals.HidePleaseWait(Me)
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
 
-                        objCardDispnser.CaptureCard()
+                        Else
+
+                            objCardDispnser.CaptureCard()
                         TrxnAmount = Val(Price)
                         PaidAmount = Val(Price)
                         ReturnedAmount = 0

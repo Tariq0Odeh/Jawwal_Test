@@ -25,6 +25,7 @@ Partial Class frmNewSim8
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewSim8))
         Me.pnlWA = New System.Windows.Forms.Panel()
         Me.btnMainMenu = New System.Windows.Forms.Label()
+        Me.lblSuccessOnPostOrMix = New System.Windows.Forms.Label()
         Me.pnlWA.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -32,6 +33,7 @@ Partial Class frmNewSim8
         '
         Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlWA.Controls.Add(Me.lblSuccessOnPostOrMix)
         Me.pnlWA.Controls.Add(Me.btnMainMenu)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
         Me.pnlWA.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -46,6 +48,20 @@ Partial Class frmNewSim8
         Me.btnMainMenu.Name = "btnMainMenu"
         Me.btnMainMenu.Size = New System.Drawing.Size(533, 76)
         Me.btnMainMenu.TabIndex = 0
+        '
+        'lblSuccessOnPostOrMix
+        '
+        Me.lblSuccessOnPostOrMix.AutoSize = True
+        Me.lblSuccessOnPostOrMix.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.lblSuccessOnPostOrMix.Font = New System.Drawing.Font("Showcard Gothic", 25.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSuccessOnPostOrMix.Location = New System.Drawing.Point(466, 768)
+        Me.lblSuccessOnPostOrMix.Name = "lblSuccessOnPostOrMix"
+        Me.lblSuccessOnPostOrMix.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lblSuccessOnPostOrMix.Size = New System.Drawing.Size(1061, 124)
+        Me.lblSuccessOnPostOrMix.TabIndex = 1
+        Me.lblSuccessOnPostOrMix.Text = "مشتركنا العزيز، تم تقديم طلب الحصول على فاتورة بنجاح" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " وسيتم التواصل معك خلال 48 " &
+    "ساعة عمل. نتمنى لك يوماً سعيداً"
+        Me.lblSuccessOnPostOrMix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmNewSim8
         '
@@ -62,10 +78,12 @@ Partial Class frmNewSim8
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
         Me.pnlWA.ResumeLayout(False)
+        Me.pnlWA.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents pnlWA As Panel
     Friend WithEvents btnMainMenu As Label
+    Friend WithEvents lblSuccessOnPostOrMix As Label
 End Class

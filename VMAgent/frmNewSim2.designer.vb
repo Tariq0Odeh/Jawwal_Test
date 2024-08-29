@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmNewSim2
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmNewSim2
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewSim2))
@@ -109,7 +109,6 @@ Partial Class frmNewSim2
         '
         Me.picPassportUploadedSuccessfully.Image = CType(resources.GetObject("picPassportUploadedSuccessfully.Image"), System.Drawing.Image)
         Me.picPassportUploadedSuccessfully.Location = New System.Drawing.Point(45, 160)
-        Me.picPassportUploadedSuccessfully.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.picPassportUploadedSuccessfully.Name = "picPassportUploadedSuccessfully"
         Me.picPassportUploadedSuccessfully.Size = New System.Drawing.Size(748, 378)
         Me.picPassportUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -170,6 +169,7 @@ Partial Class frmNewSim2
         Me.btnUploadVideo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUploadVideo.Name = "btnUploadVideo"
         Me.btnUploadVideo.Size = New System.Drawing.Size(63, 65)
+        Me.btnUploadVideo.Size = New System.Drawing.Size(42, 42)
         Me.btnUploadVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadVideo.TabIndex = 36
         Me.btnUploadVideo.TabStop = False
