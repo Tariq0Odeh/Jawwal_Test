@@ -6,8 +6,8 @@ Public Class frmNewSimTermsAndConditions
 
     Public ListOfNumbers As String = ""
     Private privateFonts As New PrivateFontCollection()
-    Private parentFrm As frmNewSim2
-    Public Sub New(parent As frmNewSim2)
+    Private parentFrm As Form
+    Public Sub New(parent As Form)
         Me.parentFrm = parent
         InitializeComponent()
 
@@ -28,9 +28,31 @@ Public Class frmNewSimTermsAndConditions
 
     Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
         ExceptionLogger.LogInfo("frmNewSimTermsAndConditions -> btnOk_Click ")
-        If Not parentFrm.AgreeStatus Then
-            parentFrm.btnAgreeStatus_Click(Nothing, Nothing)
+
+        ' Cast the parent form to the expected type and then access its properties/methods
+        Dim parentWithAgreeStatus = TryCast(parentFrm, Object)
+
+        If parentWithAgreeStatus IsNot Nothing Then
+            ' Use Reflection to access the properties and methods
+            Dim agreeStatusProperty = parentWithAgreeStatus.GetType().GetField("AgreeStatus")
+            Dim agreeStatusValue As Boolean = False
+            If agreeStatusProperty IsNot Nothing Then
+                agreeStatusValue = CBool(agreeStatusProperty.GetValue(parentWithAgreeStatus))
+            End If
+
+            If Not agreeStatusValue Then
+                Dim agreeMethod = parentWithAgreeStatus.GetType().GetMethod("btnAgreeStatus_Click")
+                If agreeMethod IsNot Nothing Then
+                    agreeMethod.Invoke(parentWithAgreeStatus, New Object() {Nothing, Nothing})
+                End If
+            End If
         End If
+
+        Me.Close()
+
+        'If Not parentFrm.AgreeStatus Then
+        '    parentFrm.btnAgreeStatus_Click(Nothing, Nothing)
+        'End If
         Me.Close()
     End Sub
 

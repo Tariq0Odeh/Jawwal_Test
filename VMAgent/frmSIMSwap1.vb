@@ -85,7 +85,7 @@ Public Class frmSIMSwap1
 
     End Sub
 
-    Private Sub btnAgreeStatus_Click(sender As Object, e As EventArgs) Handles btnAgreeStatus.Click
+    Public Sub btnAgreeStatus_Click(sender As Object, e As EventArgs) Handles btnAgreeStatus.Click
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
         If AgreeStatus = True Then
             btnAgreeStatus.Image = ILImages.Images.Item(3)
@@ -180,6 +180,9 @@ Public Class frmSIMSwap1
         Me.Close()
     End Sub
 
-
-
+    Private Sub lblTearmsAndConditions_Click(sender As Object, e As EventArgs) Handles lblTearmsAndConditions.Click
+        Dim obj As frmNewSimTermsAndConditions = New frmNewSimTermsAndConditions(Me)
+        obj.Owner = Me.Owner
+        obj.ShowDialog()
+    End Sub
 End Class
