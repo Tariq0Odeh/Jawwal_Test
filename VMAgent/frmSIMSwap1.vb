@@ -180,7 +180,7 @@ Public Class frmSIMSwap1
         Me.Close()
     End Sub
 
-    Private Sub lblTearmsAndConditions_Click(sender As Object, e As EventArgs) Handles lblTearmsAndConditions.Click
+    Private Sub lblTermsAndConditions_Click(sender As Object, e As EventArgs) Handles lblTermsAndConditions.Click
         Dim obj As frmNewSimTermsAndConditions = New frmNewSimTermsAndConditions(Me)
         obj.Owner = Me.Owner
         obj.ShowDialog()

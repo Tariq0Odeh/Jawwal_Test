@@ -25,7 +25,7 @@ Partial Class frmSIMSwap1
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSIMSwap1))
         Me.pnlWA = New System.Windows.Forms.Panel()
-        Me.lblTearmsAndConditions = New System.Windows.Forms.Label()
+        Me.lblTermsAndConditions = New System.Windows.Forms.Label()
         Me.lblErrorDescription = New System.Windows.Forms.Label()
         Me.pnlPassport = New System.Windows.Forms.Panel()
         Me.picPassportUploadedSuccessfully = New System.Windows.Forms.PictureBox()
@@ -59,7 +59,7 @@ Partial Class frmSIMSwap1
         '
         Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pnlWA.Controls.Add(Me.lblTearmsAndConditions)
+        Me.pnlWA.Controls.Add(Me.lblTermsAndConditions)
         Me.pnlWA.Controls.Add(Me.lblErrorDescription)
         Me.pnlWA.Controls.Add(Me.pnlPassport)
         Me.pnlWA.Controls.Add(Me.picVideoUploadedSuccessfully)
@@ -79,14 +79,14 @@ Partial Class frmSIMSwap1
         Me.pnlWA.Size = New System.Drawing.Size(1280, 1024)
         Me.pnlWA.TabIndex = 1
         '
-        'lblTearmsAndConditions
+        'lblTermsAndConditions
         '
-        Me.lblTearmsAndConditions.BackColor = System.Drawing.Color.Transparent
-        Me.lblTearmsAndConditions.Location = New System.Drawing.Point(699, 686)
-        Me.lblTearmsAndConditions.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblTearmsAndConditions.Name = "lblTearmsAndConditions"
-        Me.lblTearmsAndConditions.Size = New System.Drawing.Size(248, 50)
-        Me.lblTearmsAndConditions.TabIndex = 42
+        Me.lblTermsAndConditions.BackColor = System.Drawing.Color.Transparent
+        Me.lblTermsAndConditions.Location = New System.Drawing.Point(699, 686)
+        Me.lblTermsAndConditions.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTermsAndConditions.Name = "lblTermsAndConditions"
+        Me.lblTermsAndConditions.Size = New System.Drawing.Size(248, 50)
+        Me.lblTermsAndConditions.TabIndex = 42
         '
         'lblErrorDescription
         '
@@ -291,5 +291,5 @@ Partial Class frmSIMSwap1
     Friend WithEvents picDocumentUploadedSuccessfully As PictureBox
     Friend WithEvents picPassportUploadedSuccessfully As PictureBox
     Friend WithEvents lblErrorDescription As Label
-    Friend WithEvents lblTearmsAndConditions As Label
+    Friend WithEvents lblTermsAndConditions As Label
 End Class

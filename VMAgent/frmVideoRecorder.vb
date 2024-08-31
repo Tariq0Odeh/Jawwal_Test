@@ -80,7 +80,7 @@ Public Class frmVideoRecorder
 
         Cam.Start(picVideo.Handle.ToInt32)
 
-        VideoFilePath = Application.StartupPath & "\Vedio\" & GetNewId() & ".avi"
+        VideoFilePath = Application.StartupPath & "\Video\" & GetNewId() & ".avi"
 
         tmrProgress.Enabled = True
 

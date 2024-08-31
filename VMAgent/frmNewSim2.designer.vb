@@ -242,7 +242,7 @@ Partial Class frmNewSim2
         Me.lblTermsAndConditions.BackColor = System.Drawing.Color.Transparent
         Me.lblTermsAndConditions.Location = New System.Drawing.Point(699, 686)
         Me.lblTermsAndConditions.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblTermsAndConditions.Name = "lblTearmsAndConditions"
+        Me.lblTermsAndConditions.Name = "lblTermsAndConditions"
         Me.lblTermsAndConditions.Size = New System.Drawing.Size(248, 50)
         Me.lblTermsAndConditions.TabIndex = 42
         '
