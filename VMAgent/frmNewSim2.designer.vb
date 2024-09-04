@@ -240,9 +240,10 @@ Partial Class frmNewSim2
         'lblTermsAndConditions
         '
         Me.lblTermsAndConditions.BackColor = System.Drawing.Color.Transparent
-        Me.lblTermsAndConditions.Location = New System.Drawing.Point(1062, 1057)
+        Me.lblTermsAndConditions.Location = New System.Drawing.Point(699, 686)
+        Me.lblTermsAndConditions.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblTermsAndConditions.Name = "lblTermsAndConditions"
-        Me.lblTermsAndConditions.Size = New System.Drawing.Size(363, 75)
+        Me.lblTermsAndConditions.Size = New System.Drawing.Size(248, 50)
         Me.lblTermsAndConditions.TabIndex = 42
         '
         'frmNewSim2
@@ -259,6 +260,7 @@ Partial Class frmNewSim2
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
         Me.pnlWA.ResumeLayout(False)
+        Me.pnlWA.PerformLayout()
         Me.pnlPassport.ResumeLayout(False)
         CType(Me.picPassportUploadedSuccessfully, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnUploadPassport, System.ComponentModel.ISupportInitialize).EndInit()

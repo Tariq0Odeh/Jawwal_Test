@@ -88,7 +88,7 @@ Public Class Form1
 
 
         'Dim FL() As Byte = IO.File.ReadAllBytes("C:\Temp\ImadID.png")
-        'Dim FL2() As Byte = IO.File.ReadAllBytes("D:\Vending Machine Project - Jawwal\VMAgent\VMAgent\bin\Debug\Vedio\24051322534882080337348536350F4BA7BC1BBD9DF76E6EC9.avi")
+        'Dim FL2() As Byte = IO.File.ReadAllBytes("D:\Vending Machine Project - Jawwal\VMAgent\VMAgent\bin\Debug\Video\24051322534882080337348536350F4BA7BC1BBD9DF76E6EC9.avi")
         'RichTextBox1.Text = APIs.ExtractUserInfo(Convert.ToBase64String(FL), Convert.ToBase64String(FL2), "id")
 
 
