@@ -25,8 +25,8 @@ Public Class ExceptionLogger
         Dim logFileName = Init(DateTime.Now)
         Await Task.Run(Sub()
                            Try
-                               ' Create or append to the log file
-                               Using writer As StreamWriter = New StreamWriter(logFileName, True)
+                               ' Create or append to the log file with UTF-8 encoding
+                               Using writer As New StreamWriter(logFileName, True, Encoding.UTF8)
                                    ' Write the exception details to the log file
                                    writer.WriteLine($"[{DateTime.Now.ToString()}] Exception: {ex.Message}")
                                    writer.WriteLine($"StackTrace: {ex.StackTrace}")
@@ -42,8 +42,8 @@ Public Class ExceptionLogger
         Dim logFileName = Init(DateTime.Now)
         Await Task.Run(Sub()
                            Try
-                               ' Create or append to the log file
-                               Using writer As StreamWriter = New StreamWriter(logFileName, True)
+                               ' Create or append to the log file with UTF-8 encoding
+                               Using writer As New StreamWriter(logFileName, True, Encoding.UTF8)
                                    ' Write the info message to the log file
                                    writer.WriteLine($"[{DateTime.Now.ToString()}] Info: {msg}")
                                End Using
@@ -52,6 +52,7 @@ Public Class ExceptionLogger
                            End Try
                        End Sub)
     End Sub
+
 
     Friend Shared Function GetLogByDay(today As Date, Optional isRecyclersLog As Boolean = False) As String
         Dim logFileName As String
@@ -64,8 +65,8 @@ Public Class ExceptionLogger
 
         Dim returnedLogs As String = ""
         Try
-            ' Read the log file
-            Using reader As StreamReader = New StreamReader(logFileName)
+            ' Read the log file with UTF-8 encoding
+            Using reader As New StreamReader(logFileName, Encoding.UTF8)
                 returnedLogs = reader.ReadToEnd()
                 returnedLogs = SanitizeLogText(returnedLogs)
             End Using
