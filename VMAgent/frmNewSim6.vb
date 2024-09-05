@@ -119,14 +119,17 @@ Public Class frmNewSim6
                     Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference)
                     If apiResponse = APIs.APIReturnedValue.Success Then
 
-                        objCardDispnser.DispenseCard()
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(Price)
-                        ReturnedAmount = 0
-                        PrintSuccessReceipt()
-                        Globals.HidePleaseWait(Me)
+                        If (IsESIM = False And (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                            objCardDispnser.DispenseCard()
+                        End If
 
-                        Dim obj As frmNewSim8
+                        TrxnAmount = Val(Price)
+                            PaidAmount = Val(Price)
+                            ReturnedAmount = 0
+                            PrintSuccessReceipt()
+                            Globals.HidePleaseWait(Me)
+
+                            Dim obj As frmNewSim8
                             If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
                                 obj = New frmNewSim8(True)
                             Else

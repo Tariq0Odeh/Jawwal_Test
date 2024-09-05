@@ -97,7 +97,9 @@ Public Class frmSIMSwap10
                         Dim apiResponseValue = APIs.ConfirmSimSwap(MobileNumber.Substring(1), EmailAddress, IsESIM.ToString.ToLower, SIMSerialNumber, TransactionReference, "Visa")
                         If apiResponseValue = APIs.APIReturnedValue.Success Then
 
-                            objCardDispnser.DispenseCard()
+                            If IsESIM = False Then
+                                objCardDispnser.DispenseCard()
+                            End If
 
                             TrxnAmount = Val(Amount)
                             PaidAmount = Val(Amount)

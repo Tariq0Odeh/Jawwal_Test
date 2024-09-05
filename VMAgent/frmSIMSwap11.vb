@@ -91,7 +91,9 @@ Public Class frmSIMSwap11
                         Dim apiResponseValue = APIs.ConfirmSimSwap(MobileNumber.Substring(1), EmailAddress, IsESIM.ToString.ToLower, SIMSerialNumber, "", "cash")
                         If apiResponseValue = APIs.APIReturnedValue.Success Then
 
-                            objCardDispnser.DispenseCard()
+                            If IsESIM = False Then
+                                objCardDispnser.DispenseCard()
+                            End If
 
                             ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))
 

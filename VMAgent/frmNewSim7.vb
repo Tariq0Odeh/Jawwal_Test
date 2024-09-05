@@ -66,95 +66,101 @@ Public Class frmNewSim7
     Private btnOKCardLock As New Object
     Private Sub btnOK_MouseDown(sender As Object, e As MouseEventArgs) Handles btnOK.MouseDown
         SyncLock btnOKCardLock
+            Try
+                ExceptionLogger.LogInfo("frmNewSim7 -> btnOK_Click ")
+                If Val(txtAmount.Text) >= Val(Price) Then
+                    btnOK.Enabled = False
+                    isConfirmedClicked = True
+                    Globals.ShowPleaseWait(Me)
 
-            ExceptionLogger.LogInfo("frmNewSim7 -> btnOK_Click ")
-            If Val(txtAmount.Text) >= Val(Price) Then
-                btnOK.Enabled = False
-                isConfirmedClicked = True
-                Globals.ShowPleaseWait(Me)
+                    Dim CC As New CameraCapture
+                    CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
-                Dim CC As New CameraCapture
-                CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
+                    If RecyclersOpened = VinderSDK.CoinCashRecycler.RecylcersStatusAfterInit.BothOnline Then
+                        Dim TotalInputAmount As Decimal = objCoinCashRecycler.StopAcceptingMoney()
+                        txtAmount.Text = TotalInputAmount.ToString
+                    End If
 
-                If RecyclersOpened = VinderSDK.CoinCashRecycler.RecylcersStatusAfterInit.BothOnline Then
-                    Dim TotalInputAmount As Decimal = objCoinCashRecycler.StopAcceptingMoney()
-                    txtAmount.Text = TotalInputAmount.ToString
-                End If
+                    Dim SIMSerialNumber As String = ""
 
-                Dim SIMSerialNumber As String = ""
-
-                If IsESIM = False Then
-                    SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
-                    If SIMSerialNumber = "" Then
-                        objCardDispnser.CaptureCard()
+                    If IsESIM = False Then
                         SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
                         If SIMSerialNumber = "" Then
                             objCardDispnser.CaptureCard()
                             SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
+                            If SIMSerialNumber = "" Then
+                                objCardDispnser.CaptureCard()
+                                SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
+                            End If
                         End If
                     End If
-                End If
 
-                CurrentTransaction.ServiceNumber = Msisdn
-                CurrentTransaction.TransactionAmount = Val(Price)
-                CurrentTransaction.PaidAmount = Val(txtAmount.Text)
-                CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Price)
-                If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
-                    Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Cash", PackageCode, EmailAddress, ContactNumber, reservationID, resourceID)
-                    If apiResponse = APIs.APIReturnedValue.Success Then
+                    CurrentTransaction.ServiceNumber = Msisdn
+                    CurrentTransaction.TransactionAmount = Val(Price)
+                    CurrentTransaction.PaidAmount = Val(txtAmount.Text)
+                    CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Price)
+                    If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
+                        Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Cash", PackageCode, EmailAddress, ContactNumber, reservationID, resourceID)
+                        If apiResponse = APIs.APIReturnedValue.Success Then
 
-                        objCardDispnser.DispenseCard()
-                        ReturnCoinCash(Val(txtAmount.Text) - Val(Price))
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(txtAmount.Text)
-                        PrintSuccessReceipt()
-                        Globals.HidePleaseWait(Me)
-                        Dim obj As frmNewSim8
-                        If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
-                            obj = New frmNewSim8(True)
+                            If (IsESIM = False And (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                                objCardDispnser.DispenseCard()
+                            End If
+
+                            ReturnCoinCash(Val(txtAmount.Text) - Val(Price))
+                            TrxnAmount = Val(Price)
+                            PaidAmount = Val(txtAmount.Text)
+                            PrintSuccessReceipt()
+                            Globals.HidePleaseWait(Me)
+                            Dim obj As frmNewSim8
+                            If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
+                                obj = New frmNewSim8(True)
+                            Else
+                                obj = New frmNewSim8()
+                            End If
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
+                            obj.Close()
+                        ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
+
+                            objCardDispnser.CaptureCard()
+                            ReturnCoinCash(Val(txtAmount.Text))
+                            TrxnAmount = Val(Price)
+                            PaidAmount = Val(txtAmount.Text)
+                            PrintFailedReceipt("Failed")
+                            Globals.HidePleaseWait(Me)
+                            btnOK.Enabled = True
+                            txtAmount.Text = 0
+                            isConfirmedClicked = False
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
                         Else
-                            obj = New frmNewSim8()
-                        End If
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-                        obj.Close()
-                    ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
 
-                        objCardDispnser.CaptureCard()
-                        ReturnCoinCash(Val(txtAmount.Text))
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(txtAmount.Text)
-                        PrintFailedReceipt("Failed")
-                        Globals.HidePleaseWait(Me)
-                        btnOK.Enabled = True
-                        txtAmount.Text = 0
-                        isConfirmedClicked = False
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
+                            objCardDispnser.CaptureCard()
+                            ReturnCoinCash(Val(txtAmount.Text) - Val(Price))
+                            TrxnAmount = Val(Price)
+                            PaidAmount = Val(txtAmount.Text)
+                            PrintFailedReceipt("UnKnownStatus")
+                            Globals.HidePleaseWait(Me)
+                            btnOK.Enabled = True
+                            txtAmount.Text = 0
+                            isConfirmedClicked = False
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        End If
                     Else
 
-                        objCardDispnser.CaptureCard()
-                        ReturnCoinCash(Val(txtAmount.Text) - Val(Price))
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(txtAmount.Text)
-                        PrintFailedReceipt("UnKnownStatus")
                         Globals.HidePleaseWait(Me)
-                        btnOK.Enabled = True
-                        txtAmount.Text = 0
-                        isConfirmedClicked = False
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
 
                     End If
-                Else
-
-                    Globals.HidePleaseWait(Me)
-
+                    btnOK.Enabled = True
+                    txtAmount.Text = 0
+                    isConfirmedClicked = False
                 End If
-                btnOK.Enabled = True
-                txtAmount.Text = 0
-                isConfirmedClicked = False
-            End If
+            Catch ex As Exception
+                ExceptionLogger.LogException(ex)
+            End Try
         End SyncLock
     End Sub
 
