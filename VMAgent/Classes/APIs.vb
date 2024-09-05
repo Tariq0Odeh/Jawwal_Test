@@ -1451,6 +1451,57 @@ Public Class APIs
 
     End Function
 
+    Public Shared Function GetNewSimPrice(ByVal msisdn As String, ByVal msisdnType As String) As String
+
+        Dim Ret As String = ""
+
+        Try
+
+            Dim objConfigParams As New ConfigParams
+            objConfigParams = ConfigParams.GetConfigParams()
+
+            Dim EnquiryString As String = ""
+            EnquiryString = "<OpenAPIRequest>" & vbNewLine
+            EnquiryString &= "  <CompanyId>" & objConfigParams.CompanyId & "</CompanyId>" & vbNewLine
+            EnquiryString &= "  <UserId>" & objConfigParams.UserId & "</UserId>" & vbNewLine
+            EnquiryString &= "  <UserPassword>" & objConfigParams.UserPassword & "</UserPassword>" & vbNewLine
+            EnquiryString &= "  <RequestType>ExecuteAPIProxy</RequestType>" & vbNewLine
+            EnquiryString &= "  <TransactionReference>" & APIs.GetNewId() & "</TransactionReference>" & vbNewLine
+            EnquiryString &= "  <TransactionReferenceEncrypted>NO</TransactionReferenceEncrypted>" & vbNewLine
+            EnquiryString &= "  <RequestParam1>ExecuteGetSimSwapPrice</RequestParam1>" & vbNewLine
+            EnquiryString &= "  <RequestParams>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>TerminalId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & objConfigParams.TerminalId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>msisdn</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & msisdn & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>msisdnType</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & msisdnType & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "  </RequestParams>" & vbNewLine
+            EnquiryString &= "</OpenAPIRequest>"
+
+            Dim RSI As New RESTServiceInvoker
+            Dim Response As String = RSI.InvokeService(objConfigParams.PlatformAPIURL, EnquiryString, "application/xml")
+
+            Response = APIs.GetXMLItemValue(Response, "ResponseData")
+
+            If GetJSONItemValue(Response, "code") = "0" Then
+                Ret = GetJSONItemValue(Response, "data")
+            End If
+
+        Catch ex As Exception
+            ExceptionLogger.LogException(ex)
+        End Try
+
+        Return Ret
+
+    End Function
+
     Public Shared Function ConfirmSimSwap(ByVal msisdn As String, ByVal email As String, ByVal isEsim As String, ByVal simNumber As String, ByVal referenceNumber As String, ByVal paymentType As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 

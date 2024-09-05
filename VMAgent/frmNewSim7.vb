@@ -33,7 +33,7 @@ Public Class frmNewSim7
             AddHandler objCoinCashRecycler.OnCoinCashDeposit, AddressOf OnCoinCash
             objCoinCashRecycler.StartAcceptingCoinCash(If(objConfigParams.CashRecyclerEnabled = "Y", True, False), If(objConfigParams.CoinRecyclerEnabled = "Y", True, False))
         End If
-
+        Price = APIs.GetNewSimPrice(Msisdn.Substring(1), MsisdnType)
         txtTotalAmount.Text = Price
 
     End Sub
