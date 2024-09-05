@@ -4,10 +4,13 @@ Imports System.Drawing.Text
 Public Class frmNewSim8
 
     Private privateFonts As New PrivateFontCollection()
-    Private isPostOrMix
+    Private isPostOrMix As Boolean
+
     Public Sub New(Optional isPostOrMix As Boolean = False)
         InitializeComponent()
+        Me.isPostOrMix = isPostOrMix
     End Sub
+
     Private Sub btnMainMenu_Click(sender As Object, e As EventArgs) Handles btnMainMenu.Click
         ExceptionLogger.LogInfo("frmNewSim8 -> btnMainMenu_Click ")
         Me.Owner.Close()
