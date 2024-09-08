@@ -1506,6 +1506,7 @@ Public Class APIs
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
+        Globals.QRCode = ""
 
         Try
 
@@ -1584,12 +1585,22 @@ Public Class APIs
             Dim RSI As New RESTServiceInvoker
             Dim Response As String = RSI.InvokeService(objConfigParams.PlatformAPIURL, EnquiryString, "application/xml")
 
-            Response = APIs.GetXMLItemValue(Response, "ResponseData")
+            ' Split the response string using special character _
+            Dim splitResponse As String() = Response.Split("_")
 
-            If Response.ToUpper = "True".ToUpper Then
-                Ret = APIReturnedValue.Success
-            ElseIf Response.ToUpper = "False".ToUpper Then
-                Ret = APIReturnedValue.Failed
+            ' Check if there are enough parts after the split
+            If splitResponse.Length > 0 Then
+                ' Check if the first part is True or False
+                If splitResponse(0).ToUpper = "True".ToUpper Then
+                    Ret = APIReturnedValue.Success
+                ElseIf splitResponse(0).ToUpper = "False".ToUpper Then
+                    Ret = APIReturnedValue.Failed
+                End If
+
+                ' Store the second part in Globals.QRCode if it exists
+                If splitResponse.Length > 1 Then
+                    Globals.QRCode = splitResponse(1)
+                End If
             End If
 
         Catch ex As Exception
@@ -1746,6 +1757,7 @@ Public Class APIs
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
+        Globals.QRCode = ""
 
         Try
 
@@ -1874,12 +1886,23 @@ Public Class APIs
 
             Response = APIs.GetXMLItemValue(Response, "ResponseData")
 
-            If Response.ToUpper = "True".ToUpper Then
-                Ret = APIReturnedValue.Success
-            ElseIf Response.ToUpper = "False".ToUpper Then
-                Ret = APIReturnedValue.Failed
-            End If
+            ' Split the response string using special character _
+            Dim splitResponse As String() = Response.Split("_")
 
+            ' Check if there are enough parts after the split
+            If splitResponse.Length > 0 Then
+                ' Check if the first part is True or False
+                If splitResponse(0).ToUpper = "True".ToUpper Then
+                    Ret = APIReturnedValue.Success
+                ElseIf splitResponse(0).ToUpper = "False".ToUpper Then
+                    Ret = APIReturnedValue.Failed
+                End If
+
+                ' Store the second part in Globals.QRCode if it exists
+                If splitResponse.Length > 1 Then
+                    Globals.QRCode = splitResponse(1)
+                End If
+            End If
         Catch ex As Exception
             ExceptionLogger.LogException(ex)
         End Try

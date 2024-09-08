@@ -2,6 +2,7 @@
 
 Public Class Globals
     Public Shared IsVerbose As Boolean = False
+    Public Shared QRCode As String = ""
 
     Public Shared Sub EnsureDirectoryExists(directoryPath As String)
         If Not Directory.Exists(directoryPath) Then

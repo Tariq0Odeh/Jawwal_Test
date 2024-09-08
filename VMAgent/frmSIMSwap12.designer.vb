@@ -26,13 +26,16 @@ Partial Class frmSIMSwap12
         Me.pnlWA = New System.Windows.Forms.Panel()
         Me.btnBack = New System.Windows.Forms.Label()
         Me.btnMainMenu = New System.Windows.Forms.Label()
+        Me.QR_SimSwap = New System.Windows.Forms.PictureBox()
         Me.pnlWA.SuspendLayout()
+        CType(Me.QR_SimSwap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlWA
         '
         Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlWA.Controls.Add(Me.QR_SimSwap)
         Me.pnlWA.Controls.Add(Me.btnBack)
         Me.pnlWA.Controls.Add(Me.btnMainMenu)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
@@ -57,6 +60,15 @@ Partial Class frmSIMSwap12
         Me.btnMainMenu.Size = New System.Drawing.Size(533, 76)
         Me.btnMainMenu.TabIndex = 0
         '
+        'QR_SimSwap
+        '
+        Me.QR_SimSwap.BackColor = System.Drawing.Color.Transparent
+        Me.QR_SimSwap.Location = New System.Drawing.Point(895, 282)
+        Me.QR_SimSwap.Name = "QR_SimSwap"
+        Me.QR_SimSwap.Size = New System.Drawing.Size(248, 233)
+        Me.QR_SimSwap.TabIndex = 11
+        Me.QR_SimSwap.TabStop = False
+        '
         'frmSIMSwap12
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -72,6 +84,7 @@ Partial Class frmSIMSwap12
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
         Me.pnlWA.ResumeLayout(False)
+        CType(Me.QR_SimSwap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -79,4 +92,5 @@ Partial Class frmSIMSwap12
     Friend WithEvents pnlWA As Panel
     Friend WithEvents btnMainMenu As Label
     Friend WithEvents btnBack As Label
+    Friend WithEvents QR_SimSwap As PictureBox
 End Class

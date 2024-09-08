@@ -1,6 +1,7 @@
 ﻿
 Imports System.Drawing
 Imports System.Drawing.Text
+Imports System.IO
 Public Class frmNewSim8
 
     Private privateFonts As New PrivateFontCollection()
@@ -22,6 +23,9 @@ Public Class frmNewSim8
         LoadCustomFonts()
         If privateFonts.Families.Length > 0 Then
             lblSuccessOnPostOrMix.Font = New Font(privateFonts.Families(0), 12) ' Example font size
+        End If
+        If Not isPostOrMix Then
+            LoadQRCode(Globals.QRCode)
         End If
     End Sub
 
@@ -53,4 +57,22 @@ Public Class frmNewSim8
             MessageBox.Show("Error loading custom font: " & ex.Message)
         End Try
     End Sub
+    Public Sub LoadQRCode(qrCodeBase64 As String)
+        Try
+            ' Decode the Base64 string into a byte array
+            Dim qrCodeBytes As Byte() = Convert.FromBase64String(qrCodeBase64)
+
+            ' Convert the byte array into a MemoryStream
+            Using ms As New MemoryStream(qrCodeBytes)
+                ' Create an image from the stream
+                Dim qrImage As Image = Image.FromStream(ms)
+
+                ' Display the image in the PictureBox (QR_NewSim)
+                QR_NewSim.Image = qrImage
+            End Using
+        Catch ex As Exception
+            ExceptionLogger.LogException(ex)
+        End Try
+    End Sub
+
 End Class

@@ -26,13 +26,16 @@ Partial Class frmNewSim8
         Me.pnlWA = New System.Windows.Forms.Panel()
         Me.btnMainMenu = New System.Windows.Forms.Label()
         Me.lblSuccessOnPostOrMix = New System.Windows.Forms.Label()
+        Me.QR_NewSim = New System.Windows.Forms.PictureBox()
         Me.pnlWA.SuspendLayout()
+        CType(Me.QR_NewSim, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlWA
         '
         Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pnlWA.Controls.Add(Me.QR_NewSim)
         Me.pnlWA.Controls.Add(Me.lblSuccessOnPostOrMix)
         Me.pnlWA.Controls.Add(Me.btnMainMenu)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
@@ -63,6 +66,15 @@ Partial Class frmNewSim8
     "ساعة عمل. نتمنى لك يوماً سعيداً"
         Me.lblSuccessOnPostOrMix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'QR_NewSim
+        '
+        Me.QR_NewSim.BackColor = System.Drawing.Color.Transparent
+        Me.QR_NewSim.Location = New System.Drawing.Point(875, 290)
+        Me.QR_NewSim.Name = "QR_NewSim"
+        Me.QR_NewSim.Size = New System.Drawing.Size(248, 233)
+        Me.QR_NewSim.TabIndex = 2
+        Me.QR_NewSim.TabStop = False
+        '
         'frmNewSim8
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -79,6 +91,7 @@ Partial Class frmNewSim8
         Me.TopMost = True
         Me.pnlWA.ResumeLayout(False)
         Me.pnlWA.PerformLayout()
+        CType(Me.QR_NewSim, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -86,4 +99,5 @@ Partial Class frmNewSim8
     Friend WithEvents pnlWA As Panel
     Friend WithEvents btnMainMenu As Label
     Friend WithEvents lblSuccessOnPostOrMix As Label
+    Friend WithEvents QR_NewSim As PictureBox
 End Class
