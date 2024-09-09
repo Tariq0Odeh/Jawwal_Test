@@ -1468,7 +1468,7 @@ Public Class APIs
             EnquiryString &= "  <RequestType>ExecuteAPIProxy</RequestType>" & vbNewLine
             EnquiryString &= "  <TransactionReference>" & APIs.GetNewId() & "</TransactionReference>" & vbNewLine
             EnquiryString &= "  <TransactionReferenceEncrypted>NO</TransactionReferenceEncrypted>" & vbNewLine
-            EnquiryString &= "  <RequestParam1>ExecuteGetSimSwapPrice</RequestParam1>" & vbNewLine
+            EnquiryString &= "  <RequestParam1>ExecuteGetNewSimPrice</RequestParam1>" & vbNewLine
             EnquiryString &= "  <RequestParams>" & vbNewLine
             EnquiryString &= "    <OpenAPIParam>" & vbNewLine
             EnquiryString &= "      <ParamName>TerminalId</ParamName>" & vbNewLine
