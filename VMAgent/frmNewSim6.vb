@@ -20,10 +20,15 @@ Public Class frmNewSim6
     Public EmailAddress As String = ""
     Public ContactNumber As String = ""
     Public DocumentFileData() As Byte
+    Public newPrice As String = ""
 
     Private Sub frmNewSim6_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmNewSim5 -> frmNewSim6_Load ")
-        txtAmount.Text = Price
+        newPrice = APIs.GetNewSimPrice(Msisdn.Substring(1), MsisdnType, Price)
+        If String.IsNullOrEmpty(newPrice) Then
+            newPrice = Price
+        End If
+        txtAmount.Text = newPrice
 
     End Sub
 
@@ -31,7 +36,7 @@ Public Class frmNewSim6
         ExceptionLogger.LogInfo("frmNewSim5 -> btnCash_Click ")
         Dim obj As New frmNewSim7
         obj.Msisdn = Msisdn
-        obj.Price = Price
+        obj.Price = newPrice
         obj.IDNumber = IDNumber
         obj.FullName = FullName
         obj.DateOfBirth = DateOfBirth
@@ -100,6 +105,12 @@ Public Class frmNewSim6
                 Dim SIMSerialNumber As String = ""
 
                 If IsESIM = False Then
+                    Try
+                        objCardDispnser.CaptureCard()
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
+                    End Try
+
                     SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
                     If SIMSerialNumber = "" Then
                         objCardDispnser.CaptureCard()
@@ -119,7 +130,7 @@ Public Class frmNewSim6
                     Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference)
                     If apiResponse = APIs.APIReturnedValue.Success Then
 
-                        If (IsESIM = False And (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                        If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
                             objCardDispnser.DispenseCard()
                         End If
 

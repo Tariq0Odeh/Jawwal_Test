@@ -1451,7 +1451,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetNewSimPrice(ByVal msisdn As String, ByVal msisdnType As String) As String
+    Public Shared Function GetNewSimPrice(ByVal msisdn As String, ByVal msisdnType As String, msisdnPrice As String) As String
 
         Dim Ret As String = ""
 
@@ -1481,6 +1481,10 @@ Public Class APIs
             EnquiryString &= "    <OpenAPIParam>" & vbNewLine
             EnquiryString &= "      <ParamName>msisdnType</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & msisdnType & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>msisdnPrice</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & msisdnPrice & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"

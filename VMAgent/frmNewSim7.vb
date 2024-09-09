@@ -33,7 +33,6 @@ Public Class frmNewSim7
             AddHandler objCoinCashRecycler.OnCoinCashDeposit, AddressOf OnCoinCash
             objCoinCashRecycler.StartAcceptingCoinCash(If(objConfigParams.CashRecyclerEnabled = "Y", True, False), If(objConfigParams.CoinRecyclerEnabled = "Y", True, False))
         End If
-        Price = APIs.GetNewSimPrice(Msisdn.Substring(1), MsisdnType)
         txtTotalAmount.Text = Price
 
     End Sub
@@ -84,6 +83,11 @@ Public Class frmNewSim7
                     Dim SIMSerialNumber As String = ""
 
                     If IsESIM = False Then
+                        Try
+                            objCardDispnser.CaptureCard()
+                        Catch ex As Exception
+                            ExceptionLogger.LogException(ex)
+                        End Try
                         SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
                         If SIMSerialNumber = "" Then
                             objCardDispnser.CaptureCard()
@@ -103,7 +107,7 @@ Public Class frmNewSim7
                         Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Cash", PackageCode, EmailAddress, ContactNumber, reservationID, resourceID)
                         If apiResponse = APIs.APIReturnedValue.Success Then
 
-                            If (IsESIM = False And (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                            If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
                                 objCardDispnser.DispenseCard()
                             End If
 
