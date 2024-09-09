@@ -190,8 +190,12 @@ Public Class frmNewSim6
         SyncLock PrintSuccessReceiptLock
             Try
 
+                If (IsESIM = True And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                    PrintReceiptDetails = APIs.GetReceiptDetails("NewESIMSuccess")
+                Else
+                    PrintReceiptDetails = APIs.GetReceiptDetails("NewSIMSuccess")
+                End If
 
-                PrintReceiptDetails = APIs.GetReceiptDetails("NewSIMSuccess")
                 TrxnStatus = "Success"
 
                 Dim objReceiptDocument As New Printing.PrintDocument
@@ -395,12 +399,23 @@ Public Class frmNewSim6
                         ElseIf ContentType = "Image" Then
 
                             Dim PIC As New PictureBox
-                            PIC.Load(objConfigParams.PlatformURL & ContentData)
+
+                            If ContentData.Contains("esim.png") Then
+                                Dim base64Image As String = Globals.QRCode
+                                Dim imageBytes() As Byte = Convert.FromBase64String(base64Image)
+
+                                Using ms As New System.IO.MemoryStream(imageBytes)
+                                    PIC.Image = Image.FromStream(ms)
+                                End Using
+                            Else
+                                PIC.Load(objConfigParams.PlatformURL & ContentData)
+                            End If
+
 
                             Dim DisplayRectangle As RectangleF = New RectangleF(New PointF(Math.Round((ContentLocationX)), Math.Round((ContentLocationY))), New SizeF(ContentWidth, ContentHeight))
-                            e.Graphics.DrawImage(PIC.Image, DisplayRectangle)
+                                e.Graphics.DrawImage(PIC.Image, DisplayRectangle)
 
-                        End If
+                            End If
 
                     Catch ex As Exception
                         ExceptionLogger.LogException(ex)
