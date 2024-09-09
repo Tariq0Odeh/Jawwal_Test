@@ -33,7 +33,7 @@ Module PostBuildScript
                 Tuple.Create("http://10.102.220.174", "T00002", "BeyondKode", "VMAgent_Bardoni_T00002_" & appVersion),
                 Tuple.Create("http://10.102.220.174", "T00003", "BeyondKode", "VMAgent_DownTown_T00003_" & appVersion),
                 Tuple.Create("http://10.102.220.174", "T00004", "BeyondKode", "VMAgent_Jenin_T00004_" & appVersion),
-                Tuple.Create("http://192.168.0.156", "T00001", "BeyondKode", "VMAgent_T00001_" & appVersion & "_Test")
+                Tuple.Create("http://192.168.1.163", "T00005", "BeyondKode", "VMAgent_T00005_" & appVersion & "_Test")
             }
 
             ' Loop through each configuration and create the copies
