@@ -73,7 +73,7 @@ Public Class frmDigitalGoods5
                         CurrentTransaction.TransactionAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                         CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                         CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(objDenomination.endCustomerPriceWithVATLIS)
-                        Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, "", "Cash")
+                        Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, "", "Cash", frmDigitalGoods.SessionId)
                         If apiResponseValue = APIs.APIReturnedValue.Success Then
                             ExceptionLogger.LogInfo("frmDigitalGoods5 -> btnOK_MouseDown -> APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, '', 'Cash')Success")
                             ReturnCoinCash(Val(txtAmount.Text) - Val(objDenomination.endCustomerPriceWithVATLIS))

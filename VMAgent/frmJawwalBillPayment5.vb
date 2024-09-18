@@ -84,7 +84,7 @@ Public Class frmJawwalBillPayment5
                 CurrentTransaction.TransactionAmount = Val(Amount)
                 CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                 CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Amount)
-                Dim apiResponseValue = APIs.PayJawwalInvoices(MobileNumber.Substring(1), payments, "", "Cash")
+                Dim apiResponseValue = APIs.PayJawwalInvoices(MobileNumber.Substring(1), payments, "", "Cash", frmJawwalBillPayment.SessionId)
                 If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                     ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))

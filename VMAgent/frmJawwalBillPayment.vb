@@ -1,7 +1,10 @@
 ﻿Public Class frmJawwalBillPayment
 
+    Public Shared SessionId As String = ""
     Private Sub frmJawwalBillPayment_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmJawwalBillPayment -> frmJawwalBillPayment_Load")
+        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
     Private Sub btn0_MouseDown(sender As Object, e As MouseEventArgs) Handles btn0.MouseDown
@@ -137,7 +140,7 @@
                 Dim CC As New CameraCapture
                 CurrentTransaction.CustomerPhoto1 = CC.CaptureAsBase64String()
 
-                If APIs.SendOTP(txtMobileNumber.Text.Substring(1), "billsPayment") = True Then
+                If APIs.SendOTP(txtMobileNumber.Text.Substring(1), "billsPayment", frmJawwalBillPayment.SessionId) = True Then
 
                     Globals.HidePleaseWait(Me)
 

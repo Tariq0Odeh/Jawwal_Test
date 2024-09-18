@@ -1,13 +1,13 @@
 ﻿Imports System.Reflection
 
 Public Class frmTopUp
-    Public Shared SessionCode As String = ""
+    Public Shared SessionId As String = ""
     Dim ActiveInputBox As String = "MOBILE"                 'MOBILE/AMOUNT
 
     Private Sub frmTopUp_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
-        SessionCode = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
-        ExceptionLogger.LogInfo("SessionCode: " & SessionCode)
+        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
     Private Sub txtMobileNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles txtMobileNumber.MouseDown
@@ -229,7 +229,7 @@ Public Class frmTopUp
                 Dim CC As New CameraCapture
                 CurrentTransaction.CustomerPhoto1 = CC.CaptureAsBase64String()
 
-                If APIs.CheckRefill(txtMobileNumber.Text.Substring(1), txtAmount.Text) = True Then
+                If APIs.CheckRefill(txtMobileNumber.Text.Substring(1), txtAmount.Text, frmTopUp.SessionId) = True Then
 
                     Globals.HidePleaseWait(Me)
 

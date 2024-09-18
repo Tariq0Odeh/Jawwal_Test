@@ -10,7 +10,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT1_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "1")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "1", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -27,7 +27,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT2_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "2")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "2", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -44,7 +44,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT3_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "3")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "3", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -61,7 +61,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT4_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "4")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "4", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -78,7 +78,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT5_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "5")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "5", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -95,7 +95,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT6_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "6")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "6", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -112,7 +112,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT7_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "8")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "8", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -129,7 +129,7 @@
         ExceptionLogger.LogInfo("frmBundles3 -> btnRoamingT8_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "7")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Roaming", "7", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 

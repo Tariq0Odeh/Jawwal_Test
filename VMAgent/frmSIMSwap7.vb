@@ -113,9 +113,9 @@ Public Class frmSIMSwap7
 
             Globals.ShowPleaseWait(Me)
 
-            If APIs.VerifyAnswers(MobileNumber.Substring(1), txtPUK.Text, txtLastInvoiceOrBalance.Text, CType(cbPkgType.SelectedItem, PackageDetails).PkgType, CType(cbPkgName.SelectedItem, PackageDetails).PkgOfferId) = True Then
+            If APIs.VerifyAnswers(MobileNumber.Substring(1), txtPUK.Text, txtLastInvoiceOrBalance.Text, CType(cbPkgType.SelectedItem, PackageDetails).PkgType, CType(cbPkgName.SelectedItem, PackageDetails).PkgOfferId, frmSIMSwap.SessionId) = True Then
 
-                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1))
+                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1), frmSIMSwap.SessionId)
 
                 Globals.HidePleaseWait(Me)
 

@@ -69,7 +69,7 @@ Public Class frmTopUp1
                     CurrentTransaction.TransactionAmount = Val(Amount)
                     CurrentTransaction.PaidAmount = Val(Amount)
                     CurrentTransaction.ReturnedAmount = 0
-                    Dim apIResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, TransactionReference, "Visa")
+                    Dim apIResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, TransactionReference, "Visa", frmTopUp.SessionId)
                     If apIResponseValue = APIs.APIReturnedValue.Success Then
 
                         TrxnAmount = Val(Amount)

@@ -94,7 +94,7 @@ Public Class frmJawwalBillPayment4
                 CurrentTransaction.TransactionAmount = Val(Amount)
                 CurrentTransaction.PaidAmount = Val(Amount)
                 CurrentTransaction.ReturnedAmount = 0
-                Dim apiReturnedValue = APIs.PayJawwalInvoices(MobileNumber.Substring(1), payments, TransactionReference, "Visa")
+                Dim apiReturnedValue = APIs.PayJawwalInvoices(MobileNumber.Substring(1), payments, TransactionReference, "Visa", frmJawwalBillPayment.SessionId)
                 If apiReturnedValue = APIs.APIReturnedValue.Success Then
 
                     TrxnAmount = Val(Amount)

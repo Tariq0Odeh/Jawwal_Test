@@ -151,9 +151,9 @@ Public Class frmSIMSwap3
 
             Globals.ShowPleaseWait(Me)
 
-            If APIs.VerifyOTP(MobileNumber.Substring(1), "simswap", PINCode) = True Then
+            If APIs.VerifyOTP(MobileNumber.Substring(1), "simswap", PINCode, frmSIMSwap.SessionId) = True Then
 
-                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1))
+                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1), frmSIMSwap.SessionId)
 
                 Globals.HidePleaseWait(Me)
 

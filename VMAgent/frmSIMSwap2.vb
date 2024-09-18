@@ -13,7 +13,7 @@ Public Class frmSIMSwap2
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
         Globals.ShowPleaseWait(Me)
 
-        If APIs.SendOTP(MobileNumber.Substring(1), "simswap") = True Then
+        If APIs.SendOTP(MobileNumber.Substring(1), "simswap", frmSIMSwap.SessionId) = True Then
 
             Globals.HidePleaseWait(Me)
 
@@ -55,7 +55,7 @@ Public Class frmSIMSwap2
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
         Globals.ShowPleaseWait(Me)
 
-        Dim QuestionsList As String = APIs.GetQuestions()
+        Dim QuestionsList As String = APIs.GetQuestions(frmSIMSwap.SessionId)
 
         Globals.HidePleaseWait(Me)
 

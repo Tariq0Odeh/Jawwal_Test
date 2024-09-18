@@ -87,7 +87,7 @@ Public Class frmPaltelBillPayment2
                 CurrentTransaction.TransactionAmount = Val(Amount)
                 CurrentTransaction.PaidAmount = Val(Amount)
                 CurrentTransaction.ReturnedAmount = 0
-                Dim apiResponseValue = APIs.PayPaltelInvoices(PhoneNumber, payments, TransactionReference, CardNumber, "Visa")
+                Dim apiResponseValue = APIs.PayPaltelInvoices(PhoneNumber, payments, TransactionReference, CardNumber, "Visa", frmPaltelBillPayment.SessionId)
                 If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                     TrxnAmount = Val(Amount)

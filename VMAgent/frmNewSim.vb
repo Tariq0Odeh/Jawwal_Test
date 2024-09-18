@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json.Linq
 
 Public Class frmNewSim
-
+    Public Shared SessionId As String = ""
     Private Sub frmNewSim_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmNewSim -> frmNewSim_Load ")
         Dim ALEntries As New List(Of MsisdnEntry)
@@ -51,6 +51,8 @@ Public Class frmNewSim
         cbEntry.ValueMember = "EntryValue"
         cbEntry.SelectedIndex = 0
 
+        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
     Private Sub btn0_Click(sender As Object, e As EventArgs) Handles btn0.Click
@@ -187,7 +189,7 @@ Public Class frmNewSim
                 CurrentTransaction.CustomerPhoto1 = CC.CaptureAsBase64String()
 
                 Dim IsOK As Boolean = False
-                Dim ListOfNumbers As String = APIs.SearchForNumber(CType(cbEntry.SelectedItem, MsisdnEntry).EntryValue, txtPattern.Text)
+                Dim ListOfNumbers As String = APIs.SearchForNumber(CType(cbEntry.SelectedItem, MsisdnEntry).EntryValue, txtPattern.Text, frmNewSim.SessionId)
 
                 Dim jsonObj As JObject = JObject.Parse(ListOfNumbers)
                 If jsonObj("code") = "0" Then

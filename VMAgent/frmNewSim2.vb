@@ -110,10 +110,10 @@ Public Class frmNewSim2
 
             If DocumentType = "palestine_id" Then
                 Dim FLVideo() As Byte = IO.File.ReadAllBytes(VideoFilePath)
-                ExtractedUserInfo = APIs.ExtractUserInfo(Convert.ToBase64String(DocumentFileData), Convert.ToBase64String(FLVideo), "id", Msisdn)
+                ExtractedUserInfo = APIs.ExtractUserInfo(Convert.ToBase64String(DocumentFileData), Convert.ToBase64String(FLVideo), "id", Msisdn, frmNewSim.SessionId)
                 ExceptionLogger.LogInfo("frmNewSim2 -> btnOK_Click ExtractedUserInfo from id = " & ExtractedUserInfo & " Msisdn=" & Msisdn)
             ElseIf DocumentType = "Passport" Then
-                ExtractedUserInfo = APIs.ExtractUserInfo(Convert.ToBase64String(DocumentFileData), "", "passport", Msisdn)
+                ExtractedUserInfo = APIs.ExtractUserInfo(Convert.ToBase64String(DocumentFileData), "", "passport", Msisdn, frmNewSim.SessionId)
                 ExceptionLogger.LogInfo("frmNewSim2 -> btnOK_Click ExtractedUserInfo from passport = " & ExtractedUserInfo)
             End If
 

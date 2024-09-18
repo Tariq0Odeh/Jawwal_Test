@@ -148,9 +148,9 @@
 
             Globals.ShowPleaseWait(Me)
 
-            If APIs.VerifyOTP(MobileNumber.Substring(1), "digitalgoods", PINCode) = True Then
+            If APIs.VerifyOTP(MobileNumber.Substring(1), "digitalgoods", PINCode, frmDigitalGoods.SessionId) = True Then
 
-                Dim BrandsDetails As String = APIs.GetBrands(MobileNumber.Substring(1))
+                Dim BrandsDetails As String = APIs.GetBrands(MobileNumber.Substring(1), frmDigitalGoods.SessionId)
 
                 Globals.HidePleaseWait(Me)
 

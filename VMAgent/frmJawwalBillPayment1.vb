@@ -152,9 +152,9 @@
             Try
 
 
-                If APIs.VerifyOTP(MobileNumber.Substring(1), "billsPayment", PINCode) = True Then
+                If APIs.VerifyOTP(MobileNumber.Substring(1), "billsPayment", PINCode, frmJawwalBillPayment.SessionId) = True Then
 
-                    Dim InvoicesDetails As String = APIs.GetInvoices(MobileNumber.Substring(1), "jawwal")
+                    Dim InvoicesDetails As String = APIs.GetInvoices(MobileNumber.Substring(1), "jawwal", frmJawwalBillPayment.SessionId)
 
 
 

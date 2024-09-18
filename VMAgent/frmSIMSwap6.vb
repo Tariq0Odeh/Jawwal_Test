@@ -149,9 +149,9 @@ Public Class frmSIMSwap6
 
             Globals.ShowPleaseWait(Me)
 
-            If APIs.VerifySerialNumber(MobileNumber.Substring(1), SerialNumber) = True Then
+            If APIs.VerifySerialNumber(MobileNumber.Substring(1), SerialNumber, frmSIMSwap.SessionId) = True Then
 
-                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1))
+                Dim Amount As String = APIs.GetSimSwapPrice(MobileNumber.Substring(1), frmSIMSwap.SessionId)
 
                 Globals.HidePleaseWait(Me)
 

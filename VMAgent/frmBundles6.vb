@@ -25,7 +25,7 @@ Public Class frmBundles6
                 CurrentTransaction.TransactionAmount = Val(objBundle.appPrice)
                 CurrentTransaction.PaidAmount = Val(objBundle.appPrice)
                 CurrentTransaction.ReturnedAmount = 0
-                Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Balance", "", BundleType)
+                Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Balance", "", BundleType, frmBundles.SessionId)
                 If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                     TrxnAmount = Val(objBundle.appPrice)
@@ -130,7 +130,7 @@ Public Class frmBundles6
                     CurrentTransaction.TransactionAmount = Val(objBundle.appPrice)
                     CurrentTransaction.PaidAmount = Val(objBundle.appPrice)
                     CurrentTransaction.ReturnedAmount = 0
-                    Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Visa", TransactionReference, BundleType)
+                    Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Visa", TransactionReference, BundleType, frmBundles.SessionId)
                     If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                         TrxnAmount = Val(objBundle.appPrice)

@@ -70,7 +70,7 @@ Public Class frmDigitalGoods4
                     CurrentTransaction.TransactionAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                     CurrentTransaction.PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
                     CurrentTransaction.ReturnedAmount = 0
-                    Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, TransactionReference, "Visa")
+                    Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, TransactionReference, "Visa", frmDigitalGoods.SessionId)
                     If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                         TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)

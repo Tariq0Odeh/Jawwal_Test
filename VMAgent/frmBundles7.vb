@@ -71,7 +71,7 @@ Public Class frmBundles7
                 CurrentTransaction.TransactionAmount = Val(objBundle.appPrice)
                 CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                 CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(objBundle.appPrice)
-                Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Cash", "", BundleType)
+                Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Cash", "", BundleType, frmBundles.SessionId)
                 If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                     ReturnCoinCash(Val(txtAmount.Text) - Val(objBundle.appPrice))

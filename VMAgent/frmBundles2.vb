@@ -10,7 +10,7 @@
         ExceptionLogger.LogInfo("frmBundles2 -> btn3G_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "3G", "")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "3G", "", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 
@@ -27,7 +27,7 @@
         ExceptionLogger.LogInfo("frmBundles2 -> btnMinutes_MouseDown")
         Globals.ShowPleaseWait(Me)
 
-        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Minutes", "")
+        Dim RecommendedBundles As String = APIs.GetRecommendedBundles(MobileNumber.Substring(1), "Minutes", "", frmBundles.SessionId)
 
         Globals.HidePleaseWait(Me)
 

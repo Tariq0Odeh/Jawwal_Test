@@ -83,7 +83,7 @@ Public Class frmPaltelBillPayment3
                 CurrentTransaction.TransactionAmount = Val(Amount)
                 CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                 CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Amount)
-                Dim apiResponeValue = APIs.PayPaltelInvoices(PhoneNumber, payments, "", "", "Cash")
+                Dim apiResponeValue = APIs.PayPaltelInvoices(PhoneNumber, payments, "", "", "Cash", frmPaltelBillPayment.SessionId)
                 If apiResponeValue = APIs.APIReturnedValue.Success Then
 
                     ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))

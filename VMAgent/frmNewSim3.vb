@@ -184,7 +184,7 @@ Public Class frmNewSim3
 
             Globals.ShowPleaseWait(Me)
 
-            Dim PaymentTypeWithPackages As String = APIs.GetPaymentTypeWithPackages()
+            Dim PaymentTypeWithPackages As String = APIs.GetPaymentTypeWithPackages(frmNewSim.SessionId)
 
             Globals.HidePleaseWait(Me)
 

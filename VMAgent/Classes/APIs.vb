@@ -235,7 +235,7 @@ Public Class APIs
 
     End Sub
 
-    Public Shared Function CheckRefill(ByVal msisdn As String, ByVal amount As String) As Boolean
+    Public Shared Function CheckRefill(ByVal msisdn As String, ByVal amount As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -266,6 +266,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>amount</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & amount & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -286,7 +290,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function RefillBalance(ByVal msisdn As String, ByVal amount As String, ByVal referenceNumber As String, ByVal paymentType As String) As APIReturnedValue
+    Public Shared Function RefillBalance(ByVal msisdn As String, ByVal amount As String, ByVal referenceNumber As String, ByVal paymentType As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -354,6 +358,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -376,7 +384,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function SendOTP(ByVal msisdn As String, ByVal Service As String) As Boolean
+    Public Shared Function SendOTP(ByVal msisdn As String, ByVal Service As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -407,6 +415,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>Service</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & Service & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -427,7 +439,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifyOTP(ByVal msisdn As String, ByVal Service As String, ByVal Pin As String) As Boolean
+    Public Shared Function VerifyOTP(ByVal msisdn As String, ByVal Service As String, ByVal Pin As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -462,6 +474,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>Pin</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & Pin & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -482,7 +498,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetInvoices(ByVal number As String, ByVal userType As String) As String
+    Public Shared Function GetInvoices(ByVal number As String, ByVal userType As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -513,6 +529,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>userType</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & userType & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -529,7 +549,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function PayJawwalInvoices(ByVal msisdn As String, ByVal payments As String, ByVal referenceNumber As String, ByVal paymentType As String) As APIReturnedValue
+    Public Shared Function PayJawwalInvoices(ByVal msisdn As String, ByVal payments As String, ByVal referenceNumber As String, ByVal paymentType As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -597,6 +617,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -619,7 +643,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifyFixedLine(ByVal number As String, ByVal idNumber As String) As Boolean
+    Public Shared Function VerifyFixedLine(ByVal number As String, ByVal idNumber As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -650,6 +674,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>idNumber</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & idNumber & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -670,7 +698,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function PayPaltelInvoices(ByVal msisdn As String, ByVal payments As String, ByVal referenceNumber As String, ByVal cardNumber As String, ByVal paymentType As String) As APIReturnedValue
+    Public Shared Function PayPaltelInvoices(ByVal msisdn As String, ByVal payments As String, ByVal referenceNumber As String, ByVal cardNumber As String, ByVal paymentType As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -742,6 +770,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -764,7 +796,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetRecommendedBundles(ByVal msisdn As String, ByVal type As String, ByVal countryCode As String) As String
+    Public Shared Function GetRecommendedBundles(ByVal msisdn As String, ByVal type As String, ByVal countryCode As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -799,6 +831,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>countryCode</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & countryCode & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -815,7 +851,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function SetBundles(ByVal msisdn As String, ByVal bundleId As String, ByVal paymentType As String, ByVal referenceNumber As String, ByVal type As String) As APIReturnedValue
+    Public Shared Function SetBundles(ByVal msisdn As String, ByVal bundleId As String, ByVal paymentType As String, ByVal referenceNumber As String, ByVal type As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -887,6 +923,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -909,7 +949,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetBrands(ByVal msisdn As String) As String
+    Public Shared Function GetBrands(ByVal msisdn As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -936,6 +976,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>msisdn</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & msisdn & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -952,7 +996,8 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetDenominations(ByVal msisdn As String, ByVal brandCode As String) As String
+    Public Shared Function GetDenominations(ByVal msisdn As String, ByVal brandCode As String, ByVal SessionId As String
+) As String
 
         Dim Ret As String = ""
 
@@ -983,6 +1028,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>brandCode</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & brandCode & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -999,7 +1048,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function PurchaseDigitalGoods(ByVal msisdn As String, ByVal denominationCode As String, ByVal brandCode As String, ByVal referenceNumber As String, ByVal paymentType As String) As APIReturnedValue
+    Public Shared Function PurchaseDigitalGoods(ByVal msisdn As String, ByVal denominationCode As String, ByVal brandCode As String, ByVal referenceNumber As String, ByVal paymentType As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -1071,6 +1120,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1093,7 +1146,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifyIdNumber(ByVal msisdn As String, ByVal idNumber As String) As Boolean
+    Public Shared Function VerifyIdNumber(ByVal msisdn As String, ByVal idNumber As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -1124,6 +1177,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>idNumber</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & idNumber & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1144,7 +1201,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function EkycCheck(ByVal Image As String, ByVal Video As String, ByVal ekycType As String) As Boolean
+    Public Shared Function EkycCheck(ByVal Image As String, ByVal Video As String, ByVal ekycType As String, ByVal SessionId As String) As Boolean
         'ekycType: id/passport
 
         Dim Ret As Boolean = False
@@ -1180,6 +1237,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>ekycType</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & ekycType & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1200,7 +1261,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifySerialNumber(ByVal msisdn As String, ByVal serialNumber As String) As Boolean
+    Public Shared Function VerifySerialNumber(ByVal msisdn As String, ByVal serialNumber As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -1231,6 +1292,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>serialNumber</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & serialNumber & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1251,7 +1316,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function SendEmailOTP(ByVal msisdn As String, ByVal email As String) As Boolean
+    Public Shared Function SendEmailOTP(ByVal msisdn As String, ByVal email As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -1282,6 +1347,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>email</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & email & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1302,7 +1371,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifyEmailOTP(ByVal msisdn As String, ByVal otp As String) As Boolean
+    Public Shared Function VerifyEmailOTP(ByVal msisdn As String, ByVal otp As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -1333,6 +1402,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>otp</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & otp & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1353,7 +1426,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetQuestions() As String
+    Public Shared Function GetQuestions(ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -1376,6 +1449,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>TerminalId</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & objConfigParams.TerminalId & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1392,7 +1469,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function VerifyAnswers(ByVal msisdn As String, ByVal answer1 As String, ByVal answer2 As String, ByVal answer3 As String, ByVal answer4 As String) As Boolean
+    Public Shared Function VerifyAnswers(ByVal msisdn As String, ByVal answer1 As String, ByVal answer2 As String, ByVal answer3 As String, ByVal answer4 As String, ByVal SessionId As String) As Boolean
 
         Dim Ret As Boolean = False
 
@@ -1435,6 +1512,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>answer4</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & answer4 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1454,7 +1535,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetSimSwapPrice(ByVal msisdn As String) As String
+    Public Shared Function GetSimSwapPrice(ByVal msisdn As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -1481,6 +1562,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>msisdn</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & msisdn & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1501,7 +1586,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetNewSimPrice(ByVal msisdn As String, ByVal msisdnType As String, msisdnPrice As String) As String
+    Public Shared Function GetNewSimPrice(ByVal msisdn As String, ByVal msisdnType As String, msisdnPrice As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -1536,6 +1621,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>msisdnPrice</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & msisdnPrice & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1556,7 +1645,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function ConfirmSimSwap(ByVal msisdn As String, ByVal email As String, ByVal isEsim As String, ByVal simNumber As String, ByVal referenceNumber As String, ByVal paymentType As String) As APIReturnedValue
+    Public Shared Function ConfirmSimSwap(ByVal msisdn As String, ByVal email As String, ByVal isEsim As String, ByVal simNumber As String, ByVal referenceNumber As String, ByVal paymentType As String, ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -1633,6 +1722,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>CustomerPhoto2</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & CurrentTransaction.CustomerPhoto2 & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1665,7 +1758,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function SearchForNumber(ByVal entry As String, ByVal pattern As String) As String
+    Public Shared Function SearchForNumber(ByVal entry As String, ByVal pattern As String, ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -1696,6 +1789,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>pattern</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & pattern & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1712,7 +1809,7 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function GetPaymentTypeWithPackages() As String
+    Public Shared Function GetPaymentTypeWithPackages(ByVal SessionId As String) As String
 
         Dim Ret As String = ""
 
@@ -1735,6 +1832,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>TerminalId</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & objConfigParams.TerminalId & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1751,7 +1852,8 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function ExtractUserInfo(ByVal Image As String, ByVal Video As String, ByVal ekycType As String, ByVal msisdnToReserve As String) As String
+    Public Shared Function ExtractUserInfo(ByVal Image As String, ByVal Video As String, ByVal ekycType As String, ByVal msisdnToReserve As String, ByVal SessionId As String
+) As String
         'ekycType: id/passport
 
         Dim Ret As String = ""
@@ -1791,6 +1893,10 @@ Public Class APIs
             EnquiryString &= "      <ParamName>msisdnToReserve</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & msisdnToReserve & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"
 
@@ -1807,7 +1913,8 @@ Public Class APIs
 
     End Function
 
-    Public Shared Function ConfirmNewSIM(ByVal msisdn As String, ByVal IdNumber As String, ByVal SimNumber As String, ByVal FullName As String, ByVal DateOfBirth As String, ByVal Gender As String, ByVal City As String, ByVal IsEsim As String, ByVal DocumentType As String, ByVal Document As String, ByVal MsisdnType As String, ByVal PaymentType As String, ByVal PackageCode As String, ByVal Email As String, ByVal ContactNumber As String, ByVal ReservationID As String, ByVal resourceID As String) As APIReturnedValue
+    Public Shared Function ConfirmNewSIM(ByVal msisdn As String, ByVal IdNumber As String, ByVal SimNumber As String, ByVal FullName As String, ByVal DateOfBirth As String, ByVal Gender As String, ByVal City As String, ByVal IsEsim As String, ByVal DocumentType As String, ByVal Document As String, ByVal MsisdnType As String, ByVal PaymentType As String, ByVal PackageCode As String, ByVal Email As String, ByVal ContactNumber As String, ByVal ReservationID As String, ByVal resourceID As String,
+                                          ByVal SessionId As String) As APIReturnedValue
         'paymentType: Balance/Visa/Cash/OnBill
 
         Dim Ret As APIReturnedValue = APIReturnedValue.Unkonwn
@@ -1931,6 +2038,10 @@ Public Class APIs
             EnquiryString &= "    <OpenAPIParam>" & vbNewLine
             EnquiryString &= "      <ParamName>resourceID</ParamName>" & vbNewLine
             EnquiryString &= "      <ParamValue>" & resourceID & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>SessionId</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & SessionId & "</ParamValue>" & vbNewLine
             EnquiryString &= "    </OpenAPIParam>" & vbNewLine
             EnquiryString &= "  </RequestParams>" & vbNewLine
             EnquiryString &= "</OpenAPIRequest>"

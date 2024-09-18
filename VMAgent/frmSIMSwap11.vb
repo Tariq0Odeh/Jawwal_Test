@@ -88,7 +88,7 @@ Public Class frmSIMSwap11
                     CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                     CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Amount)
                     If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
-                        Dim apiResponseValue = APIs.ConfirmSimSwap(MobileNumber.Substring(1), EmailAddress, IsESIM.ToString.ToLower, SIMSerialNumber, "", "cash")
+                        Dim apiResponseValue = APIs.ConfirmSimSwap(MobileNumber.Substring(1), EmailAddress, IsESIM.ToString.ToLower, SIMSerialNumber, "", "cash", frmSIMSwap.SessionId)
                         If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                             If IsESIM = False Then

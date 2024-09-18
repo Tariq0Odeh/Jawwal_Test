@@ -3,10 +3,11 @@
 Public Class frmPaltelBillPayment
 
     Dim ActiveInputBox As String = "PHONE"                 'PHONE/IDNUMBER
-
+    Public Shared SessionId As String = ""
     Private Sub frmPaltelBillPayment_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
-
+        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
     Private Sub txtPhoneNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles txtPhoneNumber.MouseDown
@@ -237,9 +238,9 @@ Public Class frmPaltelBillPayment
                 Try
 
 
-                    If APIs.VerifyFixedLine(txtPhoneNumber.Text.Replace("-", ""), txtIDNumber.Text) = True Then
+                    If APIs.VerifyFixedLine(txtPhoneNumber.Text.Replace("-", ""), txtIDNumber.Text, frmPaltelBillPayment.SessionId) = True Then
 
-                        Dim InvoicesDetails As String = APIs.GetInvoices(txtPhoneNumber.Text.Replace("-", ""), "paltel")
+                        Dim InvoicesDetails As String = APIs.GetInvoices(txtPhoneNumber.Text.Replace("-", ""), "paltel", frmPaltelBillPayment.SessionId)
 
                         Globals.HidePleaseWait(Me)
 

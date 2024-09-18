@@ -69,7 +69,7 @@ Public Class frmTopUp2
                 CurrentTransaction.TransactionAmount = Val(Amount)
                 CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                 CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Amount)
-                Dim apiResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, "", "Cash")
+                Dim apiResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, "", "Cash", frmTopUp.SessionId)
                 If apiResponseValue = APIs.APIReturnedValue.Success Then
 
                     ReturnCoinCash(Val(txtAmount.Text) - Val(Amount))

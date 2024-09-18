@@ -109,9 +109,9 @@ Public Class frmSIMSwap1
 
             If DocumentType = "palestine_id" Then
                 Dim FLVideo() As Byte = IO.File.ReadAllBytes(VideoFilePath)
-                EkycCheckResult = APIs.EkycCheck(Convert.ToBase64String(DocumentFileData), Convert.ToBase64String(FLVideo), "id")
+                EkycCheckResult = APIs.EkycCheck(Convert.ToBase64String(DocumentFileData), Convert.ToBase64String(FLVideo), "id", frmSIMSwap.SessionId)
             ElseIf DocumentType = "Passport" Then
-                EkycCheckResult = APIs.EkycCheck(Convert.ToBase64String(DocumentFileData), "", "passport")
+                EkycCheckResult = APIs.EkycCheck(Convert.ToBase64String(DocumentFileData), "", "passport", frmSIMSwap.SessionId)
             End If
 
             If EkycCheckResult = True Then

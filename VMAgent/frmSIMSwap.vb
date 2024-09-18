@@ -3,9 +3,12 @@
 Public Class frmSIMSwap
 
     Dim ActiveInputBox As String = "MOBILE"                 'MOBILE/IDNUMBER
+    Public Shared SessionId As String = ""
 
     Private Sub frmSIMSwap_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
+        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
     Private Sub txtMobileNumber_Click(sender As Object, e As EventArgs) Handles txtMobileNumber.Click
@@ -227,7 +230,7 @@ Public Class frmSIMSwap
                 Dim CC As New CameraCapture
                 CurrentTransaction.CustomerPhoto1 = CC.CaptureAsBase64String()
 
-                If APIs.VerifyIdNumber(txtMobileNumber.Text.Substring(1), txtIDNumber.Text) = True Then
+                If APIs.VerifyIdNumber(txtMobileNumber.Text.Substring(1), txtIDNumber.Text, frmSIMSwap.SessionId) = True Then
 
                     Globals.HidePleaseWait(Me)
 

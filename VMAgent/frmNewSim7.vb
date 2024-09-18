@@ -104,7 +104,7 @@ Public Class frmNewSim7
                     CurrentTransaction.PaidAmount = Val(txtAmount.Text)
                     CurrentTransaction.ReturnedAmount = Val(txtAmount.Text) - Val(Price)
                     If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
-                        Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Cash", PackageCode, EmailAddress, ContactNumber, reservationID, resourceID)
+                        Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Cash", PackageCode, EmailAddress, ContactNumber, reservationID, resourceID, frmNewSim.SessionId)
                         If apiResponse = APIs.APIReturnedValue.Success Then
 
                             If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then

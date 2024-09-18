@@ -10,7 +10,7 @@ Public Class frmDigitalGoods3
         ExceptionLogger.LogInfo("frmDigitalGoods3 -> frmDigitalGoods3_Load ")
         Globals.ShowPleaseWait(Me)
 
-        Dim Denominations As String = APIs.GetDenominations(MobileNumber.Substring(1), objBrand.code)
+        Dim Denominations As String = APIs.GetDenominations(MobileNumber.Substring(1), objBrand.code, frmDigitalGoods.SessionId)
 
         Dim jsonObj As JObject = JObject.Parse(Denominations)
         If jsonObj("code") = "0" Then

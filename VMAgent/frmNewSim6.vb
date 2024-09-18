@@ -24,7 +24,7 @@ Public Class frmNewSim6
 
     Private Sub frmNewSim6_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmNewSim5 -> frmNewSim6_Load ")
-        newPrice = APIs.GetNewSimPrice(Msisdn.Substring(1), MsisdnType, Price)
+        newPrice = APIs.GetNewSimPrice(Msisdn.Substring(1), MsisdnType, Price, frmNewSim.SessionId)
         If String.IsNullOrEmpty(newPrice) Then
             newPrice = Price
         End If
@@ -127,7 +127,7 @@ Public Class frmNewSim6
                 CurrentTransaction.PaidAmount = Val(Price)
                 CurrentTransaction.ReturnedAmount = 0
                 If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
-                    Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference)
+                    Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference, frmNewSim.SessionId)
                     If apiResponse = APIs.APIReturnedValue.Success Then
 
                         If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then

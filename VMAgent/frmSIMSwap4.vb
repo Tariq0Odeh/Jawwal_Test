@@ -27,7 +27,7 @@ Public Class frmSIMSwap4
 
             Globals.ShowPleaseWait(Me)
 
-            If APIs.SendEmailOTP(MobileNumber.Substring(1), txtEmailAddress.Text) = True Then
+            If APIs.SendEmailOTP(MobileNumber.Substring(1), txtEmailAddress.Text, frmSIMSwap.SessionId) = True Then
 
                 Globals.HidePleaseWait(Me)
 
