@@ -1,11 +1,13 @@
 ﻿Imports System.Reflection
 
 Public Class frmTopUp
-
+    Public Shared SessionCode As String = ""
     Dim ActiveInputBox As String = "MOBILE"                 'MOBILE/AMOUNT
 
     Private Sub frmTopUp_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
+        SessionCode = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        ExceptionLogger.LogInfo("SessionCode: " & SessionCode)
     End Sub
 
     Private Sub txtMobileNumber_MouseDown(sender As Object, e As MouseEventArgs) Handles txtMobileNumber.MouseDown

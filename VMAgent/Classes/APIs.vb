@@ -8,6 +8,56 @@ Public Class APIs
         Failed
         Unkonwn
     End Enum
+
+    Public Enum ServiceNames
+        bundles
+        digitalgoods
+        billsPayment
+        newsim
+        simswap
+        refill
+    End Enum
+    Public Shared Function CreateSession(ByVal ServiceName As String) As String
+
+        Dim Ret As String = ""
+
+        Try
+
+            Dim objConfigParams As New ConfigParams
+            objConfigParams = ConfigParams.GetConfigParams()
+
+            Dim EnquiryString As String = ""
+            EnquiryString = "<OpenAPIRequest>" & vbNewLine
+            EnquiryString &= "  <CompanyId>" & objConfigParams.CompanyId & "</CompanyId>" & vbNewLine
+            EnquiryString &= "  <UserId>" & objConfigParams.UserId & "</UserId>" & vbNewLine
+            EnquiryString &= "  <UserPassword>" & objConfigParams.UserPassword & "</UserPassword>" & vbNewLine
+            EnquiryString &= "  <RequestType>ExecuteAPIProxy</RequestType>" & vbNewLine
+            EnquiryString &= "  <TransactionReference>" & APIs.GetNewId() & "</TransactionReference>" & vbNewLine
+            EnquiryString &= "  <TransactionReferenceEncrypted>NO</TransactionReferenceEncrypted>" & vbNewLine
+            EnquiryString &= "  <RequestParam1>ExecuteCreateSession</RequestParam1>" & vbNewLine
+            EnquiryString &= "  <RequestParams>" & vbNewLine
+            EnquiryString &= "    <OpenAPIParam>" & vbNewLine
+            EnquiryString &= "      <ParamName>ServiceName</ParamName>" & vbNewLine
+            EnquiryString &= "      <ParamValue>" & ServiceName & "</ParamValue>" & vbNewLine
+            EnquiryString &= "    </OpenAPIParam>" & vbNewLine
+            EnquiryString &= "  </RequestParams>" & vbNewLine
+            EnquiryString &= "</OpenAPIRequest>"
+
+            Dim RSI As New RESTServiceInvoker
+            Dim Response As String = RSI.InvokeService(objConfigParams.PlatformAPIURL, EnquiryString, "application/xml")
+
+            Response = APIs.GetXMLItemValue(Response, "ResponseData")
+
+            Ret = Response
+
+        Catch ex As Exception
+            ExceptionLogger.LogException(ex)
+        End Try
+
+        Return Ret
+
+    End Function
+
     Public Shared Function GetTerminalDetails() As Terminal
 
         Dim objTerminal As New Terminal
