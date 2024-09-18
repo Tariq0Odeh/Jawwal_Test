@@ -7,7 +7,7 @@ Public Class frmSIMSwap
 
     Private Sub frmSIMSwap_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
-        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        SessionId = APIs.CreateSession(APIs.ServiceNames.simswap.ToString())
         ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 

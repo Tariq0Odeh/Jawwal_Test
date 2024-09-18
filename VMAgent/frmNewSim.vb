@@ -51,7 +51,7 @@ Public Class frmNewSim
         cbEntry.ValueMember = "EntryValue"
         cbEntry.SelectedIndex = 0
 
-        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        SessionId = APIs.CreateSession(APIs.ServiceNames.newsim.ToString())
         ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 

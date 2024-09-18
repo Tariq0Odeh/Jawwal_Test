@@ -3,7 +3,7 @@
     Public Shared SessionId As String = ""
     Private Sub frmBundles_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmBundles_Load")
-        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        SessionId = APIs.CreateSession(APIs.ServiceNames.bundles.ToString())
         ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 

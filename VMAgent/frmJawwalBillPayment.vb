@@ -3,7 +3,7 @@
     Public Shared SessionId As String = ""
     Private Sub frmJawwalBillPayment_Load(sender As Object, e As EventArgs) Handles Me.Load
         ExceptionLogger.LogInfo("frmJawwalBillPayment -> frmJawwalBillPayment_Load")
-        SessionId = APIs.CreateSession(APIs.ServiceNames.refill.ToString())
+        SessionId = APIs.CreateSession(APIs.ServiceNames.billsPayment.ToString())
         ExceptionLogger.LogInfo("SessionId: " & SessionId)
     End Sub
 
