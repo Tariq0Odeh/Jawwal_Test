@@ -134,9 +134,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\VMAgent\packages\Selenium.WebDriver.4.22.0\build\Selenium.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\VMAgent\packages\Selenium.WebDriver.4.22.0\build\Selenium.WebDriver.targets'))" />
-    <Error Condition="!Exists('..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.126.0.2592.68\build\Selenium.WebDriver.MSEdgeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.126.0.2592.68\build\Selenium.WebDriver.MSEdgeDriver.targets'))" />
     <Error Condition="!Exists('..\VMAgent\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\VMAgent\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets'))" />
+    <Error Condition="!Exists('..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.128.0.2739.80\build\Selenium.WebDriver.MSEdgeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.128.0.2739.80\build\Selenium.WebDriver.MSEdgeDriver.targets'))" />
   </Target>
-  <Import Project="..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.126.0.2592.68\build\Selenium.WebDriver.MSEdgeDriver.targets" Condition="Exists('..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.126.0.2592.68\build\Selenium.WebDriver.MSEdgeDriver.targets')" />
   <Import Project="..\VMAgent\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets" Condition="Exists('..\VMAgent\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.17134\build\Selenium.WebDriver.MicrosoftWebDriver.targets')" />
+  <Import Project="..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.128.0.2739.80\build\Selenium.WebDriver.MSEdgeDriver.targets" Condition="Exists('..\VMAgent\packages\Selenium.WebDriver.MSEdgeDriver.128.0.2739.80\build\Selenium.WebDriver.MSEdgeDriver.targets')" />
 </Project>
