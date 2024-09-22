@@ -55,10 +55,10 @@ Public Class frmNewSim2
         End If
 
     End Sub
-    Dim objfrmVideoRecorder As New frmVideoRecorder
+    Dim objfrmVideoRecorder As frmVideoRecorder
     Private Sub btnUploadVideo_Click(sender As Object, e As EventArgs) Handles btnUploadVideo.Click
         ExceptionLogger.LogInfo("frmNewSim2 -> btnUploadVideo_Click ")
-
+        objfrmVideoRecorder = New frmVideoRecorder
         objfrmVideoRecorder.Owner = Me.Owner
         objfrmVideoRecorder.ShowDialog()
         objfrmVideoRecorder.Close()

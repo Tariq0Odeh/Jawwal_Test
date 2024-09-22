@@ -55,10 +55,10 @@ Public Class frmSIMSwap1
         End If
 
     End Sub
-
+    Dim obj As frmVideoRecorder
     Private Sub btnUploadVideo_Click(sender As Object, e As EventArgs) Handles btnUploadVideo.Click
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
-        Dim obj As New frmVideoRecorder
+        obj = New frmVideoRecorder
         obj.Owner = Me.Owner
         obj.ShowDialog()
         obj.Close()
