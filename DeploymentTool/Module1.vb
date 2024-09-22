@@ -44,7 +44,7 @@ Module Module1
             If newFileName IsNot Nothing And newFileName <> "" And newFileName.Trim() <> latestDownloadedFileName.Trim() Then
                 Try
                     Console.WriteLine("Try to Download newFileName = " & newFileName & " and APPPlatformURL = " & objConfigParams.APPPlatformURL & " and downloadLocation = " & objConfigParams.downloadLocation)
-                    Dim DownloadedFileName = DownloadFileUsingSelenium(objConfigParams.APPPlatformURL, objConfigParams.downloadLocation)
+                    Dim DownloadedFileName = DownloadFileUsingSelenium(objConfigParams.APPPlatformURL, objConfigParams.downloadLocation, newFileName & ".zip")
                     Console.WriteLine("Try to kill Agent")
                     KillApplication(objConfigParams.appToKill)
                     Console.WriteLine("Try to backup agent")
@@ -78,25 +78,54 @@ Module Module1
         Return String.Empty
     End Function
 
-    Private Function DownloadFileUsingSelenium(url As String, downloadDirectory As String) As String
-        Directory.Delete(downloadDirectory, True)
-        Directory.CreateDirectory(downloadDirectory)
+
+    Private Sub ClearDirectory(directoryPath As String)
+        If Directory.Exists(directoryPath) Then
+            Dim directoryInfo As New DirectoryInfo(directoryPath)
+
+            For Each file As FileInfo In directoryInfo.GetFiles()
+                file.Delete()
+            Next
+
+            For Each dir As DirectoryInfo In directoryInfo.GetDirectories()
+                dir.Delete(True)
+            Next
+        End If
+    End Sub
+
+    Private Function DownloadFileUsingSelenium(url As String, downloadDirectory As String, expectedFileName As String) As String
         Dim options As New EdgeOptions()
+        options.AddArgument("--headless")
         options.AddUserProfilePreference("download.default_directory", downloadDirectory)
         options.AddUserProfilePreference("download.prompt_for_download", False)
         options.AddUserProfilePreference("disable-popup-blocking", "true")
 
-        Using driver As New EdgeDriver(options)
-            driver.Navigate().GoToUrl(url)
-            Thread.Sleep(100000) ' Wait for the download to complete. Adjust the time as needed.
+        Dim service As EdgeDriverService = EdgeDriverService.CreateDefaultService("C:\WebDriver")
+        service.UseVerboseLogging = True
 
-            ' Assuming that the file is the most recent one in the download directory
-            Dim downloadedFiles = Directory.GetFiles(downloadDirectory).OrderByDescending(Function(f) New FileInfo(f).LastWriteTime).ToArray()
-            If downloadedFiles.Length > 0 Then
-                Return Path.GetFileName(downloadedFiles(0))
-            End If
+        Dim driverPath As String = Path.Combine("C:\WebDriver", "msedgedriver.exe")
+
+        ' Clear the download directory before starting the download
+        ClearDirectory(downloadDirectory)
+
+        Using driver As New EdgeDriver(service, options)
+            driver.Navigate().GoToUrl(url)
+
+            ' Poll for the presence of the downloaded file
+            Dim filePath As String = Path.Combine(downloadDirectory, expectedFileName)
+            Dim downloadCompleted As Boolean = False
+            Dim pollInterval As Integer = 500 ' Milliseconds
+
+            While Not downloadCompleted
+                If File.Exists(filePath) Then
+                    downloadCompleted = True
+                Else
+                    Thread.Sleep(pollInterval) ' Wait before checking again
+                End If
+            End While
         End Using
-        Return Nothing
+
+        Return expectedFileName
     End Function
 
     Private Function GetLatestDownloadedFileName() As String

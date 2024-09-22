@@ -126,6 +126,9 @@
     <Content Include="readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebDriver\msedgedriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\VMAgent\packages\Selenium.WebDriver.4.22.0\build\Selenium.WebDriver.targets" Condition="Exists('..\VMAgent\packages\Selenium.WebDriver.4.22.0\build\Selenium.WebDriver.targets')" />
