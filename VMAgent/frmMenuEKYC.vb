@@ -104,10 +104,10 @@
         objconfigparams = ConfigParams.GetConfigParams()
 
         CurrentTransaction = New Transaction
-        CurrentTransaction.TransactionReference = objconfigparams.TerminalId & Date.Now.ToString("yymmddhhmmss")
+        CurrentTransaction.TransactionReference = objconfigparams.TerminalId & Date.Now.ToString("yyMMddHHmmss")
         CurrentTransaction.TransactionType = "simswap"
         CurrentTransaction.TerminalId = objconfigparams.TerminalId
-        CurrentTransaction.TransactionDateTime = Date.Now.ToString("dd/mm/yyyy hh:mm:ss")
+        CurrentTransaction.TransactionDateTime = Date.Now.ToString("dd/MM/yyyy HH:mm:ss")
         CurrentTransaction.TransactionStatus = "inprogress"
 
         Dim obj As New frmSIMSwap
