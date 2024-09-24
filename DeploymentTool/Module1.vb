@@ -100,10 +100,10 @@ Module Module1
         options.AddUserProfilePreference("download.prompt_for_download", False)
         options.AddUserProfilePreference("disable-popup-blocking", "true")
 
-        Dim service As EdgeDriverService = EdgeDriverService.CreateDefaultService("C:\WebDriver")
+        Dim service As EdgeDriverService = EdgeDriverService.CreateDefaultService("C:\DeploymentTool\WebDriver")
         service.UseVerboseLogging = True
 
-        Dim driverPath As String = Path.Combine("C:\WebDriver", "msedgedriver.exe")
+        Dim driverPath As String = Path.Combine("C:\DeploymentTool\WebDriver", "msedgedriver.exe")
 
         ' Clear the download directory before starting the download
         ClearDirectory(downloadDirectory)
