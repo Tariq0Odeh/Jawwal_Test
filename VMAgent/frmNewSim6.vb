@@ -135,36 +135,36 @@ Public Class frmNewSim6
                         End If
 
                         TrxnAmount = Val(Price)
-                            PaidAmount = Val(Price)
-                            ReturnedAmount = 0
-                            PrintSuccessReceipt()
-                            Globals.HidePleaseWait(Me)
+                        PaidAmount = Val(Price)
+                        ReturnedAmount = 0
+                        PrintSuccessReceipt()
+                        Globals.HidePleaseWait(Me)
 
-                            Dim obj As frmNewSim8
-                            If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
-                                obj = New frmNewSim8(True)
-                            Else
-                                obj = New frmNewSim8()
-                            End If
-                            obj.Owner = Me.Owner
-                            obj.ShowDialog()
-                            obj.Close()
-
-                        ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
-
-                            objCardDispnser.CaptureCard()
-                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-                            TrxnAmount = Val(Price)
-                            PaidAmount = Val(Price)
-                            ReturnedAmount = Val(Price)
-                            PrintFailedReceipt("Failed")
-                            Globals.HidePleaseWait(Me)
-                            Me.Owner.Close()
-                            Me.Owner.Dispose()
-
+                        Dim obj As frmNewSim8
+                        If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
+                            obj = New frmNewSim8(True)
                         Else
+                            obj = New frmNewSim8()
+                        End If
+                        obj.Owner = Me.Owner
+                        obj.ShowDialog()
+                        obj.Close()
 
-                            objCardDispnser.CaptureCard()
+                    ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
+
+                        objCardDispnser.CaptureCard()
+                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                        TrxnAmount = Val(Price)
+                        PaidAmount = Val(Price)
+                        ReturnedAmount = Val(Price)
+                        PrintFailedReceipt("Failed")
+                        Globals.HidePleaseWait(Me)
+                        Me.Owner.Close()
+                        Me.Owner.Dispose()
+
+                    Else
+
+                        objCardDispnser.CaptureCard()
                         TrxnAmount = Val(Price)
                         PaidAmount = Val(Price)
                         ReturnedAmount = 0
@@ -173,7 +173,19 @@ Public Class frmNewSim6
                         Me.Owner.Close()
                         Me.Owner.Dispose()
 
+
                     End If
+                Else
+                    ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card SIMSerialNumber = " & SIMSerialNumber)
+                    objCardDispnser.CaptureCard()
+                    objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                    TrxnAmount = Val(Price)
+                    PaidAmount = Val(Price)
+                    ReturnedAmount = Val(Price)
+                    PrintFailedReceipt("Failed")
+                    Globals.HidePleaseWait(Me)
+                    Me.Owner.Close()
+                    Me.Owner.Dispose()
                 End If
             Else
                 ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card POSResponse = " & POSResponse)

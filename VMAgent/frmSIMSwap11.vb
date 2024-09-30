@@ -132,7 +132,7 @@ Public Class frmSIMSwap11
 
                             TrxnAmount = Val(Amount)
                             PaidAmount = Val(txtAmount.Text)
-                            PrintFailedReceipt("UnKnowStatus")
+                            PrintFailedReceipt("UnKnownStatus")
 
                             Globals.HidePleaseWait(Me)
                             btnOK.Enabled = True
@@ -141,6 +141,21 @@ Public Class frmSIMSwap11
                             Me.Owner.Close()
                             Me.Owner.Dispose()
                         End If
+                    Else
+                        ExceptionLogger.LogInfo("frmSIMSwamp11 Couldn't read Serial Number")
+                        objCardDispnser.CaptureCard()
+                        ReturnCoinCash(Val(txtAmount.Text))
+
+                        TrxnAmount = Val(Amount)
+                        PaidAmount = Val(txtAmount.Text)
+                        PrintFailedReceipt("Failed")
+
+                        Globals.HidePleaseWait(Me)
+                        btnOK.Enabled = True
+                        txtAmount.Text = 0
+                        isConfirmedClicked = False
+                        Me.Owner.Close()
+                        Me.Owner.Dispose()
                     End If
                 Catch ex As Exception
                     ExceptionLogger.LogException(ex)

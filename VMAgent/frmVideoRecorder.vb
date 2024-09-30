@@ -1,4 +1,9 @@
 ﻿Imports System.Reflection
+Imports AForge.Video.FFMPEG
+Imports System.IO
+Imports AForge.Video
+Imports AForge.Video.DirectShow
+Imports AForge
 
 Public Class frmVideoRecorder
 
@@ -13,26 +18,32 @@ Public Class frmVideoRecorder
     End Sub
 
     Private Sub tmrProgress_Tick(sender As Object, e As EventArgs) Handles tmrProgress.Tick
-
         tmrProgress.Enabled = False
 
         If Progress = 0 Then
-            Cam.CapturePathAndFileName = VideoFilePath
-            Cam.StartRecording()
+            ' Initialize the recording when the timer starts
+            videoWriter = New VideoFileWriter()
+            videoWriter.Open(VideoFilePath, 640, 480, 25, VideoCodec.MPEG4)
+            recording = True
         End If
 
-        lblTimer.Text = "00:0" & Progress.ToString
+        lblTimer.Text = "00:0" & Progress.ToString()
 
         If Progress = MaxProgress Then
             Globals.ShowPleaseWait(Me)
-            Cam.StopRecording()
+            recording = False
+            videoSource.SignalToStop()
+            videoSource.WaitForStop()
+            videoWriter.Close()
+            videoWriter = Nothing
+
             Dim newPath = ""
-            ' convert the avi file to mp4
-            If ConvertAVIToMP4(VideoFilePath) = True Then
+            ' Convert the AVI file to MP4
+            If ConvertAVIToMP4(VideoFilePath) Then
                 newPath = VideoFilePath.Replace(".avi", ".mp4")
             End If
 
-            ' delete the avi file
+            ' Delete the AVI file
             If System.IO.File.Exists(VideoFilePath) Then
                 System.IO.File.Delete(VideoFilePath)
             End If
@@ -44,7 +55,6 @@ Public Class frmVideoRecorder
             Progress += 1
             tmrProgress.Enabled = True
         End If
-
     End Sub
 
 
@@ -72,22 +82,57 @@ Public Class frmVideoRecorder
         Return result
 
     End Function
-
+    Private videoSource As VideoCaptureDevice
+    Private recording As Boolean = False
+    Private videoWriter As VideoFileWriter
     Private Sub btnStartRecording_Click(sender As Object, e As EventArgs) Handles btnStartRecording.Click
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
         pnlHint.Visible = False
         Application.DoEvents()
 
-        Cam.Start(picVideo.Handle.ToInt32)
+        ' Start the camera
+        Dim videoDevices As New FilterInfoCollection(FilterCategory.VideoInputDevice)
+        ExceptionLogger.LogInfo("frmVideoRecorder = > btnStartRecording_Click videoDevices.Count=" & videoDevices.Count)
+        If videoDevices.Count > 0 Then
+            videoSource = New VideoCaptureDevice(videoDevices(0).MonikerString)
+            AddHandler videoSource.NewFrame, AddressOf VideoSource_NewFrame
+            videoSource.Start()
 
-        VideoFilePath = Application.StartupPath & "\Video\" & GetNewId() & ".avi"
+            ' Prepare output video file path
+            VideoFilePath = Path.Combine(Application.StartupPath, "Video", GetNewId() & ".avi")
+            ExceptionLogger.LogInfo("frmVideoRecorder = > btnStartRecording_Click VideoFilePath=" & VideoFilePath)
+            ' Initialize the video writer
+            videoWriter = New VideoFileWriter()
+            videoWriter.Open(VideoFilePath, 640, 480, 25, VideoCodec.MPEG4)
 
-        tmrProgress.Enabled = True
-
+            recording = True
+            tmrProgress.Enabled = True
+            tmrProgress.Start()
+        End If
     End Sub
 
+    Private Sub VideoSource_NewFrame(sender As Object, eventArgs As NewFrameEventArgs)
+        If recording Then
+            ' Write the frame to the video file
+            videoWriter.WriteVideoFrame(eventArgs.Frame.Clone())
+            ' Display the video frame
+            picVideo.Image = eventArgs.Frame.Clone()
+        End If
+    End Sub
+    Private Sub StopRecording()
+        If recording Then
+            recording = False
+            videoSource.SignalToStop()
+            videoSource.WaitForStop()
+            videoWriter.Close()
+            videoWriter = Nothing
+            tmrProgress.Stop()
+            tmrProgress.Enabled = False
+        End If
+    End Sub
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
+        StopRecording()
         Me.Close()
     End Sub
 

@@ -1,4 +1,5 @@
 ﻿Imports System.Reflection
+Imports VinderSDK
 
 Public Class frmSIMSwap1
 
@@ -61,9 +62,11 @@ Public Class frmSIMSwap1
         obj = New frmVideoRecorder
         obj.Owner = Me.Owner
         obj.ShowDialog()
+        ExceptionLogger.LogInfo("frmSimSwap1 => btnUploadVideo obj.IsDone = " & obj.IsDone)
         obj.Close()
         If obj.IsDone = True Then
             VideoUploaded = True
+            ExceptionLogger.LogInfo("frmSimSwap1 => btnUploadVideo obj.VideoFilePath = " & obj.VideoFilePath)
             VideoFilePath = obj.VideoFilePath
             picVideoUploadedSuccessfully.Visible = True
         End If

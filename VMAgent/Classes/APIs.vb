@@ -1731,17 +1731,21 @@ Public Class APIs
 
             Dim RSI As New RESTServiceInvoker
             Dim Response As String = RSI.InvokeService(objConfigParams.PlatformAPIURL, EnquiryString, "application/xml")
-
+            Response = APIs.GetXMLItemValue(Response, "ResponseData")
             ' Split the response string using special character _
-            Dim splitResponse As String() = Response.Split("_")
-            ExceptionLogger.LogInfo("ConfirmSimSwap Response= " & Response)
+            Response = Response.Trim()
+            Dim splitResponse As String() = Response.Split(Chr(169))
+            ExceptionLogger.LogInfo("ConfirmSimSwap Response= '" & Response & "'")
+            ExceptionLogger.LogInfo("ConfirmSimSwap Response.Trim()= '" & Response.Trim() & "'")
+
             ' Check if there are enough parts after the split
             If splitResponse.Length > 0 Then
                 ' Check if the first part is True or False
-                If splitResponse(0).ToUpper = "True".ToUpper Then
+                ExceptionLogger.LogInfo("ConfirmSimSwap splitResponse(0).ToUpper() = " & splitResponse(0).ToUpper())
+                If splitResponse(0).ToUpper() = "TRUE" Then
                     ExceptionLogger.LogInfo("ConfirmSimSwap SplitResponse = True")
                     Ret = APIReturnedValue.Success
-                ElseIf splitResponse(0).ToUpper = "False".ToUpper Then
+                ElseIf splitResponse(0).ToUpper() = "FALSE" Then
                     ExceptionLogger.LogInfo("ConfirmSimSwap SplitResponse = False")
                     Ret = APIReturnedValue.Failed
                 Else
@@ -2057,14 +2061,14 @@ Public Class APIs
             Response = APIs.GetXMLItemValue(Response, "ResponseData")
 
             ' Split the response string using special character _
-            Dim splitResponse As String() = Response.Split("_")
+            Dim splitResponse As String() = Response.Split(Chr(169))
 
             ' Check if there are enough parts after the split
             If splitResponse.Length > 0 Then
                 ' Check if the first part is True or False
-                If splitResponse(0).ToUpper = "True".ToUpper Then
+                If splitResponse(0).ToUpper = "TRUE" Then
                     Ret = APIReturnedValue.Success
-                ElseIf splitResponse(0).ToUpper = "False".ToUpper Then
+                ElseIf splitResponse(0).ToUpper = "FALSE" Then
                     Ret = APIReturnedValue.Failed
                 End If
 

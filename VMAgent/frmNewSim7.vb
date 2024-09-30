@@ -154,8 +154,18 @@ Public Class frmNewSim7
 
                         End If
                     Else
-
+                        ExceptionLogger.LogInfo("frmNewSim7 -> btnOK_Click SIMSerialNumber = '' ")
+                        objCardDispnser.CaptureCard()
+                        ReturnCoinCash(Val(txtAmount.Text))
+                        TrxnAmount = Val(Price)
+                        PaidAmount = Val(txtAmount.Text)
+                        PrintFailedReceipt("Failed")
                         Globals.HidePleaseWait(Me)
+                        btnOK.Enabled = True
+                        txtAmount.Text = 0
+                        isConfirmedClicked = False
+                        Me.Owner.Close()
+                        Me.Owner.Dispose()
 
                     End If
                     btnOK.Enabled = True

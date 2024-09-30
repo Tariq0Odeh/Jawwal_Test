@@ -136,6 +136,18 @@ Public Class frmSIMSwap10
                             Me.Owner.Dispose()
 
                         End If
+                    Else
+                        ExceptionLogger.LogInfo("frmSIMSwamp10 Couldn't read Serial Number")
+                        objCardDispnser.CaptureCard()
+                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                        TrxnAmount = Val(Amount)
+                        PaidAmount = Val(Amount)
+                        ReturnedAmount = Val(Amount)
+                        PrintFailedReceipt("Failed")
+                        Globals.HidePleaseWait(Me)
+                        Me.Owner.Close()
+                        Me.Owner.Dispose()
+
                     End If
                 Catch ex As Exception
                     ExceptionLogger.LogException(ex)

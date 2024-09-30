@@ -112,7 +112,7 @@ Public Class ExceptionLogger
         Input = Regex.Replace(Input, xmlInvalidCharsPattern, " ")
 
         ' Remove all characters except letters, digits, spaces, new lines, colons, asterisks, and question marks
-        Dim allowedCharsPattern As String = "[^a-zA-Z0-9\s\n:*?.]"
+        Dim allowedCharsPattern As String = "[^a-zA-Z0-9\s\n:*?_\!]"
         Input = Regex.Replace(Input, allowedCharsPattern, " ")
 
         ' Match valid time formats (e.g., HH:mm, HH:mm:ss)
