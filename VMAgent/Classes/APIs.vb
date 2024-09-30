@@ -1734,18 +1734,23 @@ Public Class APIs
 
             ' Split the response string using special character _
             Dim splitResponse As String() = Response.Split("_")
-
+            ExceptionLogger.LogInfo("ConfirmSimSwap Response= " & Response)
             ' Check if there are enough parts after the split
             If splitResponse.Length > 0 Then
                 ' Check if the first part is True or False
                 If splitResponse(0).ToUpper = "True".ToUpper Then
+                    ExceptionLogger.LogInfo("ConfirmSimSwap SplitResponse = True")
                     Ret = APIReturnedValue.Success
                 ElseIf splitResponse(0).ToUpper = "False".ToUpper Then
+                    ExceptionLogger.LogInfo("ConfirmSimSwap SplitResponse = False")
                     Ret = APIReturnedValue.Failed
+                Else
+                    ExceptionLogger.LogInfo("ConfirmSimSwap SplitResponse != True and != False")
                 End If
 
                 ' Store the second part in Globals.QRCode if it exists
                 If splitResponse.Length > 1 Then
+                    ExceptionLogger.LogInfo("ConfirmSimSwap QR Exists" & splitResponse(1))
                     Globals.QRCode = splitResponse(1)
                 End If
             End If
