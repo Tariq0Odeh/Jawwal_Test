@@ -164,7 +164,7 @@ Public Class frmNewSim3
         kbKeyboard.SetKeyboardMode(False)
     End Sub
 
-    Private Sub txtIdNumber_Click(sender As Object, e As EventArgs) Handles txtIdNumber.Click
+    Private Sub txtIdNumber_Click(sender As Object, e As EventArgs) 
         ExceptionLogger.LogInfo("frmNewSim3 -> txtIdNumber_Click ")
         kbKeyboard.txtBox = txtIdNumber
         kbKeyboard.SetKeyboardMode(True)
