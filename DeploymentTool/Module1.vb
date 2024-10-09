@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.IO.Compression
 Imports System.Threading
+Imports System.Net
 
 Module Module1
     Dim objConfigParams As ConfigParams
@@ -43,8 +44,10 @@ Module Module1
 
             If newFileName IsNot Nothing And newFileName <> "" And newFileName.Trim() <> latestDownloadedFileName.Trim() Then
                 Try
-                    Console.WriteLine("Try to Download newFileName = " & newFileName & " and APPPlatformURL = " & objConfigParams.APPPlatformURL & " and downloadLocation = " & objConfigParams.downloadLocation)
-                    Dim DownloadedFileName = DownloadFileUsingSelenium(objConfigParams.APPPlatformURL, objConfigParams.downloadLocation, newFileName & ".zip")
+                    Console.WriteLine("Try to Download newFileName = " & newFileName & " with URL = " & objConfigParams.PlatformURL & "/AgentBuilds/" & newFileName & ".zip" & " and downloadLocation = " & objConfigParams.downloadLocation)
+                    Dim DownloadedFileName = newFileName & ".zip"
+                    'http://192.168.1.163/AgentBuilds/VMAgent_T00005_1.4.0.95_Test.zip
+                    DownloadFile(objConfigParams.PlatformURL & "/AgentBuilds/" & DownloadedFileName, Path.Combine(objConfigParams.downloadLocation, DownloadedFileName))
                     Console.WriteLine("Try to kill Agent")
                     KillApplication(objConfigParams.appToKill)
                     Console.WriteLine("Try to backup agent")
@@ -93,40 +96,17 @@ Module Module1
         End If
     End Sub
 
-    Private Function DownloadFileUsingSelenium(url As String, downloadDirectory As String, expectedFileName As String) As String
-        Dim options As New EdgeOptions()
-        options.AddArgument("--headless")
-        options.AddUserProfilePreference("download.default_directory", downloadDirectory)
-        options.AddUserProfilePreference("download.prompt_for_download", False)
-        options.AddUserProfilePreference("disable-popup-blocking", "true")
+    Public Sub DownloadFile(ByVal url As String, ByVal downloadDirectory As String)
+        Try
+            Using client As New WebClient()
+                client.DownloadFile(url, downloadDirectory)
+                Console.WriteLine("File downloaded successfully to " & downloadDirectory)
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("An error occurred: " & ex.Message)
+        End Try
+    End Sub
 
-        Dim service As EdgeDriverService = EdgeDriverService.CreateDefaultService("C:\DeploymentTool\WebDriver")
-        service.UseVerboseLogging = True
-
-        Dim driverPath As String = Path.Combine("C:\DeploymentTool\WebDriver", "msedgedriver.exe")
-
-        ' Clear the download directory before starting the download
-        ClearDirectory(downloadDirectory)
-
-        Using driver As New EdgeDriver(service, options)
-            driver.Navigate().GoToUrl(url)
-
-            ' Poll for the presence of the downloaded file
-            Dim filePath As String = Path.Combine(downloadDirectory, expectedFileName)
-            Dim downloadCompleted As Boolean = False
-            Dim pollInterval As Integer = 500 ' Milliseconds
-
-            While Not downloadCompleted
-                If File.Exists(filePath) Then
-                    downloadCompleted = True
-                Else
-                    Thread.Sleep(pollInterval) ' Wait before checking again
-                End If
-            End While
-        End Using
-
-        Return expectedFileName
-    End Function
 
     Private Function GetLatestDownloadedFileName() As String
         If System.IO.File.Exists(objConfigParams.downloadHistoryFile) Then
@@ -213,14 +193,34 @@ Module Module1
 
     Private Sub RestoreBackup(backupPath As String, targetPath As String)
         EnsureDirectoryExists(targetPath)
+
+        ' If the target directory exists, delete it and recreate it.
         If Directory.Exists(targetPath) Then
             Directory.Delete(targetPath, True)
         End If
         Directory.CreateDirectory(targetPath)
-        For Each file As String In Directory.GetFiles(backupPath)
-            System.IO.File.Copy(file, Path.Combine(targetPath, Path.GetFileName(file)), True)
+
+        ' Call the recursive copy function to copy both files and directories.
+        CopyDirectory(backupPath, targetPath)
+    End Sub
+
+    Private Sub CopyDirectory(sourceDir As String, targetDir As String)
+        ' Create the target directory if it doesn't exist.
+        Directory.CreateDirectory(targetDir)
+
+        ' Copy all files from source to target.
+        For Each file As String In Directory.GetFiles(sourceDir)
+            Dim targetFile As String = Path.Combine(targetDir, Path.GetFileName(file))
+            System.IO.File.Copy(file, targetFile, True)
+        Next
+
+        ' Recursively copy each subdirectory.
+        For Each dir As String In Directory.GetDirectories(sourceDir)
+            Dim targetSubDir As String = Path.Combine(targetDir, Path.GetFileName(dir))
+            CopyDirectory(dir, targetSubDir) ' Recursively call CopyDirectory
         Next
     End Sub
+
 
     Private Sub RestartAppMonitorService()
         Dim servicePath As String = "C:\DeploymentTool\app_monitor_service.exe"
