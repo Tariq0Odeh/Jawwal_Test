@@ -41,95 +41,113 @@ Public Class frmPaltelBillPayment2
     Private DoPaymentUsingCardLock As New Object
     Private Sub DoPaymentUsingCard()
         SyncLock DoPaymentUsingCardLock
-            ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
-            Globals.ShowPleaseWait(Me)
+            Try
+                ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
+                Globals.ShowPleaseWait(Me)
 
-            Dim CC As New CameraCapture
-            CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
-
-            Dim CardResponse As Boolean = False
-            Dim TransactionReference As String = ""
-            Dim CardNumber As String = ""
-            Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
-
-            Dim objPOSLib As New POSLib(7, 9600)
-            Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Amount) * 100, "376", 0, 1, 60)
-            If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
-
-                POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
-                POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
-
-                Dim jsonObj As JObject = JObject.Parse(POSResponse)
-                If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
-
-                    CardResponse = True
-                    TransactionReference = jsonObj("TransID")
-                    CardNumber = jsonObj("CardNum")
-
-                End If
-
-            End If
-
-            If CardResponse = True Then
-
-
-                Dim payments As String = ""
-
-                For I As Integer = 0 To ALInvoicesToPay.Count - 1
-                    payments &= ",{ ""invoice"": { ""invoiceNumber"": """ & ALInvoicesToPay(I).invoiceNumber & """, ""amount"": """ & ALInvoicesToPay(I).amount & """, ""cycle"": """ & ALInvoicesToPay(I).cycle & """, ""msisdn"": """ & ALInvoicesToPay(I).msisdn & """, ""dueDate"": """ & ALInvoicesToPay(I).dueDate & """, ""currency"": """ & ALInvoicesToPay(I).currency & """ } }"
-                Next
-
-                If payments <> "" Then
-                    payments = payments.Substring(1)
-                End If
+                Dim CC As New CameraCapture
+                CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
                 CurrentTransaction.ServiceNumber = PhoneNumber
                 CurrentTransaction.TransactionAmount = Val(Amount)
-                CurrentTransaction.PaidAmount = Val(Amount)
+                CurrentTransaction.PaidAmount = 0
                 CurrentTransaction.ReturnedAmount = 0
-                Dim apiResponseValue = APIs.PayPaltelInvoices(PhoneNumber, payments, TransactionReference, CardNumber, "Visa", frmPaltelBillPayment.SessionId)
-                If apiResponseValue = APIs.APIReturnedValue.Success Then
 
-                    TrxnAmount = Val(Amount)
-                    PaidAmount = Val(Amount)
-                    ReturnedAmount = 0
-                    PrintSuccessReceipt()
+                Dim CardResponse As Boolean = False
+                Dim TransactionReference As String = ""
+                Dim CardNumber As String = ""
+                Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
 
-                    Globals.HidePleaseWait(Me)
+                Dim objPOSLib As New POSLib(7, 9600)
+                Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Amount) * 100, "376", 0, 1, 60)
+                If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
 
-                    Dim obj As New frmPaltelBillPayment4
-                    obj.Owner = Me.Owner
-                    obj.ShowDialog()
+                    POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
+                    POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
 
-                ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
+                    Dim jsonObj As JObject = JObject.Parse(POSResponse)
+                    If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
 
-                    objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-                    TrxnAmount = Val(Amount)
-                    PaidAmount = Val(Amount)
-                    ReturnedAmount = Val(Amount)
-                    PrintFailedReceipt("Failed")
-                    Globals.HidePleaseWait(Me)
-                    Me.Owner.Close()
-                    Me.Owner.Dispose()
+                        CardResponse = True
+                        TransactionReference = jsonObj("TransID")
+                        CardNumber = jsonObj("CardNum")
 
-                Else
-
-                    TrxnAmount = Val(Amount)
-                    PaidAmount = Val(Amount)
-                    ReturnedAmount = 0
-                    PrintFailedReceipt("UnknownStatus")
-                    Globals.HidePleaseWait(Me)
-                    Me.Owner.Close()
-                    Me.Owner.Dispose()
+                    End If
 
                 End If
 
-            Else
+                If CardResponse = True Then
+                    Try
 
+                        Dim payments As String = ""
+
+                        For I As Integer = 0 To ALInvoicesToPay.Count - 1
+                            payments &= ",{ ""invoice"": { ""invoiceNumber"": """ & ALInvoicesToPay(I).invoiceNumber & """, ""amount"": """ & ALInvoicesToPay(I).amount & """, ""cycle"": """ & ALInvoicesToPay(I).cycle & """, ""msisdn"": """ & ALInvoicesToPay(I).msisdn & """, ""dueDate"": """ & ALInvoicesToPay(I).dueDate & """, ""currency"": """ & ALInvoicesToPay(I).currency & """ } }"
+                        Next
+
+                        If payments <> "" Then
+                            payments = payments.Substring(1)
+                        End If
+
+
+                        Dim apiResponseValue = APIs.PayPaltelInvoices(PhoneNumber, payments, TransactionReference, CardNumber, "Visa", frmPaltelBillPayment.SessionId)
+                        If apiResponseValue = APIs.APIReturnedValue.Success Then
+                            CurrentTransaction.PaidAmount = Val(Amount)
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = Val(Amount)
+                            ReturnedAmount = 0
+                            PrintSuccessReceipt()
+
+                            Globals.HidePleaseWait(Me)
+
+                            Dim obj As New frmPaltelBillPayment4
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
+
+                        ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
+
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = Val(Amount)
+                            ReturnedAmount = Val(Amount)
+                            PrintFailedReceipt("Failed")
+                            Globals.HidePleaseWait(Me)
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        Else
+
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = 0
+                            ReturnedAmount = 0
+                            PrintFailedReceipt("UnknownStatus")
+                            Globals.HidePleaseWait(Me)
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        End If
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
+                        Globals.HidePleaseWait(Me)
+                        Throw ex
+                    End Try
+                Else
+                    TrxnAmount = Val(Amount)
+                    PaidAmount = 0
+                    ReturnedAmount = 0
+                    PrintCancelledReceipt("UnKnownStatus")
+                    Globals.HidePleaseWait(Me)
+                    ExceptionLogger.LogInfo("frmPaltelBillPayment -> Failed to DoPaymentUsingCard, card response=" & POSResponse)
+
+                End If
+            Catch ex As Exception
+                TrxnAmount = Val(Amount)
+                PaidAmount = 0
+                ReturnedAmount = 0
+                PrintCancelledReceipt("UnKnownStatus")
                 Globals.HidePleaseWait(Me)
-                ExceptionLogger.LogInfo("frmPaltelBillPayment -> Failed to DoPaymentUsingCard, card response=" & POSResponse)
-
-            End If
+                ExceptionLogger.LogException(ex)
+            End Try
         End SyncLock
     End Sub
 
@@ -241,13 +259,13 @@ Public Class frmPaltelBillPayment2
         End Try
     End Sub
 
-    Private Sub PrintCancelledReceipt()
+    Private Sub PrintCancelledReceipt(Optional TrxnStatus As String = "Cancelled")
         Try
 
 
 
             PrintReceiptDetails = APIs.GetReceiptDetails("PaltelBillPaymentCancelled")
-            TrxnStatus = "Cancelled"
+            Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController

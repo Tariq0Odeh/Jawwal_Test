@@ -74,124 +74,144 @@ Public Class frmNewSim6
     Private DoPaymentUsingCardLock As New Object
     Private Sub DoPaymentUsingCard()
         SyncLock DoPaymentUsingCardLock
-            Globals.ShowPleaseWait(Me)
+            Try
+                Globals.ShowPleaseWait(Me)
 
-            Dim CC As New CameraCapture
-            CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
-
-            Dim CardResponse As Boolean = False
-            Dim TransactionReference As String = ""
-            Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
-
-            Dim objPOSLib As New POSLib(7, 9600)
-            Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Price) * 100, "376", 0, 1, 60)
-            If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
-
-                POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
-                POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
-
-                Dim jsonObj As JObject = JObject.Parse(POSResponse)
-                If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
-
-                    CardResponse = True
-                    TransactionReference = jsonObj("TransID")
-
-                End If
-
-            End If
-
-            If CardResponse = True Then
-
-                Dim SIMSerialNumber As String = ""
-
-                If IsESIM = False Then
-                    Try
-                        objCardDispnser.CaptureCard()
-                    Catch ex As Exception
-                        ExceptionLogger.LogException(ex)
-                    End Try
-
-                    SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
-                    If SIMSerialNumber = "" Then
-                        objCardDispnser.CaptureCard()
-                        SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
-                        If SIMSerialNumber = "" Then
-                            objCardDispnser.CaptureCard()
-                            SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
-                        End If
-                    End If
-                End If
+                Dim CC As New CameraCapture
+                CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
                 CurrentTransaction.ServiceNumber = Msisdn
                 CurrentTransaction.TransactionAmount = Val(Price)
-                CurrentTransaction.PaidAmount = Val(Price)
+                CurrentTransaction.PaidAmount = 0
                 CurrentTransaction.ReturnedAmount = 0
-                If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
-                    Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference, frmNewSim.SessionId)
-                    If apiResponse = APIs.APIReturnedValue.Success Then
 
-                        If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
-                            objCardDispnser.DispenseCard()
-                        End If
+                Dim CardResponse As Boolean = False
+                Dim TransactionReference As String = ""
+                Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
 
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(Price)
-                        ReturnedAmount = 0
-                        PrintSuccessReceipt()
-                        Globals.HidePleaseWait(Me)
+                Dim objPOSLib As New POSLib(7, 9600)
+                Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Price) * 100, "376", 0, 1, 60)
+                If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
 
-                        Dim obj As frmNewSim8
-                        If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
-                            obj = New frmNewSim8(True)
-                        Else
-                            obj = New frmNewSim8()
-                        End If
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-                        obj.Close()
+                    POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
+                    POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
 
-                    ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
+                    Dim jsonObj As JObject = JObject.Parse(POSResponse)
+                    If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
 
-                        objCardDispnser.CaptureCard()
-                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(Price)
-                        ReturnedAmount = Val(Price)
-                        PrintFailedReceipt("Failed")
-                        Globals.HidePleaseWait(Me)
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
-                    Else
-
-                        objCardDispnser.CaptureCard()
-                        TrxnAmount = Val(Price)
-                        PaidAmount = Val(Price)
-                        ReturnedAmount = 0
-                        PrintFailedReceipt("UnKnownStatus")
-                        Globals.HidePleaseWait(Me)
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
+                        CardResponse = True
+                        TransactionReference = jsonObj("TransID")
 
                     End If
-                Else
-                    ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card SIMSerialNumber = " & SIMSerialNumber)
-                    objCardDispnser.CaptureCard()
-                    objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-                    TrxnAmount = Val(Price)
-                    PaidAmount = Val(Price)
-                    ReturnedAmount = Val(Price)
-                    PrintFailedReceipt("Failed")
-                    Globals.HidePleaseWait(Me)
-                    Me.Owner.Close()
-                    Me.Owner.Dispose()
-                End If
-            Else
-                ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card POSResponse = " & POSResponse)
-                Globals.HidePleaseWait(Me)
 
-            End If
+                End If
+
+                If CardResponse = True Then
+                    Try
+                        Dim SIMSerialNumber As String = ""
+
+                        If IsESIM = False Then
+                            Try
+                                objCardDispnser.CaptureCard()
+                            Catch ex As Exception
+                                ExceptionLogger.LogException(ex)
+                            End Try
+
+                            SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
+                            If SIMSerialNumber = "" Then
+                                objCardDispnser.CaptureCard()
+                                SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
+                                If SIMSerialNumber = "" Then
+                                    objCardDispnser.CaptureCard()
+                                    SIMSerialNumber = objCardDispnser.ScanSimCardAndReturnBarCode()
+                                End If
+                            End If
+                        End If
+
+
+                        If (IsESIM = True Or (IsESIM = False And SIMSerialNumber <> "")) Then
+                            Dim apiResponse = APIs.ConfirmNewSIM(Msisdn.Substring(1), IDNumber, SIMSerialNumber, FullName, DateOfBirth, Gender, AddressCity, IsESIM.ToString.ToLower, DocType, Convert.ToBase64String(DocumentFileData), MsisdnType, "Visa", PackageCode, EmailAddress, ContactNumber, reservationID, TransactionReference, frmNewSim.SessionId)
+                            If apiResponse = APIs.APIReturnedValue.Success Then
+
+                                If (IsESIM = False And Not (MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix"))) Then
+                                    objCardDispnser.DispenseCard()
+                                End If
+                                CurrentTransaction.PaidAmount = Val(Price)
+                                TrxnAmount = Val(Price)
+                                PaidAmount = Val(Price)
+                                ReturnedAmount = 0
+                                PrintSuccessReceipt()
+                                Globals.HidePleaseWait(Me)
+
+                                Dim obj As frmNewSim8
+                                If MsisdnType.ToLower().Contains("post") Or MsisdnType.ToLower().Contains("mix") Then
+                                    obj = New frmNewSim8(True)
+                                Else
+                                    obj = New frmNewSim8()
+                                End If
+                                obj.Owner = Me.Owner
+                                obj.ShowDialog()
+                                obj.Close()
+
+                            ElseIf apiResponse = APIs.APIReturnedValue.Failed Then
+
+                                objCardDispnser.CaptureCard()
+                                objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                                TrxnAmount = Val(Price)
+                                PaidAmount = Val(Price)
+                                ReturnedAmount = Val(Price)
+                                PrintFailedReceipt("Failed")
+                                Globals.HidePleaseWait(Me)
+                                Me.Owner.Close()
+                                Me.Owner.Dispose()
+
+                            Else
+
+                                objCardDispnser.CaptureCard()
+                                TrxnAmount = Val(Price)
+                                PaidAmount = 0
+                                ReturnedAmount = 0
+                                PrintFailedReceipt("UnKnownStatus")
+                                Globals.HidePleaseWait(Me)
+                                Me.Owner.Close()
+                                Me.Owner.Dispose()
+
+
+                            End If
+                        Else
+                            ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card SIMSerialNumber = " & SIMSerialNumber)
+                            objCardDispnser.CaptureCard()
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+                            TrxnAmount = Val(Price)
+                            PaidAmount = Val(Price)
+                            ReturnedAmount = Val(Price)
+                            PrintFailedReceipt("Failed")
+                            Globals.HidePleaseWait(Me)
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+                        End If
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
+                        Globals.HidePleaseWait(Me)
+                        Throw ex
+                    End Try
+                Else
+                    TrxnAmount = Val(Price)
+                    PaidAmount = 0
+                    ReturnedAmount = 0
+                    PrintCancelledReceipt("UnKnownStatus")
+                    ExceptionLogger.LogInfo("frmNewSim6->Failed to pay with Visa card POSResponse = " & POSResponse)
+                    Globals.HidePleaseWait(Me)
+
+                End If
+            Catch ex As Exception
+                TrxnAmount = Val(Price)
+                PaidAmount = 0
+                ReturnedAmount = 0
+                PrintCancelledReceipt("UnKnownStatus")
+                Globals.HidePleaseWait(Me)
+                ExceptionLogger.LogException(ex)
+            End Try
         End SyncLock
     End Sub
 
@@ -306,13 +326,12 @@ Public Class frmNewSim6
         End Try
     End Sub
 
-    Private Sub PrintCancelledReceipt()
-
+    Private Sub PrintCancelledReceipt(Optional TrxnStatus As String = "Cancelled")
         Try
 
 
             PrintReceiptDetails = APIs.GetReceiptDetails("NewSIMCancelled")
-            TrxnStatus = "Cancelled"
+            Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController

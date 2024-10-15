@@ -36,88 +36,102 @@ Public Class frmTopUp1
     Private DoPaymentUsingCardLock As New Object
     Private Sub DoPaymentUsingCard()
         SyncLock DoPaymentUsingCardLock
-            Globals.ShowPleaseWait(Me)
+            Try
+                Globals.ShowPleaseWait(Me)
 
-            Dim CC As New CameraCapture
-            CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
+                Dim CC As New CameraCapture
+                CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
-            Dim CardResponse As Boolean = False
-            Dim TransactionReference As String = ""
-            Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
+                CurrentTransaction.ServiceNumber = MobileNumber
+                CurrentTransaction.TransactionAmount = Val(Amount)
+                CurrentTransaction.PaidAmount = 0
+                CurrentTransaction.ReturnedAmount = 0
 
-            Dim objPOSLib As New POSLib(7, 9600)
-            Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Amount) * 100, "376", 0, 1, 60)
-            If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
+                Dim CardResponse As Boolean = False
+                Dim TransactionReference As String = ""
+                Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
 
-                POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
-                POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
+                Dim objPOSLib As New POSLib(7, 9600)
+                Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(Amount) * 100, "376", 0, 1, 60)
+                If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
 
-                Dim jsonObj As JObject = JObject.Parse(POSResponse)
-                If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
+                    POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
+                    POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
 
-                    CardResponse = True
-                    TransactionReference = jsonObj("TransID")
+                    Dim jsonObj As JObject = JObject.Parse(POSResponse)
+                    If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
 
-                End If
-
-            End If
-
-            If CardResponse = True Then
-                Try
-
-                    CurrentTransaction.ServiceNumber = MobileNumber
-                    CurrentTransaction.TransactionAmount = Val(Amount)
-                    CurrentTransaction.PaidAmount = Val(Amount)
-                    CurrentTransaction.ReturnedAmount = 0
-                    Dim apIResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, TransactionReference, "Visa", frmTopUp.SessionId)
-                    If apIResponseValue = APIs.APIReturnedValue.Success Then
-
-                        TrxnAmount = Val(Amount)
-                        PaidAmount = Val(Amount)
-                        ReturnedAmount = 0
-                        PrintSuccessReceipt()
-
-                        Globals.HidePleaseWait(Me)
-
-                        Dim obj As New frmTopUp3
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-
-                    ElseIf apIResponseValue = APIs.APIReturnedValue.Failed Then
-
-                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-
-                        TrxnAmount = Val(Amount)
-                        PaidAmount = Val(Amount)
-                        ReturnedAmount = Val(Amount)
-                        PrintFailedReceipt("Failed")
-
-                        Globals.HidePleaseWait(Me)
-
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-                    Else
-
-                        TrxnAmount = Val(Amount)
-                        PaidAmount = Val(Amount)
-                        ReturnedAmount = 0
-                        PrintFailedReceipt("UnknownStatus")
-                        Globals.HidePleaseWait(Me)
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
+                        CardResponse = True
+                        TransactionReference = jsonObj("TransID")
 
                     End If
 
-                Catch ex As Exception
-                    ExceptionLogger.LogException(ex)
+                End If
+
+                If CardResponse = True Then
+                    Try
+
+
+                        Dim apIResponseValue = APIs.RefillBalance(MobileNumber.Substring(1), Amount, TransactionReference, "Visa", frmTopUp.SessionId)
+                        If apIResponseValue = APIs.APIReturnedValue.Success Then
+                            CurrentTransaction.PaidAmount = Val(Amount)
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = Val(Amount)
+                            ReturnedAmount = 0
+                            PrintSuccessReceipt()
+
+                            Globals.HidePleaseWait(Me)
+
+                            Dim obj As New frmTopUp3
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
+
+                        ElseIf apIResponseValue = APIs.APIReturnedValue.Failed Then
+
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = Val(Amount)
+                            ReturnedAmount = Val(Amount)
+                            PrintFailedReceipt("Failed")
+
+                            Globals.HidePleaseWait(Me)
+
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+                        Else
+
+                            TrxnAmount = Val(Amount)
+                            PaidAmount = 0
+                            ReturnedAmount = 0
+                            PrintFailedReceipt("UnknownStatus")
+                            Globals.HidePleaseWait(Me)
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        End If
+
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
+                        Globals.HidePleaseWait(Me)
+                        Throw ex
+                    End Try
+                Else
+                    TrxnAmount = Val(Amount)
+                    PaidAmount = 0
+                    ReturnedAmount = 0
+                    PrintCancelledReceipt("UnKnownStatus")
                     Globals.HidePleaseWait(Me)
-
-                End Try
-            Else
-
+                    ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed to DoPaymentUsingCard, card response=" & POSResponse)
+                End If
+            Catch ex As Exception
+                TrxnAmount = Val(Amount)
+                PaidAmount = 0
+                ReturnedAmount = 0
+                PrintCancelledReceipt("UnKnownStatus")
                 Globals.HidePleaseWait(Me)
-                ExceptionLogger.LogInfo("frmJawwalBillPayment -> Failed to DoPaymentUsingCard, card response=" & POSResponse)
-            End If
+                ExceptionLogger.LogException(ex)
+            End Try
         End SyncLock
     End Sub
 
@@ -226,11 +240,11 @@ Public Class frmTopUp1
         End Try
     End Sub
 
-    Private Sub PrintCancelledReceipt()
+    Private Sub PrintCancelledReceipt(Optional TrxnStatus As String = "Cancelled")
 
         Try
             PrintReceiptDetails = APIs.GetReceiptDetails("TopUpCancelled")
-            TrxnStatus = "Cancelled"
+            Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController

@@ -37,91 +37,103 @@ Public Class frmDigitalGoods4
     Private DoPaymentUsingCardLock As New Object
     Private Sub DoPaymentUsingCard()
         SyncLock DoPaymentUsingCardLock
-            Globals.ShowPleaseWait(Me)
+            Try
+                Globals.ShowPleaseWait(Me)
 
-            Dim CC As New CameraCapture
-            CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
+                Dim CC As New CameraCapture
+                CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
-            Dim CardResponse As Boolean = False
-            Dim TransactionReference As String = ""
-            Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
 
-            Dim objPOSLib As New POSLib(7, 9600)
-            Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(objDenomination.endCustomerPriceWithVATLIS) * 100, "376", 0, 1, 60)
-            If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
+                CurrentTransaction.ServiceNumber = MobileNumber
+                CurrentTransaction.TransactionAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                CurrentTransaction.PaidAmount = 0
+                CurrentTransaction.ReturnedAmount = 0
 
-                POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
-                POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
+                Dim CardResponse As Boolean = False
+                Dim TransactionReference As String = ""
+                Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
 
-                Dim jsonObj As JObject = JObject.Parse(POSResponse)
-                If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
+                Dim objPOSLib As New POSLib(7, 9600)
+                Dim POSResponse As String = objPOSLib.Purchase(TransIndexCode, Val(objDenomination.endCustomerPriceWithVATLIS) * 100, "376", 0, 1, 60)
+                If POSResponse.Contains("{") = True And POSResponse.Contains("}") = True Then
 
-                    CardResponse = True
-                    TransactionReference = jsonObj("TransID")
+                    POSResponse = POSResponse.Substring(POSResponse.IndexOf("{"))
+                    POSResponse = POSResponse.Substring(0, POSResponse.IndexOf("}") + 1)
+
+                    Dim jsonObj As JObject = JObject.Parse(POSResponse)
+                    If jsonObj("RespCode") = "000" Or jsonObj("RespCode") = "001" Or jsonObj("RespCode") = "003" Then
+
+                        CardResponse = True
+                        TransactionReference = jsonObj("TransID")
+
+                    End If
 
                 End If
 
-            End If
+                If CardResponse = True Then
+                    Try
+                        Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, TransactionReference, "Visa", frmDigitalGoods.SessionId)
+                        If apiResponseValue = APIs.APIReturnedValue.Success Then
+                            CurrentTransaction.PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            ReturnedAmount = 0
+                            PrintSuccessReceipt()
 
-            If CardResponse = True Then
-                Try
+                            Globals.HidePleaseWait(Me)
 
-                    CurrentTransaction.ServiceNumber = MobileNumber
-                    CurrentTransaction.TransactionAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                    CurrentTransaction.PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                    CurrentTransaction.ReturnedAmount = 0
-                    Dim apiResponseValue = APIs.PurchaseDigitalGoods(MobileNumber.Substring(1), objDenomination.code, objDenomination.brandCode, TransactionReference, "Visa", frmDigitalGoods.SessionId)
-                    If apiResponseValue = APIs.APIReturnedValue.Success Then
+                            Dim obj As New frmDigitalGoods6
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
 
-                        TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        ReturnedAmount = 0
-                        PrintSuccessReceipt()
+                        ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
 
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+
+                            TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            ReturnedAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            PrintFailedReceipt("Failed")
+
+                            Globals.HidePleaseWait(Me)
+
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        Else
+
+                            TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                            PaidAmount = 0
+                            ReturnedAmount = 0
+                            PrintFailedReceipt("UnKnownStatus")
+
+                            Globals.HidePleaseWait(Me)
+
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        End If
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
                         Globals.HidePleaseWait(Me)
-
-                        Dim obj As New frmDigitalGoods6
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-
-                    ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
-
-                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-
-                        TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        ReturnedAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        PrintFailedReceipt("Failed")
-
-                        Globals.HidePleaseWait(Me)
-
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
-                    Else
-
-
-
-                        TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        PaidAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
-                        ReturnedAmount = 0
-                        PrintFailedReceipt("UnKnownStatus")
-
-                        Globals.HidePleaseWait(Me)
-
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
-                    End If
-                Catch ex As Exception
-                    ExceptionLogger.LogException(ex)
+                        Throw ex
+                    End Try
+                Else
+                    TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                    PaidAmount = 0
+                    ReturnedAmount = 0
+                    PrintCancelledReceipt("UnKnownStatus")
                     Globals.HidePleaseWait(Me)
-                End Try
-            Else
-
+                    ExceptionLogger.LogInfo("frmDigitalGoods4 -> Failed to pay with Visa card POSResponse = " & POSResponse)
+                End If
+            Catch ex As Exception
+                TrxnAmount = Val(objDenomination.endCustomerPriceWithVATLIS)
+                PaidAmount = 0
+                ReturnedAmount = 0
+                PrintCancelledReceipt("UnKnownStatus")
                 Globals.HidePleaseWait(Me)
-                ExceptionLogger.LogInfo("frmDigitalGoods4 -> Failed to pay with Visa card POSResponse = " & POSResponse)
-            End If
+                ExceptionLogger.LogException(ex)
+            End Try
         End SyncLock
     End Sub
 
@@ -230,13 +242,13 @@ Public Class frmDigitalGoods4
         End Try
     End Sub
 
-    Private Sub PrintCancelledReceipt()
+    Private Sub PrintCancelledReceipt(Optional TrxnStatus As String = "Cancelled")
 
         Try
 
 
             PrintReceiptDetails = APIs.GetReceiptDetails("DigitalGoodsCancelled")
-            TrxnStatus = "Cancelled"
+            Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController

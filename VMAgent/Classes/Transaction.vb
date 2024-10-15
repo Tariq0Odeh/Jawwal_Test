@@ -20,11 +20,11 @@
     Public Property TransactionDateTime As String = ""
     Public Property TransactionStatus As String = ""
 
-    Public Sub SaveTransactionDetails(PaymentType As String, Optional isCancelled As Boolean = False)
+    Public Sub SaveTransactionDetails(PaymentType As String, Optional isInsert As Boolean = False)
 
         Try
             Dim isUpdate = "Y"
-            If isCancelled Then
+            If isInsert Then
                 isUpdate = "N"
             End If
 

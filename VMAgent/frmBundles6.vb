@@ -104,6 +104,12 @@ Public Class frmBundles6
                 Dim CC As New CameraCapture
                 CurrentTransaction.CustomerPhoto2 = CC.CaptureAsBase64String()
 
+
+                CurrentTransaction.ServiceNumber = MobileNumber
+                CurrentTransaction.TransactionAmount = Val(objBundle.appPrice)
+                CurrentTransaction.PaidAmount = 0
+                CurrentTransaction.ReturnedAmount = 0
+
                 Dim CardResponse As Boolean = False
                 Dim TransactionReference As String = ""
                 Dim TransIndexCode As String = Date.Now.ToString("yyyyMMddHHmmssfffff")
@@ -126,59 +132,68 @@ Public Class frmBundles6
                 End If
 
                 If CardResponse = True Then
-                    CurrentTransaction.ServiceNumber = MobileNumber
-                    CurrentTransaction.TransactionAmount = Val(objBundle.appPrice)
-                    CurrentTransaction.PaidAmount = Val(objBundle.appPrice)
-                    CurrentTransaction.ReturnedAmount = 0
-                    Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Visa", TransactionReference, BundleType, frmBundles.SessionId)
-                    If apiResponseValue = APIs.APIReturnedValue.Success Then
+                    Try
+                        Dim apiResponseValue = APIs.SetBundles(MobileNumber.Substring(1), objBundle.productId, "Visa", TransactionReference, BundleType, frmBundles.SessionId)
+                        If apiResponseValue = APIs.APIReturnedValue.Success Then
+                            CurrentTransaction.PaidAmount = Val(objBundle.appPrice)
+                            TrxnAmount = Val(objBundle.appPrice)
+                            PaidAmount = Val(objBundle.appPrice)
+                            ReturnedAmount = 0
+                            PrintSuccessReceipt("Visa")
 
-                        TrxnAmount = Val(objBundle.appPrice)
-                        PaidAmount = Val(objBundle.appPrice)
-                        ReturnedAmount = 0
-                        PrintSuccessReceipt("Visa")
+                            Globals.HidePleaseWait(Me)
 
+                            Dim obj As New frmBundles8
+                            obj.Owner = Me.Owner
+                            obj.ShowDialog()
+
+                        ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
+
+                            objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
+
+                            TrxnAmount = Val(objBundle.appPrice)
+                            PaidAmount = Val(objBundle.appPrice)
+                            ReturnedAmount = Val(objBundle.appPrice)
+                            PrintFailedReceipt("Visa", "Failed")
+
+                            Globals.HidePleaseWait(Me)
+
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        Else
+
+
+                            TrxnAmount = Val(objBundle.appPrice)
+                            PaidAmount = 0
+                            ReturnedAmount = 0
+                            PrintFailedReceipt("Visa", "UnKnownStatus")
+
+                            Globals.HidePleaseWait(Me)
+
+                            Me.Owner.Close()
+                            Me.Owner.Dispose()
+
+                        End If
+                    Catch ex As Exception
+                        ExceptionLogger.LogException(ex)
                         Globals.HidePleaseWait(Me)
-
-                        Dim obj As New frmBundles8
-                        obj.Owner = Me.Owner
-                        obj.ShowDialog()
-
-                    ElseIf apiResponseValue = APIs.APIReturnedValue.Failed Then
-
-                        objPOSLib.Refund(TransIndexCode, TransactionReference, "376", 0, 1, 60)
-
-                        TrxnAmount = Val(objBundle.appPrice)
-                        PaidAmount = Val(objBundle.appPrice)
-                        ReturnedAmount = Val(objBundle.appPrice)
-                        PrintFailedReceipt("Visa", "Failed")
-
-                        Globals.HidePleaseWait(Me)
-
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
-                    Else
-
-
-                        TrxnAmount = Val(objBundle.appPrice)
-                        PaidAmount = Val(objBundle.appPrice)
-                        ReturnedAmount = 0
-                        PrintFailedReceipt("Visa", "UnKnownStatus")
-
-                        Globals.HidePleaseWait(Me)
-
-                        Me.Owner.Close()
-                        Me.Owner.Dispose()
-
-                    End If
-
+                        Throw ex
+                    End Try
                 Else
-
+                    TrxnAmount = Val(objBundle.appPrice)
+                    PaidAmount = 0
+                    ReturnedAmount = 0
+                    PrintCancelledReceipt("UnKnownStatus")
                     Globals.HidePleaseWait(Me)
                     ExceptionLogger.LogInfo("frmBundles failed to pay in visa card POSResponse = " & POSResponse)
                 End If
             Catch ex As Exception
+                TrxnAmount = Val(objBundle.appPrice)
+                PaidAmount = 0
+                ReturnedAmount = 0
+                PrintCancelledReceipt("UnKnownStatus")
+                Globals.HidePleaseWait(Me)
                 ExceptionLogger.LogException(ex)
             End Try
         End SyncLock
@@ -288,11 +303,11 @@ Public Class frmBundles6
         End Try
     End Sub
 
-    Private Sub PrintCancelledReceipt()
+    Private Sub PrintCancelledReceipt(Optional TrxnStatus As String = "Cancelled")
         Try
 
             PrintReceiptDetails = APIs.GetReceiptDetails("BundlesCancelled")
-            TrxnStatus = "Cancelled"
+            Me.TrxnStatus = TrxnStatus
 
             Dim objReceiptDocument As New Printing.PrintDocument
             Dim PrintController As New System.Drawing.Printing.StandardPrintController
