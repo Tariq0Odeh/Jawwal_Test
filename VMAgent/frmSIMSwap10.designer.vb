@@ -34,8 +34,6 @@ Partial Class frmSIMSwap10
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.btnCash)
         Me.pnlWA.Controls.Add(Me.btnReflect)
         Me.pnlWA.Controls.Add(Me.btnCreditCard)

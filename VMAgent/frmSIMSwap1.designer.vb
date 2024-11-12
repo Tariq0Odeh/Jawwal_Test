@@ -57,8 +57,6 @@ Partial Class frmSIMSwap1
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.lblTermsAndConditions)
         Me.pnlWA.Controls.Add(Me.lblErrorDescription)
         Me.pnlWA.Controls.Add(Me.pnlPassport)
@@ -102,8 +100,6 @@ Partial Class frmSIMSwap1
         '
         'pnlPassport
         '
-        Me.pnlPassport.BackgroundImage = CType(resources.GetObject("pnlPassport.BackgroundImage"), System.Drawing.Image)
-        Me.pnlPassport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlPassport.Controls.Add(Me.picPassportUploadedSuccessfully)
         Me.pnlPassport.Controls.Add(Me.btnUploadPassport)
         Me.pnlPassport.Location = New System.Drawing.Point(85, 252)
@@ -114,94 +110,76 @@ Partial Class frmSIMSwap1
         '
         'picPassportUploadedSuccessfully
         '
-        Me.picPassportUploadedSuccessfully.Image = CType(resources.GetObject("picPassportUploadedSuccessfully.Image"), System.Drawing.Image)
         Me.picPassportUploadedSuccessfully.Location = New System.Drawing.Point(30, 104)
         Me.picPassportUploadedSuccessfully.Name = "picPassportUploadedSuccessfully"
         Me.picPassportUploadedSuccessfully.Size = New System.Drawing.Size(499, 246)
-        Me.picPassportUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPassportUploadedSuccessfully.TabIndex = 40
         Me.picPassportUploadedSuccessfully.TabStop = False
         Me.picPassportUploadedSuccessfully.Visible = False
         '
         'btnUploadPassport
         '
-        Me.btnUploadPassport.Image = CType(resources.GetObject("btnUploadPassport.Image"), System.Drawing.Image)
         Me.btnUploadPassport.Location = New System.Drawing.Point(88, 220)
         Me.btnUploadPassport.Name = "btnUploadPassport"
         Me.btnUploadPassport.Size = New System.Drawing.Size(42, 42)
-        Me.btnUploadPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadPassport.TabIndex = 36
         Me.btnUploadPassport.TabStop = False
         '
         'picVideoUploadedSuccessfully
         '
-        Me.picVideoUploadedSuccessfully.Image = CType(resources.GetObject("picVideoUploadedSuccessfully.Image"), System.Drawing.Image)
         Me.picVideoUploadedSuccessfully.Location = New System.Drawing.Point(113, 509)
         Me.picVideoUploadedSuccessfully.Name = "picVideoUploadedSuccessfully"
         Me.picVideoUploadedSuccessfully.Size = New System.Drawing.Size(499, 101)
-        Me.picVideoUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picVideoUploadedSuccessfully.TabIndex = 40
         Me.picVideoUploadedSuccessfully.TabStop = False
         Me.picVideoUploadedSuccessfully.Visible = False
         '
         'picDocumentUploadedSuccessfully
         '
-        Me.picDocumentUploadedSuccessfully.Image = CType(resources.GetObject("picDocumentUploadedSuccessfully.Image"), System.Drawing.Image)
         Me.picDocumentUploadedSuccessfully.Location = New System.Drawing.Point(113, 318)
         Me.picDocumentUploadedSuccessfully.Name = "picDocumentUploadedSuccessfully"
         Me.picDocumentUploadedSuccessfully.Size = New System.Drawing.Size(499, 101)
-        Me.picDocumentUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picDocumentUploadedSuccessfully.TabIndex = 39
         Me.picDocumentUploadedSuccessfully.TabStop = False
         Me.picDocumentUploadedSuccessfully.Visible = False
         '
         'btnAgreeStatus
         '
-        Me.btnAgreeStatus.Image = CType(resources.GetObject("btnAgreeStatus.Image"), System.Drawing.Image)
         Me.btnAgreeStatus.Location = New System.Drawing.Point(1122, 676)
         Me.btnAgreeStatus.Name = "btnAgreeStatus"
         Me.btnAgreeStatus.Size = New System.Drawing.Size(60, 60)
-        Me.btnAgreeStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnAgreeStatus.TabIndex = 37
         Me.btnAgreeStatus.TabStop = False
         '
         'btnUploadVideo
         '
-        Me.btnUploadVideo.Image = CType(resources.GetObject("btnUploadVideo.Image"), System.Drawing.Image)
         Me.btnUploadVideo.Location = New System.Drawing.Point(172, 541)
         Me.btnUploadVideo.Name = "btnUploadVideo"
         Me.btnUploadVideo.Size = New System.Drawing.Size(42, 42)
-        Me.btnUploadVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadVideo.TabIndex = 36
         Me.btnUploadVideo.TabStop = False
         '
         'btnUploadDocument
         '
-        Me.btnUploadDocument.Image = CType(resources.GetObject("btnUploadDocument.Image"), System.Drawing.Image)
         Me.btnUploadDocument.Location = New System.Drawing.Point(172, 350)
         Me.btnUploadDocument.Name = "btnUploadDocument"
         Me.btnUploadDocument.Size = New System.Drawing.Size(42, 42)
-        Me.btnUploadDocument.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnUploadDocument.TabIndex = 35
         Me.btnUploadDocument.TabStop = False
         '
         'rbPassport
         '
-        Me.rbPassport.Image = CType(resources.GetObject("rbPassport.Image"), System.Drawing.Image)
         Me.rbPassport.Location = New System.Drawing.Point(1082, 489)
         Me.rbPassport.Name = "rbPassport"
         Me.rbPassport.Size = New System.Drawing.Size(60, 60)
-        Me.rbPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.rbPassport.TabIndex = 34
         Me.rbPassport.TabStop = False
         '
         'rbNationalID
         '
-        Me.rbNationalID.Image = CType(resources.GetObject("rbNationalID.Image"), System.Drawing.Image)
         Me.rbNationalID.Location = New System.Drawing.Point(1082, 387)
         Me.rbNationalID.Name = "rbNationalID"
         Me.rbNationalID.Size = New System.Drawing.Size(60, 60)
-        Me.rbNationalID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.rbNationalID.TabIndex = 33
         Me.rbNationalID.TabStop = False
         '

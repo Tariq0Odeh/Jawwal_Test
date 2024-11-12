@@ -36,8 +36,6 @@ Partial Class frmMenu
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.Home_Edit
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.btnCoinBack)
         Me.pnlWA.Controls.Add(Me.btnPLUS)
         Me.pnlWA.Controls.Add(Me.btnDigitalGoods)

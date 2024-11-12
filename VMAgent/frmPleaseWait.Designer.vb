@@ -31,7 +31,6 @@ Partial Class frmPleaseWait
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
         Me.pnlWA.Controls.Add(Me.picWait)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
         Me.pnlWA.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -42,11 +41,9 @@ Partial Class frmPleaseWait
         'picWait
         '
         Me.picWait.BackColor = System.Drawing.Color.Transparent
-        Me.picWait.Image = CType(resources.GetObject("picWait.Image"), System.Drawing.Image)
         Me.picWait.Location = New System.Drawing.Point(390, 133)
         Me.picWait.Name = "picWait"
         Me.picWait.Size = New System.Drawing.Size(500, 500)
-        Me.picWait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picWait.TabIndex = 0
         Me.picWait.TabStop = False
         '

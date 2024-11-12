@@ -606,39 +606,51 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles3.resx">
       <DependentUpon>frmBundles3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles1.resx">
       <DependentUpon>frmBundles1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles2.resx">
       <DependentUpon>frmBundles2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles4.resx">
       <DependentUpon>frmBundles4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles5.resx">
       <DependentUpon>frmBundles5.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles6.resx">
       <DependentUpon>frmBundles6.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles7.resx">
       <DependentUpon>frmBundles7.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBundles8.resx">
       <DependentUpon>frmBundles8.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods.resx">
       <DependentUpon>frmDigitalGoods.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods1.resx">
       <DependentUpon>frmDigitalGoods1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods2.resx">
       <DependentUpon>frmDigitalGoods2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods3.resx">
       <DependentUpon>frmDigitalGoods3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods4.resx">
       <DependentUpon>frmDigitalGoods4.vb</DependentUpon>
@@ -646,39 +658,50 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods5.resx">
       <DependentUpon>frmDigitalGoods5.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalGoods6.resx">
       <DependentUpon>frmDigitalGoods6.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDocumentScanner.resx">
       <DependentUpon>frmDocumentScanner.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuEKYC.resx">
       <DependentUpon>frmMenuEKYC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim.resx">
       <DependentUpon>frmNewSim.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSimTermsAndConditions.resx">
       <DependentUpon>frmNewSimTermsAndConditions.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim1.resx">
       <DependentUpon>frmNewSim1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim2.resx">
       <DependentUpon>frmNewSim2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim3.resx">
       <DependentUpon>frmNewSim3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim4.resx">
       <DependentUpon>frmNewSim4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim5.resx">
       <DependentUpon>frmNewSim5.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim6.resx">
       <DependentUpon>frmNewSim6.vb</DependentUpon>
@@ -686,27 +709,35 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim7.resx">
       <DependentUpon>frmNewSim7.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSim8.resx">
       <DependentUpon>frmNewSim8.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment1.resx">
       <DependentUpon>frmPaltelBillPayment1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment.resx">
       <DependentUpon>frmPaltelBillPayment.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment3.resx">
       <DependentUpon>frmJawwalBillPayment3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment2.resx">
       <DependentUpon>frmJawwalBillPayment2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment1.resx">
       <DependentUpon>frmJawwalBillPayment1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment.resx">
       <DependentUpon>frmJawwalBillPayment.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment4.resx">
       <DependentUpon>frmJawwalBillPayment4.vb</DependentUpon>
@@ -714,9 +745,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment5.resx">
       <DependentUpon>frmJawwalBillPayment5.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJawwalBillPayment6.resx">
       <DependentUpon>frmJawwalBillPayment6.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.vb</DependentUpon>
@@ -727,9 +760,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment3.resx">
       <DependentUpon>frmPaltelBillPayment3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaltelBillPayment4.resx">
       <DependentUpon>frmPaltelBillPayment4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPleaseWait.resx">
       <DependentUpon>frmPleaseWait.vb</DependentUpon>
@@ -737,54 +772,71 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlus.resx">
       <DependentUpon>frmPlus.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap.resx">
       <DependentUpon>frmSIMSwap.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap1.resx">
       <DependentUpon>frmSIMSwap1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap2.resx">
       <DependentUpon>frmSIMSwap2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap3.resx">
       <DependentUpon>frmSIMSwap3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap4.resx">
       <DependentUpon>frmSIMSwap4.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap5.resx">
       <DependentUpon>frmSIMSwap5.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap6.resx">
       <DependentUpon>frmSIMSwap6.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap7.resx">
       <DependentUpon>frmSIMSwap7.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap10.resx">
       <DependentUpon>frmSIMSwap10.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap11.resx">
       <DependentUpon>frmSIMSwap11.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap12.resx">
       <DependentUpon>frmSIMSwap12.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap8.resx">
       <DependentUpon>frmSIMSwap8.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSIMSwap9.resx">
       <DependentUpon>frmSIMSwap9.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTimeExtension.resx">
       <DependentUpon>frmTimeExtension.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp.resx">
       <DependentUpon>frmTopUp.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp2.resx">
       <DependentUpon>frmTopUp2.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp1.resx">
       <DependentUpon>frmTopUp1.vb</DependentUpon>
@@ -792,9 +844,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTopUp3.resx">
       <DependentUpon>frmTopUp3.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVideoRecorder.resx">
       <DependentUpon>frmVideoRecorder.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -834,6 +888,8 @@
     <Content Include="postproc-52.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\btnAgreeStatus.bmp" />
+    <None Include="Resources\btnUpload.bmp" />
     <Content Include="Resources\Fonts\Neo_Sans_Arabic_Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -909,6 +965,82 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Ico.ico" />
+    <None Include="Resources\frmBundles.bmp" />
+    <None Include="Resources\frmBundles1.bmp" />
+    <None Include="Resources\frmBundles2.bmp" />
+    <None Include="Resources\frmBundles3.bmp" />
+    <None Include="Resources\frmBundles4.bmp" />
+    <None Include="Resources\frmBundles5.bmp" />
+    <None Include="Resources\frmBundles6.bmp" />
+    <None Include="Resources\frmBundles7.bmp" />
+    <None Include="Resources\frmBundles8.bmp" />
+    <None Include="Resources\frmDigitalGoods.bmp" />
+    <None Include="Resources\frmDigitalGoods1.bmp" />
+    <None Include="Resources\frmDigitalGoods2.bmp" />
+    <None Include="Resources\frmDigitalGoods3.bmp" />
+    <None Include="Resources\frmDigitalGoods4.bmp" />
+    <None Include="Resources\frmDigitalGoods5.bmp" />
+    <None Include="Resources\frmDigitalGoods6.bmp" />
+    <None Include="Resources\frmDocumentScanner.bmp" />
+    <None Include="Resources\frmJawwalBillPayment.bmp" />
+    <None Include="Resources\frmJawwalBillPayment1.bmp" />
+    <None Include="Resources\frmJawwalBillPayment2.bmp" />
+    <None Include="Resources\frmJawwalBillPayment3.bmp" />
+    <None Include="Resources\frmJawwalBillPayment4.bmp" />
+    <None Include="Resources\frmJawwalBillPayment5.bmp" />
+    <None Include="Resources\frmJawwalBillPayment6.bmp" />
+    <None Include="Resources\frmMain.bmp" />
+    <None Include="Resources\frmMenu.bmp" />
+    <None Include="Resources\frmMenuEKYC.bmp" />
+    <None Include="Resources\frmNewSim.bmp" />
+    <None Include="Resources\frmNewSim1.bmp" />
+    <None Include="Resources\frmNewSim2.bmp" />
+    <None Include="Resources\frmNewSim3.bmp" />
+    <None Include="Resources\frmNewSim4.bmp" />
+    <None Include="Resources\frmNewSim5.bmp" />
+    <None Include="Resources\frmNewSim6.bmp" />
+    <None Include="Resources\frmNewSim7.bmp" />
+    <None Include="Resources\frmNewSim8.bmp" />
+    <None Include="Resources\frmPaltelBillPayment.bmp" />
+    <None Include="Resources\frmPaltelBillPayment1.bmp" />
+    <None Include="Resources\frmPaltelBillPayment2.bmp" />
+    <None Include="Resources\frmPaltelBillPayment3.bmp" />
+    <None Include="Resources\frmPaltelBillPayment4.bmp" />
+    <None Include="Resources\frmPleaseWait.bmp" />
+    <None Include="Resources\frmPlus.bmp" />
+    <None Include="Resources\frmSIMSwap.bmp" />
+    <None Include="Resources\frmSIMSwap1.bmp" />
+    <None Include="Resources\frmSIMSwap2.bmp" />
+    <None Include="Resources\frmSIMSwap3.bmp" />
+    <None Include="Resources\frmSIMSwap4.bmp" />
+    <None Include="Resources\frmSIMSwap5.bmp" />
+    <None Include="Resources\frmSIMSwap6.bmp" />
+    <None Include="Resources\frmSIMSwap7.bmp" />
+    <None Include="Resources\frmSIMSwap8.bmp" />
+    <None Include="Resources\frmSIMSwap9.bmp" />
+    <None Include="Resources\frmSIMSwap10.bmp" />
+    <None Include="Resources\frmSIMSwap11.bmp" />
+    <None Include="Resources\frmSIMSwap12.bmp" />
+    <None Include="Resources\frmTimeExtension.bmp" />
+    <None Include="Resources\frmTopUp.bmp" />
+    <None Include="Resources\frmTopUp1.bmp" />
+    <None Include="Resources\frmTopUp2.bmp" />
+    <None Include="Resources\frmTopUp3.bmp" />
+    <None Include="Resources\frmVideoRecorder.bmp" />
+    <None Include="Resources\frmPleaseWaitGIF.gif" />
+    <None Include="Resources\frmVideoRecorderHint.bmp" />
+    <None Include="Resources\frmNewSimTermsAndConditions.bmp" />
+    <None Include="Resources\picDocumentUploadedSuccessfully.bmp" />
+    <None Include="Resources\picNoNoneRenewable.bmp" />
+    <None Include="Resources\picNoRenewable.bmp" />
+    <None Include="Resources\picPassportUploadedSuccessfully.bmp" />
+    <None Include="Resources\picVideoUploadedSuccessfully.bmp" />
+    <None Include="Resources\pnl3G.BackgroundImage.bmp" />
+    <None Include="Resources\pnl3GMins.BackgroundImage.bmp" />
+    <None Include="Resources\pnlMins.BackgroundImage.bmp" />
+    <None Include="Resources\pnlPassport.BackgroundImage.bmp" />
+    <None Include="Resources\rbNationalID.bmp" />
+    <None Include="Resources\rbPassport.bmp" />
     <Content Include="swresample-0.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

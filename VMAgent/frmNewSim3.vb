@@ -15,7 +15,32 @@ Public Class frmNewSim3
     Public resourceID As String = ""
     Public DocumentFileData() As Byte
 
+    Private Sub LoadPanelBackGround()
+
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewSim3))
+        ExceptionLogger.LogInfo("frmNewSim3_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmNewSim3
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+    End Sub
+
     Private Sub frmNewSim3_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmNewSim3_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmNewSim3_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo("frmNewSim3 -> frmNewSim3_Load ")
         txtFullName.Text = FullName
         If txtFullName.Text <> "" Then

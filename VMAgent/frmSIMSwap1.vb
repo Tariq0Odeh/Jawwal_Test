@@ -12,7 +12,61 @@ Public Class frmSIMSwap1
     Public VideoFilePath As String = ""
     Public AgreeStatus As Boolean = False
 
+    Private Sub LoadPanelBackGround()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSIMSwap1))
+        ExceptionLogger.LogInfo("frmSIMSwap1_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmSIMSwap1
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+        Me.pnlPassport.BackgroundImage = Global.VMAgent.My.Resources.Resources.pnlPassport_BackgroundImage
+        Me.pnlPassport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+        Me.picPassportUploadedSuccessfully.Image = Global.VMAgent.My.Resources.Resources.picPassportUploadedSuccessfully
+        Me.picPassportUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.btnUploadPassport.Image = Global.VMAgent.My.Resources.Resources.btnUpload
+        Me.btnUploadPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.picVideoUploadedSuccessfully.Image = Global.VMAgent.My.Resources.Resources.picVideoUploadedSuccessfully
+        Me.picVideoUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.picDocumentUploadedSuccessfully.Image = Global.VMAgent.My.Resources.Resources.picDocumentUploadedSuccessfully
+        Me.picDocumentUploadedSuccessfully.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.btnAgreeStatus.Image = Global.VMAgent.My.Resources.Resources.btnAgreeStatus
+        Me.btnAgreeStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.btnUploadVideo.Image = Global.VMAgent.My.Resources.Resources.btnUpload
+        Me.btnUploadVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.btnUploadDocument.Image = Global.VMAgent.My.Resources.Resources.btnUpload
+        Me.btnUploadDocument.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.rbPassport.Image = Global.VMAgent.My.Resources.Resources.rbPassport
+        Me.rbPassport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+        Me.rbNationalID.Image = Global.VMAgent.My.Resources.Resources.rbNationalID
+        Me.rbNationalID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+
+    End Sub
+
     Private Sub frmSIMSwap1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmSIMSwap1_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmSIMSwap1_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
     End Sub
 

@@ -15,7 +15,30 @@ Public Class frmSIMSwap12
         Me.Owner.Dispose()
     End Sub
 
+    Private Sub LoadPanelBackGround()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSIMSwap12))
+        ExceptionLogger.LogInfo("frmSIMSwap12_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmSIMSwap12
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+    End Sub
+
     Private Sub frmSIMSwap12_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmSIMSwap12_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmSIMSwap12_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         LoadQRCode(Globals.QRCode)
     End Sub
 

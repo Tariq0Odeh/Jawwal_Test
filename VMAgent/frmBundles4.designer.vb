@@ -42,8 +42,6 @@ Partial Class frmBundles4
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.pnlNonRenewedHolder)
         Me.pnlWA.Controls.Add(Me.pnlRenewedHolder)
         Me.pnlWA.Controls.Add(Me.btnBack)
@@ -66,11 +64,9 @@ Partial Class frmBundles4
         '
         'picNoNoneRenewable
         '
-        Me.picNoNoneRenewable.Image = CType(resources.GetObject("picNoNoneRenewable.Image"), System.Drawing.Image)
         Me.picNoNoneRenewable.Location = New System.Drawing.Point(352, 83)
         Me.picNoNoneRenewable.Name = "picNoNoneRenewable"
         Me.picNoNoneRenewable.Size = New System.Drawing.Size(379, 179)
-        Me.picNoNoneRenewable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picNoNoneRenewable.TabIndex = 1
         Me.picNoNoneRenewable.TabStop = False
         '
@@ -87,11 +83,9 @@ Partial Class frmBundles4
         '
         'picNoRenewable
         '
-        Me.picNoRenewable.Image = CType(resources.GetObject("picNoRenewable.Image"), System.Drawing.Image)
         Me.picNoRenewable.Location = New System.Drawing.Point(370, 79)
         Me.picNoRenewable.Name = "picNoRenewable"
         Me.picNoRenewable.Size = New System.Drawing.Size(344, 188)
-        Me.picNoRenewable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picNoRenewable.TabIndex = 0
         Me.picNoRenewable.TabStop = False
         '

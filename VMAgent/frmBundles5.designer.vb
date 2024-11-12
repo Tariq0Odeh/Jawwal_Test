@@ -48,8 +48,6 @@ Partial Class frmBundles5
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.pnlMins)
         Me.pnlWA.Controls.Add(Me.pnl3GMins)
         Me.pnlWA.Controls.Add(Me.pnl3G)
@@ -70,7 +68,6 @@ Partial Class frmBundles5
         '
         'pnlMins
         '
-        Me.pnlMins.BackgroundImage = CType(resources.GetObject("pnlMins.BackgroundImage"), System.Drawing.Image)
         Me.pnlMins.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pnlMins.Controls.Add(Me.txtminutesSize3)
         Me.pnlMins.Location = New System.Drawing.Point(895, 318)
@@ -92,7 +89,6 @@ Partial Class frmBundles5
         '
         'pnl3GMins
         '
-        Me.pnl3GMins.BackgroundImage = CType(resources.GetObject("pnl3GMins.BackgroundImage"), System.Drawing.Image)
         Me.pnl3GMins.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pnl3GMins.Controls.Add(Me.txtminutesSize2)
         Me.pnl3GMins.Controls.Add(Me.txt3GSize2)
@@ -127,7 +123,6 @@ Partial Class frmBundles5
         '
         'pnl3G
         '
-        Me.pnl3G.BackgroundImage = CType(resources.GetObject("pnl3G.BackgroundImage"), System.Drawing.Image)
         Me.pnl3G.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.pnl3G.Controls.Add(Me.txt3GOnlySize)
         Me.pnl3G.Location = New System.Drawing.Point(896, 318)

@@ -13,7 +13,34 @@ Public Class frmVideoRecorder
     Public VideoFilePath As String = ""
     Public IsDone As Boolean = False
 
+    Private Sub LoadPanelBackGround()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVideoRecorder))
+        ExceptionLogger.LogInfo("frmVideoRecorder_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmVideoRecorder
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+        Me.pnlHint.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmVideoRecorderHint
+        Me.pnlHint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+    End Sub
+
     Private Sub frmVideoRecorder_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmVideoRecorder_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmVideoRecorder_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
     End Sub
 

@@ -4,7 +4,38 @@
     Public BundleType As String = ""
     Public objBundle As New Bundle
 
+    Private Sub LoadPanelBackGround()
+
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBundles5))
+        ExceptionLogger.LogInfo("frmBundles5_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmBundles5
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+        Me.pnlMins.BackgroundImage = Global.VMAgent.My.Resources.Resources.pnlMins_BackgroundImage
+
+        Me.pnl3GMins.BackgroundImage = Global.VMAgent.My.Resources.Resources.pnl3GMins_BackgroundImage
+
+        Me.pnl3G.BackgroundImage = Global.VMAgent.My.Resources.Resources.pnl3G_BackgroundImage
+
+    End Sub
+
     Private Sub frmBundles5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmBundles5_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmBundles5_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo("frmMenu -> frmBundles5_Load ")
     End Sub
 

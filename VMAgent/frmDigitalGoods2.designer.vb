@@ -33,8 +33,6 @@ Partial Class frmDigitalGoods2
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.pnlBrandsHolder)
         Me.pnlWA.Controls.Add(Me.btnBack)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)

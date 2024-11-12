@@ -4,7 +4,30 @@ Public Class frmPaltelBillPayment
 
     Dim ActiveInputBox As String = "PHONE"                 'PHONE/IDNUMBER
     Public Shared SessionId As String = ""
+
+    Private Sub LoadPnlWA()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPaltelBillPayment))
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmPaltelBillPayment
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+    End Sub
+
     Private Sub frmPaltelBillPayment_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPnlWA()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmPaltelBillPayment_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPnlWA()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmPaltelBillPayment_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo(Me.Name & " -> " & MethodBase.GetCurrentMethod().Name)
         SessionId = APIs.CreateSession(APIs.ServiceNames.billsPayment.ToString())
         ExceptionLogger.LogInfo("SessionId: " & SessionId)

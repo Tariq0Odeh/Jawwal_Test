@@ -3,7 +3,31 @@
     Public MobileNumber As String = ""
     Dim PINCode As String = ""
 
+    Private Sub LoadPanelBackGround()
+
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDigitalGoods1))
+        ExceptionLogger.LogInfo("frmDigitalGoods1_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmDigitalGoods1
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+    End Sub
+
     Private Sub frmDigitalGoods1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmDigitalGoods1_Load")
+            ExceptionLogger.LogException(ex)
+        ExceptionLogger.LogInfo("Try to load Again")
+        Try
+            Threading.Thread.Sleep(500)
+            LoadPanelBackGround()
+        Catch ex2 As Exception
+            ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmDigitalGoods1_Load")
+            ExceptionLogger.LogException(ex2)
+            Me.Close()
+        End Try
+        End Try
         ExceptionLogger.LogInfo("frmDigitalGoods1 -> frmDigitalGoods1_Load ")
         txtMobileNumber.Text = MobileNumber
 

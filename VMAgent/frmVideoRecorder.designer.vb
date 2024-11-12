@@ -39,8 +39,6 @@ Partial Class frmVideoRecorder
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.lblTimer)
         Me.pnlWA.Controls.Add(Me.lblNote)
         Me.pnlWA.Controls.Add(Me.picVideo)
@@ -76,8 +74,6 @@ Partial Class frmVideoRecorder
         '
         'pnlHint
         '
-        Me.pnlHint.BackgroundImage = CType(resources.GetObject("pnlHint.BackgroundImage"), System.Drawing.Image)
-        Me.pnlHint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlHint.Controls.Add(Me.btnStartRecording)
         Me.pnlHint.Controls.Add(Me.btnBack)
         Me.pnlHint.Location = New System.Drawing.Point(0, 0)

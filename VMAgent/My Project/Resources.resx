@@ -118,10 +118,244 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnAgreeStatus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnAgreeStatus.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnUpload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnUpload.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles7.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmBundles8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmBundles8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDigitalGoods6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDigitalGoods6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmDocumentScanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmDocumentScanner.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmJawwalBillPayment6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmJawwalBillPayment6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmMain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmMain.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmMenu.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmMenuEKYC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmMenuEKYC.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim7.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSim8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSim8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmNewSimTermsAndConditions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmNewSimTermsAndConditions.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPaltelBillPayment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPaltelBillPayment.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPaltelBillPayment1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPaltelBillPayment1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPaltelBillPayment2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPaltelBillPayment2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPaltelBillPayment3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPaltelBillPayment3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPaltelBillPayment4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPaltelBillPayment4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPleaseWait" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPleaseWait.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPleaseWaitGIF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPleaseWaitGIF.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmPlus.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap10.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap11.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap12.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap7.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmSIMSwap9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmSIMSwap9.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmTimeExtension" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmTimeExtension.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmTopUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmTopUp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmTopUp1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmTopUp1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmTopUp2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmTopUp2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmTopUp3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmTopUp3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmVideoRecorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmVideoRecorder.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frmVideoRecorderHint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frmVideoRecorderHint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="HomeEKYC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HomeEKYC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Home_Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Home Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picDocumentUploadedSuccessfully" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\picDocumentUploadedSuccessfully.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picNoNoneRenewable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\picNoNoneRenewable.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picNoRenewable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\picNoRenewable.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picPassportUploadedSuccessfully" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\picPassportUploadedSuccessfully.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picVideoUploadedSuccessfully" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\picVideoUploadedSuccessfully.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pnl3GMins_BackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnl3GMins.BackgroundImage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pnl3G_BackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnl3G.BackgroundImage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pnlMins_BackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlMins.BackgroundImage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pnlPassport_BackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pnlPassport.BackgroundImage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rbNationalID" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rbNationalID.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rbPassport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rbPassport.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

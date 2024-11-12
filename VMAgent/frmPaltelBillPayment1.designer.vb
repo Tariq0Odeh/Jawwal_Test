@@ -36,8 +36,6 @@ Partial Class frmPaltelBillPayment1
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.pnlBillsHolder)
         Me.pnlWA.Controls.Add(Me.lblErrorDescription)
         Me.pnlWA.Controls.Add(Me.txtTotalBills)

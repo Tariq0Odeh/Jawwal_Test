@@ -35,8 +35,6 @@ Partial Class frmBundles6
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.txtAmount)
         Me.pnlWA.Controls.Add(Me.btnBack)
         Me.pnlWA.Controls.Add(Me.btnBalance)

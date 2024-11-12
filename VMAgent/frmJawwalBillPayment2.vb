@@ -6,7 +6,32 @@ Public Class frmJawwalBillPayment2
     Public InvoicesDetails As String = ""
     Public IgnoreAction As Boolean = False
 
+    Private Sub LoadPanelBackGround()
+
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmJawwalBillPayment2))
+        ExceptionLogger.LogInfo("frmJawwalBillPayment2_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.frmJawwalBillPayment2
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+    End Sub
+
     Private Sub frmJawwalBillPayment2_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmJawwalBillPayment2_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Try
+                Threading.Thread.Sleep(500)
+                LoadPanelBackGround()
+            Catch ex2 As Exception
+                ExceptionLogger.LogInfo("Failed second time to load Image Background for pnlWA in frmJawwalBillPayment2_Load")
+                ExceptionLogger.LogException(ex2)
+                Me.Close()
+            End Try
+        End Try
+
         ExceptionLogger.LogInfo("frmJawwalBillPayment2 -> frmJawwalBillPayment2_Load")
         Dim TotalBills As Decimal = 0
 

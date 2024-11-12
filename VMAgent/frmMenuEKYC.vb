@@ -3,8 +3,40 @@
     'Public objCoinCashRecycler As VinderSDK.CoinCashRecycler
     Dim objConfigParams As New ConfigParams
 
+    Private Sub LoadPanelBackGround()
+
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenuEKYC))
+        ExceptionLogger.LogInfo("frmMenuEKYC_Load : Trying to BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch")
+        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.HomeEKYC
+        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+
+    End Sub
+
     Private Sub frmMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ExceptionLogger.LogInfo("frmMenu -> frmMenu_Load ")
+        Try
+            LoadPanelBackGround()
+        Catch ex As Exception
+            ExceptionLogger.LogInfo("Failed to load Image Background for pnlWA in frmMenuEKYC_Load")
+            ExceptionLogger.LogException(ex)
+            ExceptionLogger.LogInfo("Try to load Again")
+            Dim counter = 1
+
+            While (True)
+                counter = counter + 1
+                Try
+                    Threading.Thread.Sleep(500)
+                    LoadPanelBackGround()
+                    Exit While
+                Catch ex2 As Exception
+                    ExceptionLogger.LogInfo("Failed " & counter & " times to load Image Background for pnlWA in frmMenuEKYC_Load")
+                    ExceptionLogger.LogException(ex2)
+
+                End Try
+            End While
+
+        End Try
+
+        ExceptionLogger.LogInfo("frmMenuEKYC -> frmMenuEKYC_Load ")
         objConfigParams = ConfigParams.GetConfigParams()
 
 

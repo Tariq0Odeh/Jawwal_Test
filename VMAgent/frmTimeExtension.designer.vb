@@ -30,8 +30,6 @@ Partial Class frmTimeExtension
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.btnOK)
         Me.pnlWA.Location = New System.Drawing.Point(0, 0)
         Me.pnlWA.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)

@@ -38,8 +38,6 @@ Partial Class frmMenuEKYC
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = Global.VMAgent.My.Resources.Resources.HomeEKYC
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.btnNewSIM)
         Me.pnlWA.Controls.Add(Me.btnSIMSwap)
         Me.pnlWA.Controls.Add(Me.btnCoinBack)

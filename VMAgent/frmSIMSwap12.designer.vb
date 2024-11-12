@@ -33,8 +33,6 @@ Partial Class frmSIMSwap12
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.QR_SimSwap)
         Me.pnlWA.Controls.Add(Me.btnBack)
         Me.pnlWA.Controls.Add(Me.btnMainMenu)

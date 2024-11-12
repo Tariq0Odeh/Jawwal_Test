@@ -34,8 +34,6 @@ Partial Class frmNewSimTermsAndConditions
         '
         'pnlWA
         '
-        Me.pnlWA.BackgroundImage = CType(resources.GetObject("pnlWA.BackgroundImage"), System.Drawing.Image)
-        Me.pnlWA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pnlWA.Controls.Add(Me.btnBack)
         Me.pnlWA.Controls.Add(Me.btnOK)
         Me.pnlWA.Controls.Add(Me.pnlMsisdns)
